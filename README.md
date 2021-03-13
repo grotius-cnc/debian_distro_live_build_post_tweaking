@@ -1,12 +1,16 @@
 # debian_distro_live_build_post_tweaking
-This is live-build script to make a debian iso. After the live-build we tweak the source code and repack the iso
+This is a script to make a debian iso using the live-build methode. 
+After the live-build process we tweak the source code and repack the iso.
+
+
 
 Manual :
 
 Date : 13-03-2021
 Author : Grotius Skynet
 Licence : GPL2
-Comments :	 
+Comments : Special methode makes it possible to create a Debian 11 Bulsseye with Realtime Kernel Distro. 
+The live-build normally works fine. But for Debian 11, it fails. Therefore this script.
 
 This document is for rebranding, modifying a standard Debian distro, based on a live-build procedure.
 I made this document for making a Debian 11 Bulsseye Distro with RealTime kernel.
