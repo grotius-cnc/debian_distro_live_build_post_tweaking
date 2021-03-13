@@ -1,0 +1,39 @@
+
+# This is a Tweaklist of commands to update Debian 10 to Debian 11 in the virtual environment when
+command ./chroot-start.sh is active.
+
+	$ dhclient -v # establish the internet connection to this virtual environment.
+	$ echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list	# add the debian 11 bullseye archive to our os.
+	$ apt get update # synchronize the new archive.
+	$ apt get full-upgrade # update to debian 11, this will take a while.
+	
+	
+	# add the realtime kernel packages. For ethercat we need also the kernel header files.
+	# We add dependencies for linuxcnc, opencascade cad and kdl kinematics.
+
+	$ apt-get install dctrl-tools dkms  linux-image-5.10.0-4-rt-amd64 linux-headers-5.10.0-4-amd64 linux-headers-5.10.0-4-common linux-headers-amd64 \
+	mercurial mercurial-common quilt live-build autoconf cmake make gcc geany build-essential \
+	debhelper libudev-dev tcl8.6-dev tk8.6-dev libtk-img bwidget tclx8.4 \
+	asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape \
+	source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended \
+	texlive-lang-cyrillic texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish \
+	python-tk libxmu-dev libgtk2.0-dev gettext intltool libboost-python-dev libmodbus-dev libusb-1.0-0-dev psmisc \
+	source-highlight w3c-linkchecker texlive-font-utils texlive-lang-cyrillic \
+	texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish libglu1-mesa-dev \
+	libgl1-mesa-dev libgtk2.0-dev intltool libboost-python-dev libmodbus-dev libusb-1.0-0-dev psmisc \
+	python-is-python2 python-dev-is-python2 python3-yapps libncurses-dev ncurses-doc \
+	libboost-all-dev python3-tk libreadline-gplv2-dev libeigen3-dev deepin-calculator \
+
+	$ sudo apt-get upgrade
+	
+
+	
+# For info, to edit a new sources.list	
+	$ echo "deb http://deb.debian.org/debian/ buster main contrib non-free" > /etc/apt/sources.list
+	$ echo "deb-src http://deb.debian.org/debian/ buster main contrib non-free" >> /etc/apt/sources.list
+	$ echo "deb http://security.debian.org/ buster/updates main contrib non-free" >> /etc/apt/sources.list
+	$ echo "deb-src http://security.debian.org/ buster/updates main contrib non-free" >> /etc/apt/sources.list
+	$ echo "deb http://deb.debian.org/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list
+	$ echo "deb-src http://deb.debian.org/debian/ buster-updates main contrib non-free" >> /etc/apt/sources.list
+	$ echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+	$ cat /etc/apt/sources.list # prints the sources.list
