@@ -63,6 +63,7 @@ $ sudo ./chroot-start.sh
 
 	 If it shows : "Parallel mksquashfs: Using 2 processors", its oke, unmount is done !!
 
+- Edit. Fixed, no reboot required, unmounting : $ sudo ./chroot-end.sh
 	
 Step 3 : Create a new iso dvd.	
 	
