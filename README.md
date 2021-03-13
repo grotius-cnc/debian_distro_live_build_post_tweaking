@@ -1,27 +1,19 @@
-# debian_distro_live_build_post_tweaking
-This is a script to make a debian iso using the live-build methode. 
-After the live-build process we tweak the source code and repack the iso.
 
-
-
-Manual :
-
-Date : 13-03-2021
-Author : Grotius Skynet
-Licence : GPL2
-Comments : Special methode makes it possible to create a Debian 11 Bulsseye with Realtime Kernel Distro. 
-The live-build normally works fine. But for Debian 11, it fails. Therefore this script.
+Date 		:	13-03-2021
+Author 		: 	Grotius Skynet
+Licence 	: 	GPL2
+Comments	:	 
 
 This document is for rebranding, modifying a standard Debian distro, based on a live-build procedure.
 I made this document for making a Debian 11 Bulsseye Distro with RealTime kernel.
 This kind of software manipulation is time consuming. This process can take up to several hours.
 
-After this live-build, tweaking the source code of the Debian distro is done by adding or remove software to your needs.
-This adding or removing of software can normally be done by the live-build procedure, but i found some problems with
-the live-build procedure : Building a Debian 11 Bullseye with realtime kernel is somehow not succesfull at the moment.
-So this tweak is a solution. 
+	After this live-build, tweaking the source code of the Debian distro is done by adding or remove software to your needs.
+	This adding or removing of software can normally be done by the live-build procedure, but i found some problems with
+	the live-build procedure : Building a Debian 11 Bullseye with realtime kernel is somehow not succesfull at the moment.
+	So this tweak is a solution. 
 
-After the adding or removing of software, we create a new iso and we are done !
+	After the adding or removing of software, we create a new iso and we are done !
 
 
 Step 1 : Live-build.
@@ -59,7 +51,10 @@ Step 2 : Tweak the outputted live-build source code. (reboot required after this
 	
 		 $ dhclient -v 						# Internet connection
 		 $ sudo apt-get install qtcreator  	# Tweak your distro.
-		 $
+		 $ 
+		 $   
+		 $ - Consider to add the tweaklist.txt over here.  
+		 $    
 		 $ exit
 	
 		 *** Now do a reboot....
@@ -97,5 +92,11 @@ $ sudo ./create-iso.sh
 
 Reference :
 - https://wiki.debian.org/RepackBootableISO
+
+
+
+
+
+
 
 
