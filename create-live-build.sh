@@ -3,7 +3,9 @@
 DIR="$(pwd)"
 
 # if the iso builder is not present, install it.
-apt-get install live-build debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools 
+apt-get install live-build debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools isolinux
+# isolinux is needed in the xorriso build command and refers to : /usr/lib/ISOLINUX/isohdpfx.bin
+# wich is standard not included in debian at the moment.
 
 # The skynet directory will hold the final hybrid ISO. This live-build process takes about 4-6 hours.
 mkdir -p iso
