@@ -12,7 +12,7 @@ sudo mksquashfs chroot $DIR/iso/binary/live/filesystem.squashfs -comp xz -e boot
 orig_iso=$DIR/iso/live-image-amd64.hybrid.iso
 new_files=$DIR/iso/
 new_iso=$DIR/iso/live-image-amd64-modified.hybrid.iso
-mbr_template=isohdpfx.bin # This template file will be created in /iso/
+mbr_template=isohdpfx.bin # This template file will be created in /iso/ This enables booting from USB stick 
 dd if="$orig_iso" bs=1 count=432 of="$mbr_template"
 
 # Create the new ISO image, this info comes from inside the iso : /.disk/mkisofs => mount the iso to extract this info.
