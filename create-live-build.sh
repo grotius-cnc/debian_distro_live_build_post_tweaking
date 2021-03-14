@@ -2,6 +2,13 @@
 
 DIR="$(pwd)"
 
+# Without the correct sources, the iso will be build withour error. During the final install you get a error.
+# Update the /etc/apt/sources.list
+echo "deb http://ftp.de.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list # > = only this text in the file
+echo "deb http://security.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
+echo "deb-src http://security.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
+apt-get update # update the sources.list with the system
+
 # if the iso builder is not present, install it.
 apt-get install live-build debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools isolinux
 # isolinux is needed in the xorriso build command and refers to : /usr/lib/ISOLINUX/isohdpfx.bin
@@ -18,6 +25,8 @@ rm -rf config
 rm -rf local
 lb clean
 
+# Now testing this command with "--debian-installer true" instead of "--debian-installer live"
+
 lb config \
   --linux-packages linux-image-4.19.0-14-rt \
   --binary-images iso-hybrid \
@@ -30,7 +39,7 @@ lb config \
   --security true \
   --cache true \
   --apt-recommends true \
-  --debian-installer live \
+  --debian-installer true \
   --debian-installer-gui true \
   --win32-loader false \
   --iso-application skynet \
@@ -52,3 +61,9 @@ lb config \
 	shim-unsigned > $DIR/iso/config/package-lists/grubuefi.list.binary
 
 lb build
+
+
+
+
+
+
