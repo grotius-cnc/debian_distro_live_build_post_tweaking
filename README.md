@@ -58,7 +58,7 @@ Pre-Recommendends : When you are new to this, you could go to Step 3 now. When S
 		$ (live)root@user: exit
 		$ sudo ./chroot-end.sh					# Unmount command.
 	
-## Step 3 : Create a new iso dvd.	
+## Step 3 : Repack the Iso with the updated files.	
 	
 This was the hard part to investegate.
 
@@ -71,7 +71,7 @@ This was the hard part to investegate.
 
 *** Notes : When the output in terminal is fast and " cannot read ... ", then do a reboot, and Step 3 again.
 		
-## Step 4 : Create the ISO
+## Step 4 : Burn the ISO to cd, dvd or usb drive.
 
 Option 1 : Use Xfburn to burn your new Distro on a CD or Dvd
 Option 2 : Create a bootable usb device with the iso on it.
