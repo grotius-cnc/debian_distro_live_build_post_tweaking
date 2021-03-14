@@ -85,10 +85,11 @@ Option 2 : Create a bootable usb device with the iso on it.
 
 ## Summary build commands :
 
+		$ sudo chmod 777 create-live-build-buster.sh  && sudo chmod 777 chroot-start.sh  && sudo chmod 777 create-iso.sh
 		$ sudo ./create-live-build-buster.sh
 		$ sudo ./chroot-start.sh
 		$ sudo ./create-iso.sh
-
+		$ echo "I mean what could go wrong?"
 
 ## References :
 - https://wiki.debian.org/RepackBootableISO
