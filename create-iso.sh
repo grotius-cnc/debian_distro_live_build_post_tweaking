@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# To execute this file after cloning from github, make it executable. $ chmod 777 create-iso.sh
+
 DIR="$(pwd)"
 
 # Create SquashFS, replace existing file in /iso/binary/live/
