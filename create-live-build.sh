@@ -1,9 +1,11 @@
 #!/bin/bash
 
+# To execute this file after cloning from github, make it executable. $ chmod 777 create-live-build.sh
+
 DIR="$(pwd)"
 
 # Without the correct sources, the iso will be build withour error. During the final install you get a error.
-# Update the /etc/apt/sources.list
+# This methode is overwriting the /etc/apt/sources.list
 echo "deb http://ftp.de.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list # > = only this text in the file
 echo "deb http://security.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
 echo "deb-src http://security.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
