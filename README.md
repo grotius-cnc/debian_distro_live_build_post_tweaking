@@ -1,9 +1,9 @@
-# Document
+## Debian Distro rebranding
 
-* Date 13-03-2021.
-*Author Grotius Skynet.
-*Licence GPL2.
-*Comments.
+- Date 13-03-2021.
+- Author Grotius Skynet.
+- Licence GPL2.
+- Comments.
 
 	This document is for rebranding, modifying a standard Debian distro, based on a live-build procedure.
 	I made this document for making a Debian 11 Bulsseye Distro with RealTime kernel.
