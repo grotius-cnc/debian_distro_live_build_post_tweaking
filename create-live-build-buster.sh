@@ -4,9 +4,10 @@ DIR="$(pwd)"
 
 # Without the correct sources, the iso will be build withour error. During the final install you get a error.
 # Update the /etc/apt/sources.list
-echo "deb http://ftp.de.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list # > = only this text in the file
-echo "deb http://security.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
-echo "deb-src http://security.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
+echo "deb http://deb.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list # > = only this text in the file
+echo "deb-src http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list # >> = append
+echo "deb http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list # >> = append
+echo "deb-src http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list # >> = append
 apt-get update # update the sources.list with the system
 
 # if the iso builder is not present, install it.
