@@ -17,14 +17,14 @@ After the adding or removing of software, we create a new iso and we are done !
 ## Step 1 : Live-build.
 
 The live-build is a linux software that does a lot of work for you. It's really a nice program that does good work !
-It has a few commands like : lb clean, lb build, etc.
-The live-build producere outputs a standard debian iso file containing a distro like Debian 10 Buster.
+It has a few commands like : *lb clean, lb build, etc.*
+The live-build procedure outputs a standard debian iso file containing a distro like Debian 10 Buster.
 The script can we tweaked to add or remove .deb files.
 We stay at disto buster in this script to be sure the iso is made succesfully.
 
 		$ sudo ./create-live-build-buster.sh
 
-- Creates a directory /iso/ containing the live-build source code and the *live-image-amd64.hybrid.iso*
+- Creates a directory */iso/* containing the live-build source code and the *live-image-amd64.hybrid.iso*
 - Recommendends : Make a temponairy copy of the whole /iso dir to stay safe when you accidentaly messed things up in next step.
 
 Create archive : 	
@@ -64,21 +64,16 @@ This was the hard part to investegate.
 
 		$ sudo ./create-iso.sh
 
-1. This will replace a SquashFS file in /iso/binary/live/
-2. This will extract a template file in /iso/isohdpfx.bin from the existing live-build iso file.
-3. This will create a new iso with the program Xorriso. The Xorriso build commands can be copied from the existing live-build iso in : /.disk/mkisofs
-
+1. This will replace a SquashFS file in */iso/binary/live/*.
+2. This will extract a template file in */iso/isohdpfx.bin* from the existing live-build iso file.
+3. This will create a new iso with the program Xorriso. The Xorriso build commands can be copied from the existing live-build iso in : */.disk/mkisofs*
 
 *** Notes : When the output in terminal is fast and " cannot read ... ", then do a reboot, and Step 3 again.
-
-
 		
 ## Step 4 : Create the ISO
 
 Option 1 : Use Xfburn to burn your new Distro on a CD or Dvd
-Option 2 : Create a bootable usb with the iso on it.
-
-	
+Option 2 : Create a bootable usb device with the iso on it.
 
 		$ lsblk 	
 			# sdb is your usb.					
@@ -87,8 +82,7 @@ Option 2 : Create a bootable usb with the iso on it.
 			
 			# "dd" is a linux command that copies the iso onto the usb drive.
 
-
-## The fast way :
+## Summary build commands :
 
 		$ sudo ./create-live-build-buster.sh
 		$ sudo ./chroot-start.sh
