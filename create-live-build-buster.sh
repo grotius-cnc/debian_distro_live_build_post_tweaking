@@ -23,8 +23,11 @@ rm -rf config
 rm -rf local
 lb clean
 
+# Check if your kernel sources are not outdated, older kernels may be deleted from current source list :
+# https://packages.debian.org/stable/
+
 lb config \
-  --linux-packages linux-image-4.19.0-12-rt \
+  --linux-packages linux-image-4.19.0-14-rt \
   --binary-images iso-hybrid \
   --mode debian \
   --architectures amd64 \
@@ -46,7 +49,7 @@ lb config \
 mkdir -p $DIR/skynet/config/package-lists/
 echo task-xfce-desktop > $DIR/skynet/config/package-lists/desktop.list.chroot
 
-echo linux-headers-4.19.0-12-common-rt linux-headers-4.19.0-12-rt-amd64  > $DIR/skynet/config/package-lists/packages.list.chroot
+echo linux-headers-4.19.0-14-common-rt linux-headers-4.19.0-14-rt-amd64  > $DIR/skynet/config/package-lists/packages.list.chroot
 
 # Iso Offline installer
 echo grub-common grub2-common grub-pc-bin efibootmgr grub-efi-amd64 \
