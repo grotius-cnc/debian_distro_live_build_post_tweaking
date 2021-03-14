@@ -1,7 +1,7 @@
 
 #!/bin/bash
 
-# To execute this file after cloning from github, make it executable. $ chmod 777 create-live-build.sh
+# To execute this file after cloning from github, make it executable. $ chmod 777 create-live-build-bullseye.sh
 
 # This script is to build Debian 11 Bullseye with RealTime kernel.
 # This script is not tested yet.
@@ -49,7 +49,7 @@ lb config \
   --security false \
   --cache true \
   --apt-recommends true \
-  --debian-installer true \
+  --debian-installer live \
   --debian-installer-gui true \
   --win32-loader false \
   --iso-application skynet \
