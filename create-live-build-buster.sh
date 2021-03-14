@@ -47,7 +47,7 @@ lb config \
   --iso-publisher grotius \
   --iso-volume skynet \
   
-mkdir -p $DIR/skynet/config/package-lists/
+mkdir -p $DIR/iso/config/package-lists/
 echo task-xfce-desktop > $DIR/iso/config/package-lists/desktop.list.chroot
 
 echo linux-headers-4.19.0-14-common-rt linux-headers-4.19.0-14-rt-amd64  > $DIR/iso/config/package-lists/packages.list.chroot
