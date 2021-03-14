@@ -36,7 +36,7 @@ Unpack archive :
 		$ tar -xf iso_archive.tar.gz
 	
 	
-## Step 2 : Tweaking. Customize the live-build produced source code, also called *remastering*.
+## Step 2 : Tweaking. Customize the live-build, also called *remastering*.
 
 Pre-Recommendends : When you are new to this, you could go to Step 3 now. When Step 3 is succesfull you can repeat the process from here.
 
