@@ -20,6 +20,7 @@ The live-build procedure outputs a standard debian iso file containing a distro 
 The script can we tweaked to add or remove .deb files.
 We stay at disto buster in this script to be sure the iso is made succesfully.
 
+		$ sudo chmod 777 create-live-build-buster.sh  # This only after a fresh git clone
 		$ sudo ./create-live-build-buster.sh
 
 - Creates a directory */iso/* containing the live-build source code and the *live-image-amd64.hybrid.iso*
@@ -42,6 +43,7 @@ Pre-Recommendends : When you are new to this, you could go to Step 3 now. When S
 2. We add or remove software in this stage, like .deb files. We can add programs like geany or xfburn etc with are .deb packages.
 3. In this stage we have to log into our live-build source dir. We log into the live-build directory by a mount procedure.
 
+		$ sudo chmod 777 chroot-start.sh  # This only after a fresh git clone
 		$ sudo ./chroot-start.sh
 
 - Now your terminal is in live-mode, check your terminal username. In fact you are now in a virtual os environment. 
@@ -60,6 +62,7 @@ Pre-Recommendends : When you are new to this, you could go to Step 3 now. When S
 	
 This was the hard part to investegate.
 
+		$ sudo chmod 777 create-iso.sh  # This only after a fresh git clone
 		$ sudo ./create-iso.sh
 
 1. This will replace a SquashFS file in */iso/binary/live/*.
