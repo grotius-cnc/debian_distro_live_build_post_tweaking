@@ -80,23 +80,26 @@ Option 2 : Create a bootable usb with the iso on it.
 
 	
 
-		$ lsblk 	# sdb is your usb.					
-		# dd is a linux command.
+		$ lsblk 	
+			# sdb is your usb.					
+			
 		$ sudo dd bs=4M if=/yourpath/live-image-amd64.hybrid.iso of=/dev/sdb conv=fdatasync status=progress
+			
+			# "dd" is a linux command that copies the iso onto the usb drive.
 
 
+## The fast way :
 
-	
-
-Summary user commands, you can stay in the same dir :
-
-		$ sudo ./create-live-build.sh
+		$ sudo ./create-live-build-buster.sh
 		$ sudo ./chroot-start.sh
 		$ sudo ./create-iso.sh
 
 
-Reference :
+## References :
 - https://wiki.debian.org/RepackBootableISO
+- https://packages.debian.org/stable/
+- https://manpages.debian.org/stretch/live-build/lb_config.1.en.html
+- https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
 
 
 
