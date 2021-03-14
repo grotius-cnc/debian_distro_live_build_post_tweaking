@@ -4,7 +4,7 @@
 	$ lsblk
 
 # The sdb is the usb.
-# Copy iso file to usb :
+# Copy iso file to usb, with the linux dd command :
 
 	$ sudo dd bs=4M if=/yourfilepath/live-image-amd64.hybrid.iso of=/dev/sdb conv=fdatasync status=progress
 
