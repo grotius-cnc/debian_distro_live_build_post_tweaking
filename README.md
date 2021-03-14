@@ -24,7 +24,7 @@ We stay at disto buster in this script to be sure the iso is made succesfully.
 
 		$ sudo ./create-live-build-buster.sh
 
-- Creates a directory /iso/ containing the live-build source code and hybrid.iso dvd output.
+- Creates a directory /iso/ containing the live-build source code and the *live-image-amd64.hybrid.iso*
 - Recommendends : Make a temponairy copy of the whole /iso dir to stay safe when you accidentaly messed things up in next step.
 
 Create archive : 	
