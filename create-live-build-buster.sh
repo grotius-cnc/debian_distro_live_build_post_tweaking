@@ -2,6 +2,8 @@
 
 # To execute this file after cloning from github, make it executable. $ chmod 777 create-live-build.sh
 
+# This script is to build Debian 10 Buster with RealTime kernel.
+
 DIR="$(pwd)"
 
 # Without the correct sources, the iso will be build withour error. During the final install you get a error.
