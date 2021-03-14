@@ -14,8 +14,8 @@ apt-get update # update the sources.list with the system
 apt-get install live-build debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools isolinux
 
 # The skynet directory will hold the final hybrid ISO. This live-build process takes about 4-6 hours.
-mkdir -p skynet
-cd skynet
+mkdir -p iso
+cd iso
 
 rm -rf auto
 rm -rf cache
@@ -48,15 +48,15 @@ lb config \
   --iso-volume skynet \
   
 mkdir -p $DIR/skynet/config/package-lists/
-echo task-xfce-desktop > $DIR/skynet/config/package-lists/desktop.list.chroot
+echo task-xfce-desktop > $DIR/iso/config/package-lists/desktop.list.chroot
 
-echo linux-headers-4.19.0-14-common-rt linux-headers-4.19.0-14-rt-amd64  > $DIR/skynet/config/package-lists/packages.list.chroot
+echo linux-headers-4.19.0-14-common-rt linux-headers-4.19.0-14-rt-amd64  > $DIR/iso/config/package-lists/packages.list.chroot
 
 # Iso Offline installer
 echo grub-common grub2-common grub-pc-bin efibootmgr grub-efi-amd64 \
 grub-efi-amd64-bin grub-efi-amd64-signed grub-efi-ia32-bin \
 libefiboot1 libefivar1 mokutil shim-helpers-amd64-signed \
-shim-signed-common shim-unsigned > $DIR/skynet/config/package-lists/grubuefi.list.binary
+shim-signed-common shim-unsigned > $DIR/iso/config/package-lists/grubuefi.list.binary
 
 lb build
 
