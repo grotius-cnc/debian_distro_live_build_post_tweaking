@@ -6,7 +6,7 @@
 # The sdb is the usb.
 # Copy iso file to usb :
 
-	$ sudo dd bs=4M if=/home/user/debian_distro_live_build_post_tweaking/iso/live-image-amd64.hybrid.iso of=/dev/sdb conv=fdatasync status=progress
+	$ sudo dd bs=4M if=/yourfilepath/live-image-amd64.hybrid.iso of=/dev/sdb conv=fdatasync status=progress
 
 
 	# You can check the bootable USB drive works by rebooting your computer and booting from the USB drive, 
