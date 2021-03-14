@@ -1,7 +1,5 @@
 ## Debian Distro Rebranding "DDR" 
 
-Date 13-03-2021, Author Grotius Skynet, Licence GPL2.
-
 This document is for rebranding, modifying a standard Debian distro, based on a live-build procedure.
 I made this document for making a Debian 11 Bulsseye Distro with RealTime kernel.
 This kind of software manipulation is time consuming. This process can take up to several hours.
