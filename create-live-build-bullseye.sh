@@ -13,11 +13,7 @@ DIR="$(pwd)"
 echo "deb http://ftp.de.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list # > = only this text in the file
 echo "deb http://security.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
 echo "deb-src http://security.debian.org/debian-security buster/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
-
-echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list # >> = append
-echo "deb http://security.debian.org/debian-security bullseye/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
-echo "deb-src http://security.debian.org/debian-security bullseye/updates main contrib non-free" >> /etc/apt/sources.list # >> = append
-
+echo "deb http://ftp.de.debian.org/debian bullseye main" >> /etc/apt/sources.list # >> = append
 apt-get update # update the sources.list with the system
 
 # if the iso builder is not present, install it.
