@@ -1,8 +1,9 @@
+# Document
 
-- Date 		:	13-03-2021
-- Author 	: 	Grotius Skynet
-- Licence 	: 	GPL2
-- Comments	:	 
+* Date 13-03-2021.
+*Author Grotius Skynet.
+*Licence GPL2.
+*Comments.
 
 	This document is for rebranding, modifying a standard Debian distro, based on a live-build procedure.
 	I made this document for making a Debian 11 Bulsseye Distro with RealTime kernel.
@@ -24,7 +25,7 @@
 	The script can we tweaked to add or remove .deb files.
 	We stay at disto buster in this script to be sure the iso is made succesfully.
 
-		$ sudo ./create-live-build.sh
+		$ sudo ./create-live-build-buster.sh
 
 - Creates a directory /iso/ containing the live-build source code and hybrid.iso dvd output.
 
