@@ -71,7 +71,8 @@ This was the hard part to investegate.
 2. This will extract a template file in */iso/isohdpfx.bin* from the existing live-build iso file.
 3. This will create a new iso with the program Xorriso. The Xorriso build commands can be copied from the existing live-build iso in : */.disk/mkisofs*
 
-*** Notes : When the output in terminal is fast and " cannot read ... ", then do a reboot, and Step 3 again.
+*** Notes : When the output in terminal is fast and " cannot read ... ", your unmounting in step 2 has failed.
+*** Notes : During repacking the iso, Xorriso has some output message's about filmware. Don't worry about this.
 		
 ## Step 4 : Burn the ISO to cd, dvd or usb drive.
 
@@ -92,6 +93,20 @@ Option 2 : Create a bootable usb device with the iso on it.
 		$ sudo ./chroot-start.sh
 		$ sudo ./create-iso.sh
 		$ echo "I mean what could go wrong?"
+
+## Multiple Live Tests, to proof concept :
+
+I did a *"create-live-build-buster.sh"*.
+	This outputs live-image-amd64.hybrid.iso wich i installed trough usb storage device and worked ok.
+	
+I did a *"create-live-build-buster.sh"* + *"create-iso.sh"*.
+	This outputs a live-image-amd64.hybrid-modified.iso wich i installed trough usb storage device and worked ok.
+	This procedure is fact, creating a iso and repack it again. It's a proof the repacking process is oke.
+
+I did a *"create-live-build-buster.sh"* + *"chroot-start procedure"* + *"create-iso.sh"*.
+	The only program i added was librecad during the chroot-start procedure.
+	This outputs a live-image-amd64.hybrid-modified.iso wich i installed trough usb storage device and worked ok.
+		
 
 ## References :
 - https://wiki.debian.org/RepackBootableISO
