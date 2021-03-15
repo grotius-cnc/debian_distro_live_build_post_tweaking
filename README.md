@@ -118,9 +118,9 @@ Glad i tried another example that solved it : https://github.com/Oros42/CustomDe
 
 But finding the cause of the error, took quite a while. It had to do with incorrect mount/umount i guess.
 
-# Normally a live-build would make a Debian 11 distro for you. But somehow the live-build was not working as expected.
-# I needed to learn the tweaking process and needed to learn to repack the iso with the updated files.
-# This document show's how i did the process. Thanks to the links below i was able to get good info !
+###### Normally a live-build would make a Debian 11 distro for you. But somehow the live-build was not working as expected.
+###### I needed to learn the tweaking process and needed to learn to repack the iso with the updated files.
+###### This document show's how i did the process. Thanks to the links below i was able to get good info !
 
 
 ## References :
