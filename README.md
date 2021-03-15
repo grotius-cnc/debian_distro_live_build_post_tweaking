@@ -88,9 +88,9 @@ Option 2 : Create a bootable usb device with the iso on it.
 
 ## Summary build commands :
 
-		$ sudo chmod 777 create-live-build-buster.sh  && sudo chmod 777 chroot-start.sh  && sudo chmod 777 create-iso.sh
+		$ sudo chmod 777 create-live-build-buster.sh  && sudo chmod 777 create-iso.sh
 		$ sudo ./create-live-build-buster.sh
-		$ sudo ./chroot-start.sh
+		$ echo "now open up the file : chroot-start.sh and follow the steps"
 		$ sudo ./create-iso.sh
 		$ echo "I mean what could go wrong?"
 
