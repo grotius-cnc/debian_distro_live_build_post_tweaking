@@ -108,7 +108,7 @@ I did a *"create-live-build-buster.sh"* + *"chroot-start procedure"* + *"create-
 	This outputs a live-image-amd64.hybrid-modified.iso wich i installed trough usb storage device and worked ok.
 
 
-# To get this far. It took me multiple day's with trail and error. 
+To get this far. It took me multiple day's with trail and error. 
 A freightening error was after installing the new iso and opening a terminal in the new system i got :
 	
 	(live)user@user:$
@@ -117,11 +117,9 @@ It was caused by this example : https://github.com/RackunSec/debian-custom-iso-s
 Glad i tried another example that solved it : https://github.com/Oros42/CustomDebian
 
 But finding the cause of the error, took quite a while. It had to do with incorrect mount/umount i guess.
-
-###### Normally a live-build would make a Debian 11 distro for you. But somehow the live-build was not working as expected.
-###### I needed to learn the tweaking process and needed to learn to repack the iso with the updated files.
-###### This document show's how i did the process. Thanks to the links below i was able to get good info !
-
+Normally a live-build would make a Debian 11 distro for you. But somehow the live-build was not working as expected.
+I needed to learn the tweaking process and needed to learn to repack the iso with the updated files.
+This document show's how i did the process. Thanks to the links below i was able to get good info !
 
 ## References :
 - https://wiki.debian.org/RepackBootableISO
