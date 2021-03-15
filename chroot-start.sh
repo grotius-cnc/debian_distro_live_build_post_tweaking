@@ -44,12 +44,15 @@ export PS1="\e[01;31m(live):\W \$ \e[00m"
 
 	sudo apt-get upgrade
 
-# Copy part 3 :
+# Copy part 4 :
 umount /proc /sys /dev/pts
 exit
 # exit chroot
 cd ..
 
+
+
+# Additional information.
 # This is how it looks like to be live :
 #
 # (live):/ $ mount none -t proc /proc
@@ -65,5 +68,4 @@ cd ..
 # (live):/ $
 # (live):/ $ umount /proc /sys /dev/pts
 # $ exit
-
 # Reference : https://github.com/Oros42/CustomDebian
