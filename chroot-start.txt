@@ -28,7 +28,7 @@ export PS1="\e[01;31m(live):\W \$ \e[00m"
 	# We add dependencies for linuxcnc, opencascade cad and kdl kinematics.
 
 	apt-get install dctrl-tools dkms \
-	linux-image-5.10.0-4-rt-amd64 linux-headers-5.10.0-4-amd64 linux-headers-5.10.0-4-common linux-headers-amd64 \
+	linux-image-5.10.0-4-rt-amd64 linux-headers-5.10.0-4-rt-amd64  linux-headers-amd64 \
 	mercurial mercurial-common quilt live-build autoconf cmake make gcc geany build-essential \
 	debhelper libudev-dev tcl8.6-dev tk8.6-dev libtk-img bwidget tclx8.4 \
 	asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape \
