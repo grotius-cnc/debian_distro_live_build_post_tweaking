@@ -39,7 +39,7 @@ Unpack archive :
 
 Follow the steps of file :
 
-		$ geany chroot-start.sh
+		$ geany chroot-start.txt
 		$ perform the chroot-start commands from directory : yourfilepath/iso/
 
 When the chroot command is done, you are in a virtual environment at : /iso/chroot/ This is the source directory of your new debian os.
@@ -90,7 +90,7 @@ Option 2 : Create a bootable usb device with the iso on it.
 
 		$ sudo chmod 777 create-live-build-buster.sh  && sudo chmod 777 create-iso.sh
 		$ sudo ./create-live-build-buster.sh
-		$ echo "now open up the file : chroot-start.sh and follow the steps"
+		$ echo "now open up the file : chroot-start.txt and follow the steps"
 		$ sudo ./create-iso.sh
 		$ echo "I mean what could go wrong?"
 
@@ -103,7 +103,7 @@ I did a *"create-live-build-buster.sh"* + *"create-iso.sh"*.
 	This outputs a live-image-amd64.hybrid-modified.iso wich i installed trough usb storage device and worked ok.
 	This procedure is fact, creating a iso and repack it again. It's a proof the repacking process is oke.
 
-I did a *"create-live-build-buster.sh"* + *"chroot-start procedure"* + *"create-iso.sh"*.
+I did a *"create-live-build-buster.sh"* + *"chroot-start.txt procedure"* + *"create-iso.sh"*.
 	The only program i added was librecad during the chroot-start procedure.
 	This outputs a live-image-amd64.hybrid-modified.iso wich i installed trough usb storage device and worked ok.
 
