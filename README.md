@@ -35,7 +35,7 @@ Unpack archive :
 		$ tar -xf iso_archive.tar.gz
 	
 	
-## Step 2 : Tweaking. Customize the live-build, also called *remastering*.
+## Step 2 : Tweaking. Customize the live-build, also called *"remastering"*.
 
 Follow the steps of file :
 
