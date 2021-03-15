@@ -16,10 +16,6 @@ export PS1="\e[01;31m(live):\W \$ \e[00m"
 	dhclient -v # establish the internet connection to this virtual environment.
 	
 	# Update the /etc/apt/sources.list
-	echo "deb http://deb.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list # > = only this text in the file
-	echo "deb-src http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list # >> = append
-	echo "deb http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list # >> = append
-	echo "deb-src http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list # >> = append
 	echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list	# add the debian 11 bullseye archive to our os.
 	apt-get update # update the sources.list with the system
 	apt-get full-upgrade # update to debian 11, this will take a while.
