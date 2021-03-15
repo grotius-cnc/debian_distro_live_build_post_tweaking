@@ -37,26 +37,28 @@ Unpack archive :
 	
 ## Step 2 : Tweaking. Customize the live-build, also called *remastering*.
 
-Pre-Recommendends : When you are new to this, you could go to Step 3 now. When Step 3 is succesfull you can repeat the process from here.
+Follow the steps of file :
 
-1. We add the Debian Bullseye reprository to our /etc/apt/sources.list and we add the latest realtime kernel .deb packages
-2. We add or remove software in this stage, like .deb files. We can add programs like geany or xfburn etc with are .deb packages.
-3. In this stage we have to log into our live-build source dir. We log into the live-build directory by a mount procedure.
+		$ geany chroot-start.sh
+		$ perform the chroot-start commands from directory : yourfilepath/iso/
 
-		$ sudo chmod 777 chroot-start.sh  # This only after a fresh git clone
-		$ sudo ./chroot-start.sh
+When the chroot command is done, you are in a virtual environment at : /iso/chroot/ This is the source directory of your new debian os.
 
-- Now your terminal is in live-mode, check your terminal username. In fact you are now in a virtual os environment. 
-- You are now in a virtual environment at : /iso/chroot/ This is the source directory of your new os.
-
-		$ (live)root@user: dhclient -v 				# Activate internet connection
-		$ (live)root@user: sudo apt-get install qtcreator  	# Tweak your distro.
-		$ (live)root@user:
-		$ (live)root@user:
-		$ (live)root@user: - Consider to add the tweaklist.txt over here.  
-		$ (live)root@user:
-		$ (live)root@user: exit
-		$ sudo ./chroot-end.sh					# Unmount command.
+		# This is how it looks like to be live :
+		#
+		# (live):/ $ mount none -t proc /proc
+		# (live):/ $ mount none -t sysfs /sys
+		# (live):/ $ mount none -t devpts /dev/pts
+		# (live):/ $ export HOME=/root
+		# (live):/ $ export LC_ALL=C
+		# (live):/ $ export PS1="\e[01;31m(live):\W \$ \e[00m"
+		# (live):/ $
+		# (live):/ $ dhclient -v 
+		# (live):/ $ sudo apt-get install qtcreator etc. to tweak your debian installation to your needs.
+		# (live):/ $
+		# (live):/ $
+		# (live):/ $ umount /proc /sys /dev/pts
+		# $ exit
 	
 ## Step 3 : Repack the Iso with the updated files.	
 	
