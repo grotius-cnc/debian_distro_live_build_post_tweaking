@@ -43,6 +43,11 @@ export PS1="\e[01;31m(live):\W \$ \e[00m"
 	librecad git 
 
  	apt-get autoremove
+	
+	# Delete old header files. (300mb)
+	apt-get remove linux-headers-4.19.0-14-common-rt linux-headers-4.19.0-14-rt-amd64 
+	
+	# Add stuff here.
 
 # Copy part 4 :
 umount /proc /sys /dev/pts
