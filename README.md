@@ -106,17 +106,33 @@ I did a *"create-live-build-buster.sh"* + *"create-iso.sh"*.
 I did a *"create-live-build-buster.sh"* + *"chroot-start procedure"* + *"create-iso.sh"*.
 	The only program i added was librecad during the chroot-start procedure.
 	This outputs a live-image-amd64.hybrid-modified.iso wich i installed trough usb storage device and worked ok.
-		
+
+
+# To get this far. It took me multiple day's with trail and error. 
+A freightening error was after installing the new iso and opening a terminal in the new system i got :
+	
+	(live)user@user:$
+
+It was caused by this example : https://github.com/RackunSec/debian-custom-iso-scripts
+Glad i tried another example that solved it : https://github.com/Oros42/CustomDebian
+
+But finding the cause of the error, took quite a while. It had to do with incorrect mount/umount i guess.
+
+# Normally a live-build would make a Debian 11 distro for you. But somehow the live-build was not working as expected.
+# I needed to learn the tweaking process and needed to learn to repack the iso with the updated files.
+# This document show's how i did the process. Thanks to the links below i was able to get good info !
+
 
 ## References :
 - https://wiki.debian.org/RepackBootableISO
 - https://packages.debian.org/stable/
 - https://manpages.debian.org/stretch/live-build/lb_config.1.en.html
 - https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax
-
-
-
-
+- https://github.com/Oros42/CustomDebian Had the solution for my problem's with chroot and mount.
+- https://github.com/RackunSec/debian-custom-iso-scripts My starting point for tweaking the distro and repack the iso.
+- https://sourceforge.net/projects/eznixos This was my starting point for my first distro. 
+Not used in this document, but a nice tip to look at :
+- https://wiki.debian.org/Debootstrap Debootstrap is a tip to look at. A handy tool to setup a linux environment.
 
 
 
