@@ -1,9 +1,12 @@
 #!/bin/bash
 
-cd iso
+# This script has to copied by hand into the terminal in parts... Sorry guy's.
 
+# Copy part 1 :
+cd iso
 sudo chroot ./chroot
 
+# Copy Part 2 :
 # Here, your are in the chroot of your Debian liveCD
 mount none -t proc /proc
 mount none -t sysfs /sys
@@ -12,6 +15,7 @@ export HOME=/root
 export LC_ALL=C
 export PS1="\e[01;31m(live):\W \$ \e[00m"
 
+# Copy part 3 :
 # Here the tweak scripts is done !
 	dhclient -v # establish the internet connection to this virtual environment.
 	
@@ -40,6 +44,7 @@ export PS1="\e[01;31m(live):\W \$ \e[00m"
 
 	sudo apt-get upgrade
 
+# Copy part 3 :
 umount /proc /sys /dev/pts
 exit
 # exit chroot
