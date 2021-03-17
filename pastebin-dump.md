@@ -21,7 +21,8 @@
 	sudo make setuid
 
 Runtest :
+
 	$ cd linuxcnc/sctipts/. ./rip-environment
-	# linuxcnc
+	$ linuxcnc
 
 
