@@ -53,7 +53,7 @@ texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish
 libgl1-mesa-dev libgtk2.0-dev intltool libboost-python-dev libmodbus-dev libusb-1.0-0-dev psmisc \
 python-is-python2 python-dev-is-python2 python3-yapps libncurses-dev ncurses-doc \
 libboost-all-dev python3-tk libreadline-gplv2-dev libeigen3-dev deepin-calculator python-gtk2 \
-librecad git pciutils
+librecad git pciutils yapps2
 
 apt-get autoremove
 	
