@@ -29,3 +29,4 @@ Todo :
 
 1. Make a linuxcnc.deb archive that unpack's into the /opt/ system directory.
 
+[how-to-create-deb-package.zip](https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/files/6154727/how-to-create-deb-package.zip)
