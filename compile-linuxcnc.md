@@ -25,4 +25,7 @@ Runtest :
 	$ cd linuxcnc/sctipts/. ./rip-environment
 	$ linuxcnc
 
+Todo : 
+
+1. Make a linuxcnc.deb archive that unpack's into the /opt/ system directory.
 
