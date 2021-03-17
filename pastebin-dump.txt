@@ -4,24 +4,24 @@
 
 # Install and compile linuxcnc from source :
 
-							git clone https://github.com/LinuxCNC/linuxcnc
-							cd linuxcnc
+	git clone https://github.com/LinuxCNC/linuxcnc
+	cd linuxcnc
 
-							# optional :
-							# $ git checkout 2.8
+	# optional :
+	# $ git checkout 2.8
 
-							cd debian
-							./configure uspace
-							cd..
-							cd src
-							./autogen.sh
-							# optional : $ ./configure --help
-							./configure --with-python=python3
-							make 
-							sudo make setuid
+	cd debian
+	./configure uspace
+	cd..
+	cd src
+	./autogen.sh
+	# optional : $ ./configure --help
+	./configure --with-python=python3
+	make 
+	sudo make setuid
 
 Runtest :
-							$ cd linuxcnc/sctipts/. ./rip-environment
-							# linuxcnc
+	$ cd linuxcnc/sctipts/. ./rip-environment
+	# linuxcnc
 
 
