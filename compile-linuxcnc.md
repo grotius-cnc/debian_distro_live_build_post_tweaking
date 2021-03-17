@@ -24,9 +24,18 @@ Runtest :
 
 	$ cd linuxcnc/sctipts/. ./rip-environment
 	$ linuxcnc
+	
+Cleanup :
+	remove the dpkg directory, we don't need it : 
+
+	$ cd linuxcnc && rm -rf debian
 
 Todo : 
 
 1. Make a linuxcnc.deb archive that unpack's into the /opt/ system directory.
+2. Create and install a desktop launcher into the system menu with command :
+
+		$ cd /opt/linuxcnc/scripts/ && . ./rip-environment && linuxcnc
+
 
 [how-to-create-deb-package.zip](https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/files/6154727/how-to-create-deb-package.zip)
