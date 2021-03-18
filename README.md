@@ -132,7 +132,7 @@ This document show's how i did the process. Thanks to the links below i was able
 - https://sourceforge.net/projects/eznixos This was my starting point for my first distro. 
 Not used in this document, but a nice tip to look at :
 - https://wiki.debian.org/Debootstrap Debootstrap is a tip to look at. A handy tool to setup a linux environment.
-
+- https://willhaley.com/blog/custom-debian-live-environment/
 
 
 
