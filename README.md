@@ -1,4 +1,4 @@
-## Debian Distro Rebranding "DDR" 
+## Debian Distro Rebranding "DDR" Usable for Debian 10.
 
 This document is for rebranding, modifying a standard Debian distro, based on a live-build procedure.
 I made this document for making a Debian 11 Bulsseye Distro with RealTime kernel.
