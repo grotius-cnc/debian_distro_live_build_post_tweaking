@@ -35,7 +35,7 @@ echo "deb http://security.debian.org/debian-security/ bullseye-security main" >>
 echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
 
 apt-get update # update the sources.list with the system
-apt-get full-upgrade # update to debian 11, this will take a while.
+apt-get full-upgrade # update to debian 11, this will take a while. Note : "apt-get dist-upgrade" refers to the same function.
 	
 	# add the realtime kernel packages. For ethercat we need also the kernel header files.
 	# We add dependencies for linuxcnc, opencascade cad and kdl kinematics.
