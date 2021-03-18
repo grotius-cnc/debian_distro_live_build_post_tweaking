@@ -122,6 +122,7 @@ I needed to learn the tweaking process and needed to learn to repack the iso wit
 This document show's how i did the process. Thanks to the links below i was able to get good info !
 
 ## References :
+- https://live-team.pages.debian.net/live-manual/html/live-manual/customizing-package-installation.en.html
 - https://wiki.debian.org/RepackBootableISO
 - https://packages.debian.org/stable/
 - https://manpages.debian.org/stretch/live-build/lb_config.1.en.html
