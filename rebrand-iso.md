@@ -12,9 +12,9 @@ Then i did this tutorial :
 
 #### I mounted the .iso file and copied the files into a folder. 
 
-#### Unpack the squasfs file in the /live dir.
+#### Unpack the squasfs file located in the /live dir.
 
-	apt-get install squashfs-tools
+	apt-get install squashfs-tools	# This is a dependency.
 	unsquashfs filesystem.squashfs  # This will create a /squashfs-root directory.
 
 #### Mount & chroot to the /squashfs-root directory
@@ -50,7 +50,7 @@ Then i did this tutorial :
     
 
 #### create iso
-    apt get install xorriso isolinux
+    apt get install xorriso isolinux	# These are dependencies.
 
     xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos' \
       -o Debian-11-Bullseye-Rtos.iso -J -J -joliet-long -cache-inodes \
