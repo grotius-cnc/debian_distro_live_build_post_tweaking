@@ -1,4 +1,4 @@
-### This is a separate tutorial for rebranding a existing linuxcnc distro.
+### This is a separate tutorial for rebranding a existing Debian Linux Distro, "DLD".
 
 I downloaded this dvd :
 *http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/bullseye_di_alpha1+nonfree/amd64/iso-dvd/firmware-bullseye-DI-alpha1-amd64-DVD-1.iso*
