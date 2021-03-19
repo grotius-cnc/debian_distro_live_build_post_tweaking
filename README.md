@@ -134,5 +134,5 @@ Not used in this document, but a nice tip to look at :
 - https://wiki.debian.org/Debootstrap Debootstrap is a tip to look at. A handy tool to setup a linux environment.
 - https://willhaley.com/blog/custom-debian-live-environment/
 - https://www.paranoids.at/create-custom-debian-buster-live/
-
+- https://askubuntu.com/questions/74345/how-do-i-bypass-ignore-the-gpg-signature-checks-of-apt
 
