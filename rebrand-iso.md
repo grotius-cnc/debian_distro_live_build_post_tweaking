@@ -1,12 +1,13 @@
-This is a separate tutorial for rebranding a existing linuxcnc distro.
+### This is a separate tutorial for rebranding a existing linuxcnc distro.
 
 I downloaded this dvd :
-http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/bullseye_di_alpha1+nonfree/amd64/iso-dvd/firmware-bullseye-DI-alpha1-amd64-DVD-1.iso
+*http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/bullseye_di_alpha1+nonfree/amd64/iso-dvd/firmware-bullseye-DI-alpha1-amd64-DVD-1.iso*
 
 Then i did this tutorial :
-https://www.paranoids.at/create-custom-debian-buster-live/
+*https://www.paranoids.at/create-custom-debian-buster-live/*
 
-#### I already have done a Debian 10 iso with succes with this script !
+
+#### *I already have done a Debian 10 iso with succes with this script !*
 
 
 #### I mounted the iso file and copied the files into a folder. In a folder. Then unpack the squasfs file in the /live dir.
@@ -49,17 +50,18 @@ https://www.paranoids.at/create-custom-debian-buster-live/
 
 #### create iso
     apt get install xorriso isolinux
-    
+
     xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos' \
       -o Debian-11-Bullseye-Rtos.iso -J -J -joliet-long -cache-inodes \
       -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
       -b isolinux/isolinux.bin \
       -c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
       -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
-      
+
       # For info, isolinux places a system folder with the file : /usr/lib/ISOLINUX/isohdpfx.bin
       
 #### create iso on usb drive
-      sudo dd bs=4M if=/Debian-11-Bullseye-Rtos.iso of=/dev/sdb conv=fdatasync status=progress
+	# "if" means input file path.
+    	sudo dd bs=4M if=Debian-11-Bullseye-Rtos.iso of=/dev/sdb conv=fdatasync status=progress
 		
       
