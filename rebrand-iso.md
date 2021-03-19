@@ -6,16 +6,16 @@ http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/bull
 Then i did this tutorial :
 https://www.paranoids.at/create-custom-debian-buster-live/
 
-# I already have done a Debian 10 iso with succes with this script !
+#### I already have done a Debian 10 iso with succes with this script !
 
 
-# I mounted the iso file and copied the files into a folder. In a folder. Then unpack the squasfs file in the /live dir.
-# It will create a /squashfs-root directory.
+#### I mounted the iso file and copied the files into a folder. In a folder. Then unpack the squasfs file in the /live dir.
+#### It will create a /squashfs-root directory.
 
     apt-get install squashfs-tools
     unsquashfs filesystem.squashfs
 
-# Mount & chroot to the /squashfs-root directory
+#### Mount & chroot to the /squashfs-root directory
 
     mount --bind /dev squashfs-root/dev
     mount --bind /dev/pts squashfs-root/dev/pts
