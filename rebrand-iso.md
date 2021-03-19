@@ -33,21 +33,21 @@ https://www.paranoids.at/create-custom-debian-buster-live/
     umount /dev /dev/pts /sys /proc
     exit
 
-# create squashfs
+#### create squashfs
     mksquashfs squashfs-root/ filesystem.squashfs -comp xz
 
-# replace the new filesystem.squashfs file with the old one in the live dir.
+#### replace the new filesystem.squashfs file with the old one in the live dir.
     rm live/filesystem.squashfs                       # delelte existing file
     cp filesystem.squashfs live/filesystem.squashfs   # replacement new file.
     
-# edit disk info corresponding to xorriso -V option
+#### edit disk info corresponding to xorriso -V option
     vim .disk/info
     Debian 11 Bullseye Rtos
     
-# copy custom squashfs
+#### copy custom squashfs
     
 
-# create iso
+#### create iso
     apt get install xorriso isolinux
     
     xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos' \
@@ -59,7 +59,7 @@ https://www.paranoids.at/create-custom-debian-buster-live/
       
       # For info, isolinux places a system folder with the file : /usr/lib/ISOLINUX/isohdpfx.bin
       
-# create iso on usb drive
+#### create iso on usb drive
       sudo dd bs=4M if=/Debian-11-Bullseye-Rtos.iso of=/dev/sdb conv=fdatasync status=progress
 		
       
