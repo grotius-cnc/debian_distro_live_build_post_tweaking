@@ -10,11 +10,12 @@ Then i did this tutorial :
 #### *I already have done a Debian 10 iso with succes with this script !*
 
 
-#### I mounted the iso file and copied the files into a folder. In a folder. Then unpack the squasfs file in the /live dir.
-#### It will create a /squashfs-root directory.
+#### I mounted the .iso file and copied the files into a folder. 
 
-    apt-get install squashfs-tools
-    unsquashfs filesystem.squashfs
+#### Unpack the squasfs file in the /live dir.
+
+	apt-get install squashfs-tools
+	unsquashfs filesystem.squashfs  # This will create a /squashfs-root directory.
 
 #### Mount & chroot to the /squashfs-root directory
 
