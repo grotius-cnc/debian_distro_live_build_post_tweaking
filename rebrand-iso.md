@@ -38,7 +38,7 @@ Then i did this tutorial :
     apt-get install linux-image-5.10.0-4-rt-amd64 linux-headers-5.10.0-4-rt-ard64
 
 
-    umount /dev /dev/pts /sys /proc
+    umount /dev /dev/pts /sys /proc /dev /boot
     exit
 
 #### create squashfs
