@@ -19,21 +19,21 @@ Then i did this tutorial :
 
 #### Mount & chroot to the /squashfs-root directory
 
-    mount --bind /dev squashfs-root/dev
-    mount --bind /dev/pts squashfs-root/dev/pts
-    mount --bind /sys squashfs-root/sys
-    mount --bind /proc squashfs-root/proc
-    mount --bind /boot squashfs-root/boot
+	mount --bind /dev squashfs-root/dev
+	mount --bind /dev/pts squashfs-root/dev/pts
+	mount --bind /sys squashfs-root/sys
+	mount --bind /proc squashfs-root/proc
+	mount --bind /boot squashfs-root/boot
 
-    chroot squashfs-root
-    	export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    	export LC_ALL=C
-    	export LANGUAGE=en_US.UTF-8
+	chroot squashfs-root
+	export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+	export LC_ALL=C
+	export LANGUAGE=en_US.UTF-8
 	export LC_ALL=en_US.UTF-8
 	export LANG=en_US.UTF-8
 	export LC_CTYPE=en_US.UTF-8
 
-    dhclient # get internet connection
+	dhclient # get internet connection
     
     	# Add repositories
     	echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" > /etc/apt/sources.list
@@ -42,43 +42,43 @@ Then i did this tutorial :
 	echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
 	apt-get update 
 
-    apt-get install geany librecad # for example
-    
-    # to test, my previous attempt's failed. New system booted in (live) mode :
-    apt-get install linux-image-5.10.0-4-rt-amd64 linux-headers-5.10.0-4-rt-amd64
+	apt-get install geany librecad # for example
+
+	# to test, my previous attempt's failed. New system booted in (live) mode :
+	apt-get install linux-image-5.10.0-4-rt-amd64 linux-headers-5.10.0-4-rt-amd64
 
 
-    umount /dev /dev/pts /sys /proc /dev /boot
-    exit
+	umount /dev /dev/pts /sys /proc /dev /boot
+	exit
 
 #### create squashfs
-    mksquashfs squashfs-root/ filesystem.squashfs -comp xz
+	mksquashfs squashfs-root/ filesystem.squashfs -comp xz
 
 #### replace the new filesystem.squashfs file with the old one in the live dir.
-    rm live/filesystem.squashfs                       # delelte existing file
-    cp filesystem.squashfs live/filesystem.squashfs   # replacement new file.
-    
+	rm live/filesystem.squashfs                       # delelte existing file
+	cp filesystem.squashfs live/filesystem.squashfs   # replacement new file.
+
 #### edit disk info corresponding to xorriso -V option
-    vim .disk/info
-    Debian 11 Bullseye Rtos
-    
+	vim .disk/info
+	Debian 11 Bullseye Rtos
+
 #### copy custom squashfs
     
 
 #### create iso
-    apt-get install xorriso isolinux	# These are dependencies.
+	apt-get install xorriso isolinux	# These are dependencies.
 
-    xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos' \
-      -o Debian-11-Bullseye-Rtos.iso -J -J -joliet-long -cache-inodes \
-      -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
-      -b isolinux/isolinux.bin \
-      -c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
-      -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
+	xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos' \
+	-o Debian-11-Bullseye-Rtos.iso -J -J -joliet-long -cache-inodes \
+	-isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
+	-b isolinux/isolinux.bin \
+	-c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
+	-e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
 
-      # For info, isolinux places a system folder with the file : /usr/lib/ISOLINUX/isohdpfx.bin
-      
+	# For info, isolinux places a system folder with the file : /usr/lib/ISOLINUX/isohdpfx.bin
+
 #### create iso on usb drive
 	# "if" means input file path.
-    	sudo dd bs=4M if=Debian-11-Bullseye-Rtos.iso of=/dev/sdb conv=fdatasync status=progress
-		
+	sudo dd bs=4M if=Debian-11-Bullseye-Rtos.iso of=/dev/sdb conv=fdatasync status=progress
+
       
