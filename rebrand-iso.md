@@ -1,7 +1,7 @@
 ### This is a separate tutorial for rebranding a existing Debian Linux Distro, "DLD".
 
 I downloaded this dvd :
-*http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/bullseye_di_alpha1+nonfree/amd64/iso-dvd/firmware-bullseye-DI-alpha1-amd64-DVD-1.iso*
+*https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-live-builds/amd64/iso-hybrid/debian-live-testing-amd64-xfce+nonfree.iso*
 
 Then i did this tutorial :
 *https://www.paranoids.at/create-custom-debian-buster-live/*
@@ -31,6 +31,10 @@ Then i did this tutorial :
     dhclient # get internet connection
 
     apt-get install geany librecad # for example
+    
+    # to test, my previous attempt's failed. New system booted in (live) mode :
+    apt-get install linux-image-5.10.0-4-rt-amd64 linux-headers-5.10.0-4-rt-ard64
+
 
     umount /dev /dev/pts /sys /proc
     exit
