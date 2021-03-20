@@ -26,10 +26,21 @@ Then i did this tutorial :
     mount --bind /boot squashfs-root/boot
 
     chroot squashfs-root
-    export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    #export LC_ALL=C
+    	export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    	export LC_ALL=C
+    	export LANGUAGE=en_US.UTF-8
+	export LC_ALL=en_US.UTF-8
+	export LANG=en_US.UTF-8
+	export LC_CTYPE=en_US.UTF-8
 
     dhclient # get internet connection
+    
+    	# Add repositories
+    	echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" > /etc/apt/sources.list
+	echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+	echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+	echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+	apt-get update 
 
     apt-get install geany librecad # for example
     
