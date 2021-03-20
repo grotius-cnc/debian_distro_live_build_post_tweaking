@@ -54,7 +54,7 @@ Then i did this tutorial :
     
 
 #### create iso
-    apt get install xorriso isolinux	# These are dependencies.
+    apt-get install xorriso isolinux	# These are dependencies.
 
     xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos' \
       -o Debian-11-Bullseye-Rtos.iso -J -J -joliet-long -cache-inodes \
