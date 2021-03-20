@@ -42,8 +42,9 @@ Then i did this tutorial :
 	apt-get update 
 
 	apt-get install geany librecad # for example
+	
+	# to test, my previous attempt's failed when updating the kernel. I added the mount point /boot. Let's try this.
 
-	# to test, my previous attempt's failed. New system booted in (live) mode :
 	apt-get install linux-image-5.10.0-4-rt-amd64 linux-headers-5.10.0-4-rt-amd64
 
 
