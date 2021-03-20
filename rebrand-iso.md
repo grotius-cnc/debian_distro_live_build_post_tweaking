@@ -47,6 +47,9 @@ Then i did this tutorial :
 
 	apt-get install linux-image-5.10.0-4-rt-amd64 linux-headers-5.10.0-4-rt-amd64
 
+	apt-get install grub
+	update-initramfs -u
+	update-grub
 
 	umount /dev /dev/pts /sys /proc /dev /boot
 	exit
