@@ -23,6 +23,7 @@ Then i did this tutorial :
     mount --bind /dev/pts squashfs-root/dev/pts
     mount --bind /sys squashfs-root/sys
     mount --bind /proc squashfs-root/proc
+    mount --bind /proc squashfs-root/dev
 
     chroot squashfs-root
     export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
