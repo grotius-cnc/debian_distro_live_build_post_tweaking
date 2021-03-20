@@ -34,9 +34,8 @@ Then i did this tutorial :
 	export LC_CTYPE=en_US.UTF-8
 
 	dhclient # get internet connection
-    
-    	# Add repositories
-    	echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" > /etc/apt/sources.list
+
+	echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" > /etc/apt/sources.list # Add repositories
 	echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
 	echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
 	echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
