@@ -123,8 +123,67 @@ or :
 	user@debian:~$ uname -a
 	Linux debian 5.10.0-4-rt-amd64 #1 SMP PREEMPT_RT Debian 5.10.19-1 (2021-03-02) x86_64 GNU/Linux
 	user@debian:~$ 
+	
+So it worked ! Also geany is present in the system menu. I am happy !!!	
 
+#### Todo, add dependencies :
 
+	as chroot, update /etc/apt/sources.list
+	
+	apt-get install linux-headers-5.10.0-4-rt-amd64
+  
+	apt-get install dctrl-tools dkms \
+	mercurial mercurial-common quilt live-build autoconf cmake make gcc geany build-essential \
+	debhelper libudev-dev tcl8.6-dev tk8.6-foodev libtk-img bwidget tclx8.4 \
+	asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape \
+	source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended \
+	texlive-lang-cyrillic texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish \
+	python-tk libxmu-dev libgtk2.0-dev gettext intltool libboost-python-dev libmodbus-dev libusb-1.0-0-dev psmisc \
+	source-highlight w3c-linkchecker texlive-font-utils texlive-lang-cyrillic \
+	texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish libglu1-mesa-dev \
+	libgl1-mesa-dev libgtk2.0-dev intltool libboost-python-dev libmodbus-dev libusb-1.0-0-dev psmisc \
+	python-is-python2 python-dev-is-python2 python3-yapps libncurses-dev ncurses-doc \
+	libboost-all-dev python3-tk libeigen3-dev deepin-calculator \
+	librecad git pciutils yapps2 
+	
+#### Todo, install ethercat bus system.. This can be a hard time !
+
+	This should be included into the iso as a directory that has a desktop launcher to set the mac adress.
+	Proposed into the /opt/ folder.
+	
+	# https://sourceforge.net/u/uecasm/etherlab-patches/ci/default/tree/
+	echo "[extensions]" >> /etc/mercurial/hgrc
+	echo "mq =" >> /etc/mercurial/hgrc
+
+	hg clone -u 33b922ec1871 http://hg.code.sf.net/p/etherlabmaster/code etherlab
+	hg clone http://hg.code.sf.net/u/uecasm/etherlab-patches etherlab/.hg/patches
+
+	cd etherlab
+	hg qpush -a
+
+	./bootstrap
+	# ./configure --help
+        ./configure --enable-generic --disable-8139too 
+	make
+	make all modules
+	
+Produces error :
+			/home/user/etherlab/master/device.h:95:20: error: field ‘timeval_poll’ has incomplete type
+		   95 |     struct timeval timeval_poll;
+		      |                    ^~~~~~~~~~~~
+		/home/user/etherlab/master/cdev.c:91:14: error: initialization of ‘vm_fault_t (*)(struct vm_fault *)’ {aka ‘unsigned int (*)(struct vm_fault *)’} from incompatible pointer type ‘int (*)(struct vm_fault *)’ [-Werror=incompatible-pointer-types]
+		   91 |     .fault = eccdev_vma_fault
+		      |              ^~~~~~~~~~~~~~~~
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
