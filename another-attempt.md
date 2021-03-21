@@ -32,7 +32,7 @@ Saved output to a textfile "original-mount.txt", 20 mountpoints in file, this to
 Copy the iso file from your usb to your system dir, including the hidden file ./disk
 
 1. Make a /original directory, copy the usb files to here.
-2. Make a /remastered direcotry. copy the usb files to here.
+2. Make a /remastered directory. copy the usb files to here.
 
 In the /remasterd/live dir do "as root" :  
   
