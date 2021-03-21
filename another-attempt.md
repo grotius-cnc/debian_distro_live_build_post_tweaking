@@ -217,10 +217,19 @@ Ok. Lets try to build linuxcnc from source :
 		
 Linuxcnc is ok. We have to do a dpkg-buildpackage and so on, later on.
 
-	
+Let try ethercat some more :
+
+./configure --disable-eoe --enable-sii-assign \
+ --enable-kernel --enable-generic --enable-ccat --disable-8139too \
+ --disable-e100 --disable-e1000 --disable-e1000e --disable-r8169 \
+ --enable-hrtimer 
 
 		
-		
+Lets try a sid kernel :
+
+		echo "deb http://ftp.de.debian.org/debian sid main" >> /etc/apt/sources.list
+		apt-get install linux-image-5.10.0-5-rt-amd64-unsigned
+		apt-get install linux-headers-5.10.0-5-rt-amd64 
 	
 	
 	
