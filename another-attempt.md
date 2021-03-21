@@ -168,19 +168,59 @@ So it worked ! Also geany is present in the system menu. I am happy !!!
 	make all modules
 	
 Produces error :
-			/home/user/etherlab/master/device.h:95:20: error: field ‘timeval_poll’ has incomplete type
-		   95 |     struct timeval timeval_poll;
-		      |                    ^~~~~~~~~~~~
-		/home/user/etherlab/master/cdev.c:91:14: error: initialization of ‘vm_fault_t (*)(struct vm_fault *)’ {aka ‘unsigned int (*)(struct vm_fault *)’} from incompatible pointer type ‘int (*)(struct vm_fault *)’ [-Werror=incompatible-pointer-types]
-		   91 |     .fault = eccdev_vma_fault
-		      |              ^~~~~~~~~~~~~~~~
+		/home/user/etherlab/master/device.h:95:20: error: field ‘timeval_poll’ has incomplete type
+		95 |     struct timeval timeval_poll;
+		|                    ^~~~~~~~~~~~
+		/home/user/etherlab/master/cdev.c:91:14: error: initialization of ‘vm_fault_t (*)(struct vm_fault *)’ 
+		{aka ‘unsigned int 		(*)(struct vm_fault *)’} from incompatible pointer type ‘int (*)(struct vm_fault *)’ 
+		[-Werror=incompatible-pointer-types]
+		91 |     .fault = eccdev_vma_fault
+		|              ^~~~~~~~~~~~~~~~
 
 	
 	
+Ok. Lets try ec-debianzie instead :
+
+		git clone https://github.com/grotius-cnc/ec-debianize.git
+		cd ec-debianize
+		./get_source.sh
+		cd etherlabmaster
+		dpkg-checkbuilddeps (and install missing deps)
+		sudo dpkg-buildpackage
 	
+Produces error : 
+
+		Error! Bad return status for module build on kernel: 5.10.0-4-rt-amd64 (x86_64)
+		Consult /var/lib/dkms/etherlabmaster/1.5.2+20190904hg33b922p8ea394/build/make.log for more information.
+		dpkg: error processing package etherlabmaster (--install):
+		 installed etherlabmaster package post-installation script subprocess returned error exit status 10
+		Processing triggers for libc-bin (2.31-9) ...
+		Errors were encountered while processing:
+
+Ok. Lets try to build linuxcnc from source :
+		
+		echo "deb http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list 
+		echo "deb-src http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list
+		echo "deb http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list
+		echo "deb-src http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list 
+		apt-get update
+		apt-get install libreadline-gplv2-dev
+		
+		git clone https://github.com/LinuxCNC/linuxcnc.git
+		cd linuxcnc/debian
+		./configure uspace
+		cd linuxcnc/src
+		./autogen.sh
+		./configure --with-boost-python=python3 --with-python=python3
+		make
+		sudo make setuid
+		
+Linuxcnc is ok. We have to do a dpkg-buildpackage and so on, later on.
+
 	
-	
-	
+
+		
+		
 	
 	
 	
