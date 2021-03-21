@@ -231,8 +231,15 @@ Lets try a sid kernel :
 		apt-get install linux-image-5.10.0-5-rt-amd64-unsigned
 		apt-get install linux-headers-5.10.0-5-rt-amd64 
 	
-	
-	
+Produced error : 
+		/home/user/etherlab/master/device.h:95:20: error: field ‘timeval_poll’ has incomplete type
+		   95 |     struct timeval timeval_poll;
+		      |                    ^~~~~~~~~~~~
+		/home/user/etherlab/master/cdev.c:91:14: error: initialization of ‘vm_fault_t (*)(struct vm_fault *)’ {aka ‘unsigned int (*)(struct vm_fault *)’} from incompatible pointer type ‘int (*)(struct vm_fault *)’ [-Werror=incompatible-pointer-types]
+		   91 |     .fault = eccdev_vma_fault
+		      |              ^~~~~~~~~~~~~~~~
+
+
 
 
 
