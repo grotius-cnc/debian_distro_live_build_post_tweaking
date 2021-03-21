@@ -1,4 +1,5 @@
 Another attempt to update the kernel as chroot.
+This attempt worked !
 
 Fresh host system install from usb, to ensure we have a correct starting point, and our host system will be the same as our target os.
 *https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-live-builds/amd64/iso-hybrid/debian-live-testing-amd64-xfce+nonfree.iso*
@@ -117,7 +118,11 @@ or :
 
     sudo dd bs=4M if=Debian-11-Bullseye-Rtos.iso of=/dev/sdb conv=fdatasync status=progress
 
+#### Install new iso file onto a pc, terminal output :
 
+	user@debian:~$ uname -a
+	Linux debian 5.10.0-4-rt-amd64 #1 SMP PREEMPT_RT Debian 5.10.19-1 (2021-03-02) x86_64 GNU/Linux
+	user@debian:~$ 
 
 
 
