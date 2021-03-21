@@ -1,6 +1,6 @@
 Another attempt to update the kernel as chroot.
 
-Fresh install from usb :
+Fresh host system install from usb, to ensure we have a correct starting point, and our host system will be the same as our target os.
 *https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-live-builds/amd64/iso-hybrid/debian-live-testing-amd64-xfce+nonfree.iso*
 
 #### Add sources :
