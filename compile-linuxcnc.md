@@ -41,7 +41,17 @@
 	cd src
 	./autogen.sh
 	# optional : $ ./configure --help
-	./configure --with-python=python3 # Optional if boost::python is unknown : --with-boost-python=boost_python3-py37
+	./configure --with-python=python3 
+	
+	# Optional if boost::python is unknown :
+	
+		sudo ldconfig -p | grep boost_python
+		# Gives me back :
+		libboost_python39.so.1.74.0 (libc6,x86-64) => /lib/x86_64-linux-gnu/libboost_python39.so.1.74.0
+		libboost_python39.so (libc6,x86-64) => /lib/x86_64-linux-gnu/libboost_python39.so
+
+		./configure --with-python=python3 --with-boost-python=boost_python
+	
 	make -j2 # Build with 2 processors
 	sudo make setuid # Allow to run on real hardware 
 
