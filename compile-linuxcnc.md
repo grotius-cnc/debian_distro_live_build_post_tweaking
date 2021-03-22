@@ -1,14 +1,39 @@
 
-# Compile test linuxcnc on kernel :
-# Linux debian 5.10.0-4-rt-amd64 #1 SMP PREEMPT_RT Debian 5.10.19-1 (2021-03-02) x86_64 GNU/Linux
+#### Compile test linuxcnc on kernel :
+#### Linux debian 5.10.0-4-rt-amd64 #1 SMP PREEMPT_RT Debian 5.10.19-1 (2021-03-02) x86_64 GNU/Linux
 
-# Install and compile linuxcnc from source :
+#### For Linuxcnc we need the buster repository on top of the bullseye repository :
 
-	git clone https://github.com/LinuxCNC/linuxcnc
-	cd linuxcnc
+	echo "deb http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list 
+	echo "deb-src http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list
+	echo "deb http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list 
+	echo "deb-src http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list 
+	apt-get update
 
-	# optional :
-	# $ git checkout 2.8
+#### Dependencies for Linuxcnc also a few extra.
+
+	sudo apt-get install dctrl-tools dkms \
+	mercurial mercurial-common quilt live-build autoconf cmake make gcc geany build-essential \
+	debhelper libudev-dev tcl8.6-dev tk8.6-dev libtk-img bwidget tclx8.4 \
+	asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape \
+	source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended \
+	texlive-lang-cyrillic texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish \
+	python-tk libxmu-dev libgtk2.0-dev gettext intltool libboost-python-dev libmodbus-dev libusb-1.0-0-dev psmisc \
+	source-highlight w3c-linkchecker texlive-font-utils texlive-lang-cyrillic \
+	texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish libglu1-mesa-dev \
+	libgl1-mesa-dev libgtk2.0-dev intltool libboost-python-dev libmodbus-dev libusb-1.0-0-dev psmisc \
+	python-is-python2 python-dev-is-python2 python3-yapps libncurses-dev ncurses-doc \
+	libboost-all-dev python3-tk libeigen3-dev deepin-calculator \
+	librecad git pciutils yapps2 libreadline-gplv2-dev 
+	
+	/linuxcnc/dpkg-checkbuilddeps # Satisfy the existing dpkg package builder depend list.
+	
+#### Install and compile linuxcnc from source :
+
+	git clone https://github.com/LinuxCNC/linuxcnc /opt/linuxcnc
+	cd opt/linuxcnc
+	
+	git checkout 2.8 # Go for the stable release.
 
 	cd debian
 	./configure uspace
@@ -16,74 +41,42 @@
 	cd src
 	./autogen.sh
 	# optional : $ ./configure --help
-	./configure --with-python=python3
-	make 
-	sudo make setuid
+	./configure --with-python=python3 # Optional if boost::python is unknown : --with-boost-python=boost_python3-py37
+	make -j2 # Build with 2 processors
+	sudo make setuid # Allow to run on real hardware 
 
-Runtest :
+#### Runtest :
 
 	$ cd linuxcnc/sctipts/. ./rip-environment
 	$ linuxcnc
 	
-Cleanup :
-	remove the dpkg directory, we don't need it : 
+#### Todo : 
 
-	$ cd linuxcnc && rm -rf debian
+1. Make a linuxcnc.deb archive that unpack's linuxcnc into the /opt/linuxcnc system directory.
+2. Install a linuxcnc desktop launcher into the system menu.
+3. Install a documentation launcher to the system menu.
+4. For test : create a Doxygen documentation web application with desktop launcher into the system menu.
 
-Todo : 
+#### Control file for deb package :
+	Package: linuxcnc
+	Version: 2.8.1
+	Section: custom
+	Priority: optional
+	Architecture: amd64
+	Essential: no
+	Installed-Size: 
+	Maintainer: Skynet
+	Depends: 
+	Suggests: 
+	Breaks:
+	Provides: 
+	Section: devel
+	Priority: optional
+	Homepage: http://www.linuxcnc.org
+	Description: Cnc controller
 
-1. Make a linuxcnc.deb archive that unpack's into the /opt/ system directory.
-2. Create and install a desktop launcher into the system menu with command :
-
-		$ cd /opt/linuxcnc/scripts/ && . ./rip-environment && linuxcnc
+#### To build deb package:
+	dpkg-deb --build linuxcnc
 
 
-[how-to-create-deb-package.zip](https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/files/6154727/how-to-create-deb-package.zip)
-
-
-Package: linuxcnc
-Version: 2.8.1
-Section: custom
-Priority: optional
-Architecture: amd64
-Essential: no
-Installed-Size: 
-Maintainer: skynet
-Depends: 
-Suggests: 
-Breaks:
-Provides: 
-Section: devel
-Priority: optional
-Homepage: http://www.linuxcnc.org
-Description: 
-Programmer-Info: 
-
-# To build package:
-$ dpkg-deb --build linuxcnc
-
-# Compile linuxcnc from source :
-
-echo "deb http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list 
-echo "deb-src http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list
-echo "deb http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list 
-echo "deb-src http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list 
-apt-get update
-
-apt-get install dctrl-tools dkms \
-mercurial mercurial-common quilt live-build autoconf cmake make gcc geany build-essential \
-debhelper libudev-dev tcl8.6-dev tk8.6-dev libtk-img bwidget tclx8.4 \
-asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape \
-source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended \
-texlive-lang-cyrillic texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish \
-python-tk libxmu-dev libgtk2.0-dev gettext intltool libboost-python-dev libmodbus-dev libusb-1.0-0-dev psmisc \
-source-highlight w3c-linkchecker texlive-font-utils texlive-lang-cyrillic \
-texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish libglu1-mesa-dev \
-libgl1-mesa-dev libgtk2.0-dev intltool libboost-python-dev libmodbus-dev libusb-1.0-0-dev psmisc \
-python-is-python2 python-dev-is-python2 python3-yapps libncurses-dev ncurses-doc \
-libboost-all-dev python3-tk libeigen3-dev deepin-calculator \
-librecad git pciutils yapps2 
-
-./configure --with-python=python3 
-make -j2
-sudo make setuid
+	
