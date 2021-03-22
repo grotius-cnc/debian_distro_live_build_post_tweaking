@@ -2,7 +2,7 @@
 #### Compile test linuxcnc on kernel :
 #### Linux debian 5.10.0-4-rt-amd64 #1 SMP PREEMPT_RT Debian 5.10.19-1 (2021-03-02) x86_64 GNU/Linux
 
-#### For Linuxcnc we need the buster repository on top of the bullseye repository :
+#### For Linuxcnc we need the buster repository on top of the bullseye & sid repository :
 
 	echo "deb http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list 
 	echo "deb-src http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list
