@@ -1,4 +1,8 @@
+Working install for :
 
+        user@debian:~$ uname -a
+        Linux debian 5.10.0-4-rt-amd64 #1 SMP PREEMPT_RT Debian 5.10.19-1 (2021-03-02) x86_64 GNU/Linux
+        user@debian:~$ 
 
 https://www.etherlab.org -> "report typo in INSTALL, =>./bootstrap"
 
