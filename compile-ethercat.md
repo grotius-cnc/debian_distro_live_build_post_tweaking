@@ -6,6 +6,15 @@ Working install for :
 
 https://www.etherlab.org -> "report typo in INSTALL, =>./bootstrap"
 
+#### The lazy way :
+
+https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.0/ethercat-master.deb
+
+To install :
+        sudo dpkg -i ethercat-master.deb
+To Remove :
+        sudo apt-get remove ethercat-master && sudo rm -rf /opt/ethercat
+
 #### Add sources to /etc/apt/sources.list
 
         echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/source.list
