@@ -12,7 +12,7 @@
 
 #### Dependencies for Linuxcnc also a few extra.
 
-	sudo apt-get install dctrl-tools dkms \
+	sudo apt-get install dctrl-tools dkms linux-headers-$(uname -r)\
 	mercurial mercurial-common quilt live-build autoconf cmake make gcc geany build-essential \
 	debhelper libudev-dev tcl8.6-dev tk8.6-dev libtk-img bwidget tclx8.4 \
 	asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape \
