@@ -51,7 +51,8 @@
 		libboost_python39.so.1.74.0 (libc6,x86-64) => /lib/x86_64-linux-gnu/libboost_python39.so.1.74.0
 		libboost_python39.so (libc6,x86-64) => /lib/x86_64-linux-gnu/libboost_python39.so
 
-		./configure --with-boost-python=boost_python39 
+		./configure --with-python=python3 --with-boost-python=boost_python39 
+		
 	
 	# Optional if you have done previous make attempts : make clean
 	make -j2 # Build with 2 processors
