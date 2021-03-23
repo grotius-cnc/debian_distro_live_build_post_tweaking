@@ -62,10 +62,15 @@
 
 #### Runtest :
 
-	I compiled linuxcnc in the home dir, moved it to /opt/ and it started with :
 	$ cd /opt/linuxcnc/scripts && . ./rip-environment && linuxcnc 
 	
-	Ok lets try to build it from a .deb package.
+Install linuxcnc .deb package :
+
+	sudo dpkg -i linuxcnc.deb
+	
+Remove linuxcnc deb install :
+
+	sudo apt-get remove linuxcnc && sudo rm -rf /opt/linuxcnc
 	
 	
 #### Todo : 
