@@ -36,13 +36,15 @@
 	# version 2.8 did not compile ok on kernels > 5.0.0
 	# git checkout 2.8 # Go for the stable release.
 
-	cd debian
-	./configure uspace
-	cd..
-	cd src
-	./autogen.sh
-	# optional : $ ./configure --help
-	./configure
+	# This is a post install script.
+
+	cd /opt/linuxcnc/debian/ && ./configure uspace
+	cd /opt/linuxcnc/src/ && ./autogen.sh && ./configure --with-python=python3 --with-boost-python=boost_python39 && make && sudo make setuid
+
+	# solve sudo set setuid problems in the makefile.
+	chmod 777 /opt/linuxcnc/bin/rtapi_app
+	chmod 777 /opt/linuxcnc/bin/linuxcnc_module_helper
+
 	
 	# Optional if boost::python is unknown :
 	
