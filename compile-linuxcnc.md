@@ -60,8 +60,11 @@
 
 #### Runtest :
 
-	$ cd linuxcnc/sctipts/. ./rip-environment
-	$ linuxcnc
+	I compiled linuxcnc in the home dir, moved it to /opt/ and it started with :
+	$ cd /opt/linuxcnc/scripts && . ./rip-environment && linuxcnc 
+	
+	Ok lets try to build it from a .deb package.
+	
 	
 #### Todo : 
 
