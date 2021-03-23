@@ -24,6 +24,8 @@ Notes :
 
 #### Compile output is ok :
 
+    $ make
+
     make[1]: Entering directory '/home/user/linuxcnc-ethercat/src'
     make[2]: Entering directory '/home/user/linuxcnc-ethercat/src'
     user.mk:15: warning: overriding recipe for target 'install'
@@ -72,3 +74,44 @@ Notes :
     Linking lcec.so
     make[2]: Leaving directory '/home/user/linuxcnc-ethercat/src'
     make[1]: Leaving directory '/home/user/linuxcnc-ethercat/src'
+    
+#### In /linuxcnc-ethercat/src/Makefile, line 10, repaired typo :    
+
+    install: ../configure.mk
+    
+#### In /linuxcnc-ethercat/examples/Makefile, line 1, repaired typo :    
+
+    install: ../configure.mk  
+    
+#### Compile output is ok :
+
+    $ make install
+    
+    make[1]: Entering directory '/home/user/linuxcnc-ethercat/src'
+    Makefile:10: warning: overriding recipe for target 'install'
+    /opt/linuxcnc/src/Makefile.modinc:106: warning: ignoring old recipe for target 'install'
+    mkdir -p /opt/linuxcnc/rtlib
+    make[2]: Entering directory '/home/user/linuxcnc-ethercat/src'
+    user.mk:15: warning: overriding recipe for target 'install'
+    /opt/linuxcnc/src/Makefile.modinc:106: warning: ignoring old recipe for target 'install'
+    mkdir -p /opt/linuxcnc/bin
+    cp lcec_conf /opt/linuxcnc/bin/
+    make[2]: Leaving directory '/home/user/linuxcnc-ethercat/src'
+    make[2]: Entering directory '/home/user/linuxcnc-ethercat/src'
+    /opt/linuxcnc/src/Makefile.modinc:106: warning: overriding recipe for target 'install'
+    /opt/linuxcnc/src/Makefile.modinc:106: warning: ignoring old recipe for target 'install'
+    cp lcec.so /opt/linuxcnc/rtlib/
+    make[2]: Leaving directory '/home/user/linuxcnc-ethercat/src'
+    make[1]: Leaving directory '/home/user/linuxcnc-ethercat/src'
+    make[1]: Entering directory '/home/user/linuxcnc-ethercat/examples'
+    mkdir -p /opt/linuxcnc/share/linuxcnc-ethercat/examples
+    cp -R generic-complex swm-fm45a /opt/linuxcnc/share/linuxcnc-ethercat/examples
+    make[1]: Leaving directory '/home/user/linuxcnc-ethercat/examples'
+    
+    
+
+    
+    
+    
+    
+
