@@ -53,6 +53,7 @@
 
 		./configure --with-boost-python=boost_python39 
 	
+	# Optional if you have done previous make attempts : make clean
 	make -j2 # Build with 2 processors
 	sudo make setuid # Allow to run on real hardware 
 
