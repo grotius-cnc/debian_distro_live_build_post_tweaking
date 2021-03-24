@@ -47,6 +47,8 @@ When i check my ethercat bus :
         3  0:3  PREOP  +  EL2124 4K. Dig. Ausgang 5V, 20mA
 
   Ok this is nice to know.
+  
+  export LDFLAGS=-L/opt/ethercat/lib
 
     
     
