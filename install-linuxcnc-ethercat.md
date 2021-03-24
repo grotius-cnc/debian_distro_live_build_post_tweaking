@@ -31,6 +31,8 @@ It now installs the lcec.so (in /opt/linuxcnc/rtlib) and lcec_conf (in /opt/linu
     > loadrt lcec
 
 #### Test ok. Everything works.
+
+Modified source code linuxcnc-ethercat : https://github.com/grotius-cnc/linuxcnc-ethercat.git
     
 
 
