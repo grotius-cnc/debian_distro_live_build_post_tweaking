@@ -10,9 +10,13 @@ Fresh host system install from usb, to ensure we have a correct starting point, 
 	sudo echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
 	sudo echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
 	sudo echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+	# For newest kernels :
+        echo "deb http://deb.debian.org/debian sid main contrib non-free" >> /etc/apt/sources.list
+        echo "deb-src http://deb.debian.org/debian sid main contrib non-free" >> /etc/apt/sources.list
+    
 	sudo apt-get update 
 
-	sudo apt-get install linux-image-5.10.0-4-rt-amd64
+	sudo apt-get install linux-image-5.10.0-5-rt-amd64
 
 #### Reboot. Started in new kernel, remove old kernel :
 
@@ -37,7 +41,7 @@ Copy the iso file from your usb to your system dir, including the hidden file ./
 
 In the /remasterd/live dir do "as root" :  
   
-    unsquashfs filesystem.squashfs
+    sudo unsquashfs filesystem.squashfs
 
 This will produce the directory : /remasterd/live/squashfs-root/ 
 Remove the original filesystem.squashfs file in /remastered/live/ :
@@ -66,7 +70,7 @@ In /remastered/live/ do :
     echo "deb-src http://deb.debian.org/debian sid main contrib non-free" >> /etc/apt/sources.list
     
     apt-get update
-    apt-get install linux-image-5.10.0-4-rt-amd64 # Install new kernel.
+    apt-get install linux-image-5.10.0-5-rt-amd64 # Install new kernel.
     apt autoremove
     apt-get remove linux-image-5.10.0-4-amd64 # Remove old kernel.
     apt-get install squashfs-tools xorriso isolinux geany # Add some extra programs to test.
