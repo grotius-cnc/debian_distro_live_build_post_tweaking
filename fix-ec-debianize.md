@@ -4,12 +4,10 @@ I suspect that we have to change the source to git, and checkout as 1.5.
 Then see what happens.
 
 
-
-
 #### This is how to install linuxcnc-ethercat. Linuxcnc-ethercat is responsible for the lcec.so driver and lcec_conf for linuxcnc.
 #### Install folder : /opt/linuxcnc/addons/linuxcnc-ethercat
 
-I fixed some typo's in the source code and removed unused code.
+I fixed some typo's in the source code and removed unused code. Linker problem solved thanks to Stormholds makefile example.
 It now installs the lcec.so (in /opt/linuxcnc/rtlib) and lcec_conf (in /opt/linuxcnc/bin) 
 
     git clone https://github.com/grotius-cnc/linuxcnc-ethercat.git
@@ -17,13 +15,11 @@ It now installs the lcec.so (in /opt/linuxcnc/rtlib) and lcec_conf (in /opt/linu
     make
     make install
     
-Or download the linuxcnc-ethercat.deb package.
-    
 #### I now have linuxcnc and linuxcnc-ethercat installed. Let's test the lcec.so.
 
     /opt/linuxcnc/bin$ halshow
     > loadrt threads name1=base-thread fp1=0 period1=15000 name2=servo-thread period2=1000000
-    > loadusr -W /opt/linuxcnc/bin/lcec_conf /home/user/Downloads/Skynet_Project/config/ethercat-conf.xml
+    > loadusr -W /opt/linuxcnc/bin/lcec_conf /path_to_yours/ethercat-conf.xml
     
     Contents of ethercat-conf.xml :
             <masters>
@@ -36,19 +32,7 @@ Or download the linuxcnc-ethercat.deb package.
 
     > loadrt lcec
     
-Gives output error : lcec: dlopen: /opt/linuxcnc/rtlib/lcec.so: undefined symbol: ecrt_slave_config_sdo
 
-When i check my ethercat bus :
-
-        user@debian:~$ ethercat slaves
-        0  0:0  PREOP  +  EK1100 EtherCAT Coupler (2A E-Bus)
-        1  0:1  PREOP  +  EL2124 4K. Dig. Ausgang 5V, 20mA
-        2  0:2  PREOP  +  EL2124 4K. Dig. Ausgang 5V, 20mA
-        3  0:3  PREOP  +  EL2124 4K. Dig. Ausgang 5V, 20mA
-
-  Ok this is nice to know.
-  
-  export LDFLAGS=-L/opt/ethercat/lib
 
     
     
