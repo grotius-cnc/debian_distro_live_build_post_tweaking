@@ -56,10 +56,15 @@ In /remastered/live/ do :
     export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     export LC_ALL=C
     dhclient
-    sudo echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" > /etc/apt/sources.list 
-    sudo echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
-    sudo echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
-    sudo echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+    echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" > /etc/apt/sources.list 
+    echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+    echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+    echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+    
+    # For newest kernels :
+    echo "deb http://deb.debian.org/debian sid main contrib non-free" >> /etc/apt/sources.list
+    echo "deb-src http://deb.debian.org/debian sid main contrib non-free" >> /etc/apt/sources.list
+    
     apt-get update
     apt-get install linux-image-5.10.0-4-rt-amd64 # Install new kernel.
     apt autoremove
