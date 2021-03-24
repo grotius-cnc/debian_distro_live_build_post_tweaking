@@ -1,3 +1,12 @@
+Todo :
+
+1. When pc starts up, start ethercat bus, do this by a script that also set's the mac adres in the /etc/sysconfig/ethercat file.
+2. Look if deb packages can do a apt-get install in the preinst file. This seems not possible. 
+3. Think about program removal system menu items.
+4. Do research about the ethercat patches related to ec-debianize
+5. Try to get the halcompiler used by qt
+6. 
+
 
 ## Interesting links :
 - https://live-team.pages.debian.net/live-manual/html/live-manual/customizing-package-installation.en.html
