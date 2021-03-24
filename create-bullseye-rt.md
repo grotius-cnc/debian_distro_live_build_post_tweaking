@@ -50,7 +50,7 @@ Remove the original filesystem.squashfs file in /remastered/live/ :
 
 #### Chroot
 
-In /remastered/live/ do :
+In /remastered/live/ do as root :
 
     mount --bind /dev squashfs-root/dev
     mount --bind /dev/pts squashfs-root/dev/pts
