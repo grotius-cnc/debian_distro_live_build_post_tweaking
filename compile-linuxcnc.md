@@ -75,10 +75,7 @@ Remove linuxcnc deb install :
 	
 #### Todo : 
 
-1. Make a linuxcnc.deb archive that unpack's linuxcnc into the /opt/linuxcnc system directory.
-2. Install a linuxcnc desktop launcher into the system menu.
-3. Install a documentation launcher to the system menu.
-4. For test : create a Doxygen documentation web application with desktop launcher into the system menu.
+create a Doxygen documentation
 
 
 	
