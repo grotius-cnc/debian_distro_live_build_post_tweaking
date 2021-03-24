@@ -36,9 +36,16 @@ Or download the linuxcnc-ethercat.deb package.
 
     > loadrt lcec
     
-  
-  Gives output error : lcec: dlopen: /opt/linuxcnc/rtlib/lcec.so: undefined symbol: ecrt_slave_config_sdo
-  
+Gives output error : lcec: dlopen: /opt/linuxcnc/rtlib/lcec.so: undefined symbol: ecrt_slave_config_sdo
+
+When i check my ethercat bus :
+
+        user@debian:~$ ethercat slaves
+        0  0:0  PREOP  +  EK1100 EtherCAT Coupler (2A E-Bus)
+        1  0:1  PREOP  +  EL2124 4K. Dig. Ausgang 5V, 20mA
+        2  0:2  PREOP  +  EL2124 4K. Dig. Ausgang 5V, 20mA
+        3  0:3  PREOP  +  EL2124 4K. Dig. Ausgang 5V, 20mA
+
   Ok this is nice to know.
 
     
