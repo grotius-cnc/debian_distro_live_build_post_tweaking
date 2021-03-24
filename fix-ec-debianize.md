@@ -108,7 +108,9 @@ Notes :
     cp -R generic-complex swm-fm45a /opt/linuxcnc/share/linuxcnc-ethercat/examples
     make[1]: Leaving directory '/home/user/linuxcnc-ethercat/examples'
     
-    
+#### Added fixes to source : https://github.com/grotius-cnc/linuxcnc-ethercat
+
+
 
     
     
