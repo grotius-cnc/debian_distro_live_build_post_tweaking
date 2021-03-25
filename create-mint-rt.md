@@ -5,23 +5,32 @@
 #### To get internet as chroot in mint.
 	host pc file : /etc/resolv.conf
 	copy this file to your unpacked iso, squashfs-root/etc/ 
+	
+#### Chroot
 
-#### Optional check if you are connected.
-    ping www.google.nl  (cntr+z to stop)
+	mount --bind /dev squashfs-root/dev
+	mount --bind /dev/pts squashfs-root/dev/pts
+	mount --bind /sys squashfs-root/sys
+	mount --bind /proc squashfs-root/proc
+	chroot squashfs-root
+	export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+	export LC_ALL=C
+	
+	ping www.google.nl  (cntr+z to stop)
 
-    echo"deb http://packages.linuxmint.com rafaela main upstream import" > /etc/apt/sources.list
-    echo"deb http://extra.linuxmint.com rafaela main" >> /etc/apt/sources.list
-    echo"deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse" >> /etc/apt/sources.list
-    echo"deb http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list
-    echo"deb http://security.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse" >> /etc/apt/sources.list
-    echo"deb http://archive.canonical.com/ubuntu/ trusty partner" >> /etc/apt/sources.list
+	echo"deb http://packages.linuxmint.com rafaela main upstream import" > /etc/apt/sources.list
+	echo"deb http://extra.linuxmint.com rafaela main" >> /etc/apt/sources.list
+	echo"deb http://archive.ubuntu.com/ubuntu trusty main restricted universe multiverse" >> /etc/apt/sources.list
+	echo"deb http://archive.ubuntu.com/ubuntu trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list
+	echo"deb http://security.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse" >> /etc/apt/sources.list
+	echo"deb http://archive.canonical.com/ubuntu/ trusty partner" >> /etc/apt/sources.list
 
-    apt-get update
+	apt-get update
 
-    apt-get install -y build-essential bin86 kernel-package libssl-dev
-    apt-get install -y libqt4-dev libncurses5-dev pkg-config
+	apt-get install -y build-essential bin86 kernel-package libssl-dev
+	apt-get install -y libqt4-dev libncurses5-dev pkg-config
 
-    mkdir -p /home/rtlinux && cd /home/rtlinux
+	mkdir -p /home/rtlinux && cd /home/rtlinux
 
 #### Find some kernels, this is a gamble for me.
     wget https://mirrors.edge.kernel.org/pub/linux/kernel/v5.x/linux-5.11.4.tar.xz \
@@ -103,5 +112,35 @@
 	Install linuxcnc and ethercat.
 	Test one time more.
 
+#### Second login as chroot :
 
+	#### this is my second login after iso was oke.
+
+	#### Add linuxcnc 
+		sudo apt-key adv --keyserver hkp://keys.gnupg.net:80 --recv-key EF1B07FEE0EE663E
+		sudo apt-add-repository 'deb http://buildbot.linuxcnc.org/ stretch master-rtpreempt' # or add it with echo ..
+		sudo apt-get update
+		sudo apt-get -y install linuxcnc-uspace
+		sudo apt-get -y install linuxcnc-uspace-dev
+
+	#### For now i do a ethercat-master git clone.
+		apt-get install git autoconf libtool thunar
+
+		cd /home
+		git clone https://gitlab.com/etherlab.org/ethercat.git ethercat-master
+		    cd ethercat-master
+		    git checkout stable-1.5 
+		    ./bootstrap
+		    ./configure --help
+
+			# error :
+			# --with-linux-dir=<DIR>  Linux kernel sources [running kernel]
+			# This was tricky.. The kernel headers where in the /home dir because we compiled a custom kernel over there, normal they are in /usr/src/
+			# The configure script will find the headers normally in /usr/src/
+
+		    ./configure --enable-generic --disable-8139too --with-linux-dir=/home/rtlinux/linux-5.11.4/
+		    make
+		    make all modules
+		    make modules_install install
+		    # depmod 
 
