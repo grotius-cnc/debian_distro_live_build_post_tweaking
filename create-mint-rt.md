@@ -216,5 +216,5 @@
 	-e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
 
 	 # Copy iso to usb storage device   
-	 sudo dd bs=4M if=Linux-Mint-19.1-Rtos-Linuxcnc-Ethercat.iso of=/dev/sdb conv=fdatasync status=progress
+	 sudo dd bs=4M if=Linux-Mint-19.1-Rtos-Lcnc-Ethcat.iso of=/dev/sdb conv=fdatasync status=progress
 
