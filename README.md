@@ -1,27 +1,9 @@
 Todo :
 
-1. When pc starts up, start ethercat bus, do this by a script that also set's the mac adres in the /etc/sysconfig/ethercat file.
-In this way, a hdd can be switched to different pc's, and reconfigure mac adres is automaticly done at boot time. 
-If production machine's use cloned hdd's. This is the way to go.
-
-crontab -e
-
-xxxx
-@reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" > /etc/sysconfig/ethercat
-xxxx
-@reboot echo "DEVICE_MODULES=generic" >> /etc/sysconfig/ethercat
-xxxx
-@reboot /etc/init.d/ethercat start
-xxxx
-Runtest ok. To be adapted to source code.
-xxxx
-
-3. Look if deb packages can do a apt-get install in the preinst file. This seems not possible. 
-4. Think about program removal system menu items.
-5. Do research about the ethercat patches related to ec-debianize
-6. Try to get the halcompiler used by qt
-7. 
-
+1. Look if deb packages can do a apt-get install in the preinst file. This seems not possible. 
+2. Think about program removal system menu items.
+3. Do research about the ethercat patches related to ec-debianize
+4. Try to get the halcompiler used by qt 
 
 ## Interesting links :
 - https://live-team.pages.debian.net/live-manual/html/live-manual/customizing-package-installation.en.html
