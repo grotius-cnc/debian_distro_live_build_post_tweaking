@@ -55,7 +55,7 @@
 
     make xconfig
   
-#### This seems to be oke configured, i selected parport extra.
+#### Now you are in the kernel configurator window, this seems to be oke configured for preempt rt, i selected also "enable parport" and closed the window.
     apt-get install libelf-dev
     make -j2
 
