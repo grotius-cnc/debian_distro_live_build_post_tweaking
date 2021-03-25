@@ -2,12 +2,14 @@ Todo :
 
 1. When pc starts up, start ethercat bus, do this by a script that also set's the mac adres in the /etc/sysconfig/ethercat file.
 
-To test :
-
     contab -e
     
+    @reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" > /etc/sysconfig/ethercat
+    @reboot echo "DEVICE_MODULES=generic" >> /etc/sysconfig/ethercat
     @reboot /etc/init.d/ethercat start
-    .. 
+
+## Runtest ok. To be adapted to source code.
+
 
 3. Look if deb packages can do a apt-get install in the preinst file. This seems not possible. 
 4. Think about program removal system menu items.
