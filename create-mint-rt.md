@@ -217,4 +217,8 @@
 
 	 # Copy iso to usb storage device   
 	 sudo dd bs=4M if=Linux-Mint-19.1-Rtos-Lcnc-Ethcat.iso of=/dev/sdb conv=fdatasync status=progress
+	 
+#### The product for download, don't forget to subscribe and hit the bell.
+
+ 	https://sourceforge.net/projects/temponary/files/Linux-Mint-19.1-Rtos-Lcnc-Ethcat.iso/download
 
