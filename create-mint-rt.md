@@ -161,12 +161,46 @@
 	cd linuxcnc-ethercat
 	nano configure.mk
 	# Line 1 : COMP=/usr/bin/halcompile
+	make
 	
+	# error : expat.h not found. I suggest we miss a library.
 	
+	sudo apt-get install dctrl-tools dkms autoconf cmake make gcc build-essential debhelper
+	sudo apt-get install libudev-dev tcl8.6-dev tk8.6-dev libtk-img bwidget tclx8.4 asciidoc dblatex # in this line a dep is libexpat1.
 	
+	make
+	make install
 	
+	# Copy lcec.so to linuxcnc rtlib.
+	cp /home/linuxcnc-ethercat/src/lcec.so /usr/lib/linuxcnc/modules/
 	
+#### Create a configuration testfile
+
+	mkdir /home/ethercat-bus-test
+	cd /home/ethercat-bus-test
 	
+        touch /home/ethercat-bus-test/ethercat-conf.xml 
+	nano /home/ethercat-bus-test/ethercat-conf.xml 
+	
+		<masters>
+		<master idx="0" appTimePeriod="15000" refClockSyncCycles="1000000">
+		<slave idx="0" type="EK1100" name="Terminal"/>
+		<slave idx="1" type="EL2124" name="output_stepper_1"/>
+		<slave idx="2" type="EL2124" name="output_stepper_2"/>
+		</master>
+		</masters>
+		
+	touch /home/ethercat-bus-test/commands.txt
+	nano /home/ethercat-bus-test/commands.txt
+
+		$ halshow
+		halcmd:
+		> loadrt threads name1=base-thread fp1=0 period1=15000 name2=servo-thread period2=1000000
+		> loadusr -W /home/linuxcnc-ethercat/src/lcec_conf /home/ethercat-bus-test/ethercat-conf.xml 
+		> loadrt lcec
+
+#### Done. Let's repack and test the iso.
+
 	
 	
 	
