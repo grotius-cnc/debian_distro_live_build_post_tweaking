@@ -3,8 +3,8 @@
 #### https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/blob/main/create-bullseye-rt.md
 
 #### To get internet as chroot in mint.
-host pc file : /etc/resolv.conf
-copy this file to your rebranded squashfs-root/etc/ 
+	host pc file : /etc/resolv.conf
+	copy this file to your unpacked iso, squashfs-root/etc/ 
 
 #### Optional check if you are connected.
     ping www.google.nl  (cntr+z to stop)
