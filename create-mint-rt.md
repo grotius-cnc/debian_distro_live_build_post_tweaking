@@ -87,14 +87,15 @@ copy this file to your rebranded squashfs-root/etc/
 
 
 #### First attempt failed.
-1. Moved the /casper/initrd.lz and /casper/vmlinuz outside the iso dir and try again.
-2. Edited the 
-	- /boot/loopback.cfg file and edited to current kernel.
-	- /boot/grub.cfg file and edited to current kernel.
+Moved the /casper/initrd.lz and /casper/vmlinuz outside the iso dir and try again.
+Edited the 
+
+	/boot/loopback.cfg file and edited to current kernel.
+	/boot/grub.cfg file and edited to current kernel.
 
 #### Todo :
-1. When this is succesfully booted in rt kernel, we can delete sources in /home/rtlinux to free space
-2. If that also fails chroot again and add : 
+When this is succesfully booted in rt kernel, we can delete sources in /home/rtlinux to free space.
+If that also fails chroot again and add : 
 
 	sudo add-apt-repository ppa:danielrichter2007/grub-customizer
 	sudo apt-get update
