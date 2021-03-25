@@ -85,28 +85,23 @@
 #### Put it on a usb storage device.
     sudo dd bs=4M if=Linux-Mint-19.1-Rtos.iso of=/dev/sdb conv=fdatasync status=progress
 
-
-#### First attempt failed.
-Moved the /casper/initrd.lz and /casper/vmlinuz outside the iso dir and try again.
-Edited the 
-
-	/boot/loopback.cfg file and edited to current kernel.
-	/boot/grub.cfg file and edited to current kernel.
+#### For info, files in the same dir, no need to remove original :
+	/remasterd/casper/initrd.lz #original
+	/remasterd/casper/initrd.img-5.11.4-rt11
+	/remasterd/casper/vmlinuz #original
+	/remasterd/casper/vmlinuz-5.11.4-rt11
+	/remasterd/casper/System.map-5.11.4-rt11
+	/remasterd/casper/config-5.11.4-rt11
+	/remasterd/casper/filesystem.squashfs
 	
-#### Second attempt failed.
-I mentioned you have to press the keyboard during the boot screen. 
-During boothing it was looking for vmlinuz. This is replaced by our new vmlinuz-kernelid. So it's searching the wrong file.
-Edited the 
-
-	/isolinux/isolinux.cfg file and edited to current kernel.
+	These files are still original :
+	/remastered/boot/grub/crub.cfg
+	/remastered/boot/grub/loopback.cfg
+	/remastered/isolinux/isolinux.cfg
 
 #### Todo :
-When this is succesfully booted in rt kernel, we can delete sources in /home/rtlinux to free space.
-If that also fails chroot again and add : 
-
-	sudo add-apt-repository ppa:danielrichter2007/grub-customizer
-	sudo apt-get update
-	sudo apt-get install grub-customizer
+	Install linuxcnc and ethercat.
+	Test one time more.
 
 
 
