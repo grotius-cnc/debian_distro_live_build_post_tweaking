@@ -92,6 +92,12 @@ Edited the
 
 	/boot/loopback.cfg file and edited to current kernel.
 	/boot/grub.cfg file and edited to current kernel.
+	
+#### Second attempt failed.
+
+Edited the 
+
+	/isolinux/isolinux.cfg file and edited to current kernel.
 
 #### Todo :
 When this is succesfully booted in rt kernel, we can delete sources in /home/rtlinux to free space.
