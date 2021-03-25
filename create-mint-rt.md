@@ -201,6 +201,7 @@
 
 #### Done. Let's repack and test the iso.
 
+	# Repack the squashfs-root dir into a filesystem.squashfs, put the dir outside the iso folder
 	mksquashfs squashfs-root/ filesystem.squashfs -comp xz
 
 	# Edit /.disk/info
