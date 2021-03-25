@@ -205,11 +205,11 @@
 	mksquashfs squashfs-root/ filesystem.squashfs -comp xz
 
 	# Edit /.disk/info
-	Linux Mint 19.1 Rtos Linuxcnc Ethercat
+	Linux Mint 19.1 Rtos Lcnc Ethcat
 
 	# Create iso
-	xorriso -as mkisofs -V 'Linux Mint 19.1 Rtos Linuxcnc Ethercat' \
-	-o Linux-Mint-19.1-Rtos-Linuxcnc-Ethercat.iso -J -J -joliet-long -cache-inodes \
+	xorriso -as mkisofs -V 'Linux Mint 19.1 Rtos Lcnc Ethcat' \
+	-o Linux-Mint-19.1-Rtos-Lcnc-Ethcat.iso -J -J -joliet-long -cache-inodes \
 	-isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
 	-b isolinux/isolinux.bin \
 	-c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
