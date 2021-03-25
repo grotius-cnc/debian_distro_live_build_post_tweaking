@@ -101,6 +101,10 @@ or :
 #### Repack the squashfs-root dir.
 	
     mksquashfs squashfs-root/ filesystem.squashfs -comp xz
+    
+    note : the filesystem.squashfs is limited to 4gb. The pack ratio = 2.95
+    If your squashfs-root directory = 13 Gb, the packet filesystem.squashfs will be : 4.4 Gb = 13/4.4=2.95.
+    So for 4gb your squashfs-root dir may be max 11.8 Gb.
 
 #### Remove or move the modified squashfs-root directory out of the new iso hierarchy.
 
