@@ -4,11 +4,10 @@ Todo :
 In this way, a hdd can be switched to different pc's, and reconfigure mac adres is automaticly done at boot time. 
 If production machine's use cloned hdd's. This is the way to go.
 
-    contab -e
-    
-    @reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" > /etc/sysconfig/ethercat
-    @reboot echo "DEVICE_MODULES=generic" >> /etc/sysconfig/ethercat
-    @reboot /etc/init.d/ethercat start
+crontab -e
+@reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" > /etc/sysconfig/ethercat
+@reboot echo "DEVICE_MODULES=generic" >> /etc/sysconfig/ethercat
+@reboot /etc/init.d/ethercat start
 
 Runtest ok. To be adapted to source code.
 
