@@ -114,33 +114,63 @@
 
 #### Second login as chroot :
 
-	#### this is my second login after iso was oke.
+#### this is my second login after iso was oke.
 
-	#### Add linuxcnc 
-		sudo apt-key adv --keyserver hkp://keys.gnupg.net:80 --recv-key EF1B07FEE0EE663E
-		sudo apt-add-repository 'deb http://buildbot.linuxcnc.org/ stretch master-rtpreempt' # or add it with echo ..
-		sudo apt-get update
-		sudo apt-get -y install linuxcnc-uspace
-		sudo apt-get -y install linuxcnc-uspace-dev
+#### Add linuxcnc 
+	sudo apt-key adv --keyserver hkp://keys.gnupg.net:80 --recv-key EF1B07FEE0EE663E
+	sudo apt-add-repository 'deb http://buildbot.linuxcnc.org/ stretch master-rtpreempt' # or add it with echo ..
+	sudo apt-get update
+	sudo apt-get -y install linuxcnc-uspace
+	sudo apt-get -y install linuxcnc-uspace-dev
 
-	#### For now i do a ethercat-master git clone.
-		apt-get install git autoconf libtool thunar
+#### Add ethercat-master
+	apt-get install git autoconf libtool thunar
 
-		cd /home
-		git clone https://gitlab.com/etherlab.org/ethercat.git ethercat-master
-		    cd ethercat-master
-		    git checkout stable-1.5 
-		    ./bootstrap
-		    ./configure --help
+	cd /home
+	git clone https://gitlab.com/etherlab.org/ethercat.git ethercat-master
+	    cd ethercat-master
+	    git checkout stable-1.5 
+	    ./bootstrap
+	    ./configure --help
 
-			# error :
-			# --with-linux-dir=<DIR>  Linux kernel sources [running kernel]
-			# This was tricky.. The kernel headers where in the /home dir because we compiled a custom kernel over there, normal they are in /usr/src/
-			# The configure script will find the headers normally in /usr/src/
+		# error :
+		# --with-linux-dir=<DIR>  Linux kernel sources [running kernel]
+		# This was tricky.. The kernel headers where in the /home dir because we compiled a custom kernel over there, normal they are in /usr/src/
+		# The configure script will find the headers normally in /usr/src/
 
-		    ./configure --enable-generic --disable-8139too --with-linux-dir=/home/rtlinux/linux-5.11.4/
-		    make
-		    make all modules
-		    make modules_install install
-		    # depmod 
+	    ./configure --enable-generic --disable-8139too --with-linux-dir=/home/rtlinux/linux-5.11.4/
+	    make
+	    make all modules
+	    make modules_install install
+	    # depmod 
+	    
+	    # to be sure :
+		chmod 777 /etc/init.d/ethercat 
+	    
+#### Run a script at boot time
+	sudo crontab -e
+
+	@reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" > /etc/sysconfig/ethercat 
+	@reboot echo "DEVICE_MODULES=generic" >> /etc/sysconfig/ethercat 
+	@reboot /etc/init.d/ethercat start
+	
+#### Install linuxcnc-ethercat
+
+        cd /home
+	git clone https://github.com/grotius-cnc/linuxcnc-ethercat.git
+	cd linuxcnc-ethercat
+	nano configure.mk
+	# Line 1 : COMP=/usr/bin/halcompile
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	    
+	    
 
