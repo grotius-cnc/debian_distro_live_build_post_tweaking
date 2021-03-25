@@ -1,6 +1,8 @@
 Todo :
 
 1. When pc starts up, start ethercat bus, do this by a script that also set's the mac adres in the /etc/sysconfig/ethercat file.
+In this way, a hdd can be switched to different pc's, and reconfigure mac adres is automaticly done at boot time. 
+If production machine's use cloned hdd's. This is the way to go.
 
     contab -e
     
@@ -8,7 +10,7 @@ Todo :
     @reboot echo "DEVICE_MODULES=generic" >> /etc/sysconfig/ethercat
     @reboot /etc/init.d/ethercat start
 
-## Runtest ok. To be adapted to source code.
+Runtest ok. To be adapted to source code.
 
 
 3. Look if deb packages can do a apt-get install in the preinst file. This seems not possible. 
