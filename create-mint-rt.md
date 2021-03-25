@@ -94,7 +94,8 @@ Edited the
 	/boot/grub.cfg file and edited to current kernel.
 	
 #### Second attempt failed.
-
+I mentioned you have to press the keyboard during the boot screen. 
+During boothing it was looking for vmlinuz. This is replaced by our new vmlinuz-kernelid. So it's searching the wrong file.
 Edited the 
 
 	/isolinux/isolinux.cfg file and edited to current kernel.
