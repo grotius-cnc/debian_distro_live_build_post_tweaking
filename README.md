@@ -5,12 +5,16 @@ In this way, a hdd can be switched to different pc's, and reconfigure mac adres 
 If production machine's use cloned hdd's. This is the way to go.
 
 crontab -e
+
+xxxx
 @reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" > /etc/sysconfig/ethercat
+xxxx
 @reboot echo "DEVICE_MODULES=generic" >> /etc/sysconfig/ethercat
+xxxx
 @reboot /etc/init.d/ethercat start
-
+xxxx
 Runtest ok. To be adapted to source code.
-
+xxxx
 
 3. Look if deb packages can do a apt-get install in the preinst file. This seems not possible. 
 4. Think about program removal system menu items.
