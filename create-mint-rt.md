@@ -232,8 +232,10 @@ The ethercat bus doen't start at boot time.
 	Check your /etc/sysconfig/ethercat file if this line is present below your mac adres :
 	DEVICE_MODULES=generic
 
-Leave only start ethercat at boot by editing :
+Leave only start ethercat at boot by editing.
+
 	sudo crontab -e
 	
-Wanna know your mac adres :
+Wanna know your mac adres.
+
 	ip link show
