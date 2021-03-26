@@ -222,3 +222,18 @@
 
  	https://sourceforge.net/projects/temponary/files/Linux-Mint-19.1-Rtos-Lcnc-Ethcat.iso/download
 
+#### Runtest, tiny fix :
+
+The ethercat bus doen't start at boot time.
+
+	sudo chmod 777 /etc/sysconfig/ethercat
+	sudo chmod 777 /etc/init.d/ethercat
+
+	Check your /etc/sysconfig/ethercat file if this line is present below your mac adres :
+	DEVICE_MODULES=generic
+
+Leave only start ethercat at boot by editing :
+	sudo crontab -e
+	
+Wanna know your mac adres :
+	ip link show
