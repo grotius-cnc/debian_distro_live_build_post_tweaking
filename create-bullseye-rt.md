@@ -28,9 +28,98 @@ Fresh host system install from usb, to ensure we have a correct starting point, 
 
 Saved output to a textfile "original-mount.txt", 20 mountpoints in file, this to check if later umount is correct.
 
-#### Install programs:
+#### Install programs as Chroot :
 
 	sudo apt-get install squashfs-tools xorriso isolinux geany
+	
+	mkdir /home
+	cd home
+	apt-get install git autoconf
+	git clone https://github.com/LinuxCNC/linuxcnc.git
+	cd /home/linuxcnc/debian
+	./configure uspace
+
+	cd /home/linuxcnc/
+	dpkg-checkbuilddeps
+
+	echo "deb http://deb.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list
+	echo "deb-src http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list
+	echo "deb http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list
+	echo "deb-src http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list
+
+	sudo echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list 
+	sudo echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+	sudo echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+	sudo echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+	apt-get update
+
+	apt-get install debhelper libudev-dev tcl8.6-dev tk8.6-dev libtk-img bwidget tclx 
+	apt-get install asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape python-lxml 
+	apt-get install source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended 
+	apt-get install texlive-lang-cyrillic texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish 
+	apt-get install texlive-latex-recommended  python-tk libxmu-dev libglu1-mesa-dev libgl1-mesa-dev
+	apt-get install libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev yapps2
+	apt-get install libreadline-gplv2-dev python2-dev python-gtk2
+	apt-get install python-gtk2 python-is-python2 python-dev-is-python2 
+	apt-get install python3-tk wget
+
+	cd /home/linuxcnc/src
+	./autogen.sh
+	./configure --with-python=python3
+	make -j2
+
+	#### If it compiles oke. We know dependencies for linuxcnc are ok.
+
+
+	#### Install linuxcnc.deb package to /opt/
+	cd /home/software
+	wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/linuxcnc.deb
+	dpkg -i linuxcnc.deb
+
+
+	#### Install ethercat-master
+
+	# For newer kernels activate the sid repository, otherwise :
+	apt-get install linux-headers-$(uname -r)
+
+	cd /home/software
+	wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.0/ethercat-master.deb
+	dpkg -i ethercat-master.deb
+
+	# To be sure
+	chmod 777 /etc/sysconfig/ethercat
+	chmod 777 /etc/init.d/ethercat
+
+	# Set the crontab -e parameters to boot ethercat at pc's boot time
+	sudo crontab -e
+
+	@reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" > /etc/sysconfig/ethercat 
+	@reboot echo "DEVICE_MODULES=generic" >> /etc/sysconfig/ethercat 
+	@reboot /etc/init.d/ethercat start
+
+	# Install linuxcnc-ethercat
+	cd /home/software
+	wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.3/linuxcnc-ethercat.deb
+	dpkg -i linuxcnc-ethercat.deb
+
+	# Qtvcp libs.
+	apt-get install qttools5-dev-tools qttools5.dev
+
+	# Calculator
+	apt-get install qalculate
+
+	# Install qt
+	cd /home/software
+	wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
+	dpkg -i qt-creator.deb
+
+	# Delete temp sources
+	rm -rf /home/software
+
+	# Exit chroot environent.
+	umount /dev /dev/pts /sys /proc  # umount /dev gives the message "busy.." 
+	exit
+	# Reboot host pc
 
 #### Unsquash original dvd /live/filesystem.squashfs
 
