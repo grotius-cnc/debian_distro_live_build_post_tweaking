@@ -1,13 +1,24 @@
-#### https://gnipsel.com/linuxcnc/uspace/linuxmint19-rt.html
-#### Dowload iso cd, burn it on a usb storage device and follow the steps : 
-#### https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/blob/main/create-bullseye-rt.md
+This document is about modifying an existing standard linux mint distro.
 
-#### To get internet as chroot in mint.
+download a linux mint disto in iso format.
+download & compile kernel with realtime extension.
+add kernel to iso.
+add programs to the iso.
+repack the iso.
+test the iso.
+
+Iso to download : https://gnipsel.com/linuxcnc/uspace/linuxmint19-rt.html, burn it on a usb storage device.
+
+follow the steps for chrooting : 
+https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/blob/main/create-bullseye-rt.md
+
+Mint related actions :
+
+#### To get internet as chroot in Mint, copy a file.
 	host pc file : /etc/resolv.conf
 	copy this file to your unpacked iso, squashfs-root/etc/ 
 	
 #### Chroot
-
 	mount --bind /dev squashfs-root/dev
 	mount --bind /dev/pts squashfs-root/dev/pts
 	mount --bind /sys squashfs-root/sys
@@ -111,10 +122,8 @@
 #### Todo :
 	Install linuxcnc and ethercat.
 	Test one time more.
-
-#### Second login as chroot :
-
-#### this is my second login after iso was oke.
+	
+#### Second login as chroot after iso was oke.
 
 #### Add linuxcnc 
 	sudo apt-key adv --keyserver hkp://keys.gnupg.net:80 --recv-key EF1B07FEE0EE663E
