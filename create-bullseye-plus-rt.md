@@ -24,6 +24,8 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
 
     apt-get install linux-image-$(uname -r)
     apt-get install linux-headers-$(uname -r)
+    apt-get install sudo # important
+    apt-get install enlightenment # desktop
     apt-get install task-xfce-desktop geany wget git build-essential libusb-1.0-0-dev psmisc --no-install-recommends
     # + 300Mb +241Mb +433Mb
     
