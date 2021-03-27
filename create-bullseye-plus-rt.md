@@ -48,7 +48,9 @@ We now focus on the squashfs-root dir.
     apt-get install python2-dev python-gtk2 python-lxml lib32readline-dev libedit-dev libreadline-gplv2-dev --no-install-recommends
 
     # Clone linuxcnc and check linuxcnc dependencies.
-    cd debian
+    
+    git clone https://github.com/LinuxCNC/linuxcnc.git /home/linuxcnc
+    cd /home/linuxcnc/debian
     ./configure uspace
     cd ..
     
@@ -58,7 +60,10 @@ We now focus on the squashfs-root dir.
     ./configure --with-python=python3 --with-boost-python=boost_python39 
     make
     
-    # If this run's oke. We can isntall the linuxcnc.deb package.
+    # If this run's oke. We can install the linuxcnc.deb package.
+    # Remove git source.
+    rm -rf /home/linuxcnc
+    
     
     # Reset repository
     echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" > /etc/apt/sources.list
@@ -67,15 +72,23 @@ We now focus on the squashfs-root dir.
     echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
     apt-get update
     
+    mkdir /home/software && cd /home/software
+    
     # Install linuxcnc in /opt/
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/linuxcnc.deb
     dpkg -i linuxcnc.deb
     
-    # Install ethercat-master
+    # Install ethercat-master, be sure you have the kernel headers, see above.
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.0/ethercat-master.deb
     dpkg -i ethercat-master.deb
     
     # Edit crontab -e
+    # Add lines :
+        @reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" DEVICE_MODULES=generic > /etc/sysconfig/ethercat 
+        # Slow down the process so above line is done before the restart. 
+        @reboot /etc/init.d/ethercat start
+        @reboot /etc/init.d/ethercat stop
+        @reboot /etc/init.d/ethercat restart
     
     
     # Install linuxcnc-ethercat in /opt/
@@ -86,9 +99,18 @@ We now focus on the squashfs-root dir.
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
     dpkg -i qt-creator.deb
     
+    # Install librecat in /opt/
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.5/librecad.deb
+    dpkg -i librecad.deb
     
-    # Remove sources.
+    # Remove sources in /home/software
+    rm -rfv /home/software
     
+    # Install qtvcp sources.
+    apt-get install qttools5-dev-tools qttools5.dev
+    
+    # Calculator
+    apt-get install qalculate
     
     
     
