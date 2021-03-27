@@ -106,14 +106,15 @@ We now focus on the squashfs-root dir.
     # Remove sources in /home/software
     rm -rfv /home/software
     
-    # Install qtvcp sources.
+    # Install qt-creator for python and qtvcp sources.
     apt-get install qttools5-dev-tools qttools5.dev
     
     # Calculator
     apt-get install qalculate
     
-    
-    
+    umount /dev /sys /proc 
+    exit
+    # reboot pc
     
     
     
