@@ -3,7 +3,9 @@ Problem with debian bullseye is the size of the dvd. 3.7Gb
 There is almost no space left to pre-install additional software.
 
 We downloaded the debian bullseye alpha-3 dvd, and unpack it, see other tutorials.
-We now focus on the squashfs-root dir.
+We now focus on the squashfs-root dir to keep it under 4.0Gb.
+
+apt-get <name> --no-install-recommends, helps also with reducing the total size.
     
     mdir dvd
     cd dvd
@@ -22,7 +24,7 @@ We now focus on the squashfs-root dir.
 
     apt-get install linux-image-$(uname -r)
     apt-get install linux-headers-$(uname -r)
-    apt-get install task-xfce-desktop wget git build-essential libusb-1.0-0-dev psmisc --no-install-recommends
+    apt-get install task-xfce-desktop geany wget git build-essential libusb-1.0-0-dev psmisc --no-install-recommends
     # + 300Mb +241Mb +433Mb
     
     # This includes the bullseye main repository
@@ -115,6 +117,31 @@ We now focus on the squashfs-root dir.
     umount /dev /sys /proc 
     exit
     # reboot pc
+    
+    # Repack the iso.
+    mksquashfs squashfs-root/ filesystem.squashfs -comp xz
+    
+    cp /dvd/filesystem.squashfs to your unpacked debian iso /live dir and replace existing filesystem.squashfs with the new one.
+    
+    # Copy the files from squashfs-root/boot/* to your dvd/live/ dir, if they are different then the orignal one's.
+        intitrd..
+        vmlinuz..
+        config..
+        system.map..
+    
+    # Edit the info file in /remastered/.disk/info
+    Debian 11 Bullseye Rtos 5.10.0-5-rt-amd64
+    
+    # Create iso 
+    xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos 5.10.0-5-rt-amd64' \
+    -o Debian-11-Bullseye-Rtos-5.10.0-5-rt-amd64.iso -J -J -joliet-long -cache-inodes \
+    -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
+    -b isolinux/isolinux.bin \
+    -c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
+    -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
+
+
+    
     
     
     
