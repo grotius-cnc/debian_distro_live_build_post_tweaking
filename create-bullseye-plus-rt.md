@@ -25,7 +25,9 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     apt-get install linux-image-$(uname -r)
     apt-get install linux-headers-$(uname -r)
     apt-get install sudo # important
-    apt-get install enlightenment # desktop
+    apt-get install deepin-terminal 
+    apt install gobject-introspection python3-gi python3-cairo-dev python3-gi-cairo # github issue 820 linuxcnc fix rene-dev
+    
     apt-get install task-xfce-desktop geany wget git build-essential libusb-1.0-0-dev psmisc --no-install-recommends
     # + 300Mb +241Mb +433Mb
     
@@ -35,7 +37,7 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended \
     texlive-lang-cyrillic texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish \
     texlive-latex-recommended python-tk libxmu-dev libglu1-mesa-dev libgl1-mesa-dev \
-    libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev yapps2  
+    libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev yapps2 python-yapps 
     python3-tk python-is-python2 python-dev-is-python2 --no-install-recommends
 
     echo "deb http://deb.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list
@@ -151,7 +153,11 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     #Put the new iso file on your usb device in /remastered/
     sudo dd bs=4M if=Debian-11-Bullseye-Rtos-5.10.0-4.iso of=/dev/sdb conv=fdatasync status=progress
 
-    # Let's see if the new iso will boot anyway.
+    # Runtest
+    # Iso boots oke.
+    
+    # Todo :
+    Set deepin-terminal as default in terminal desktop.launcher
     
     
     
