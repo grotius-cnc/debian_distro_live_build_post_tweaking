@@ -82,6 +82,9 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/linuxcnc.deb
     dpkg -i linuxcnc.deb
     
+    chmod 777 /opt/linuxcnc/bin/rtapi_app
+    chmod 777 /opt/linuxcnc/bin/linuxcnc_module_helper
+    
     # Install ethercat-master, be sure you have the kernel headers, see above.
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.0/ethercat-master.deb
     dpkg -i ethercat-master.deb
