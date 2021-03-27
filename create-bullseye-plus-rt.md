@@ -121,6 +121,9 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     # Repack the iso.
     mksquashfs squashfs-root/ filesystem.squashfs -comp xz
     
+    # Output squashed filesize :
+    3.1Gb wich is nice.
+    
     cp /dvd/filesystem.squashfs to your unpacked debian iso /live dir and replace existing filesystem.squashfs with the new one.
     
     # Copy the files from squashfs-root/boot/* to your dvd/live/ dir, if they are different then the orignal one's.
@@ -130,17 +133,21 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
         system.map..
     
     # Edit the info file in /remastered/.disk/info
-    Debian 11 Bullseye Rtos 5.10.0-5-rt-amd64
+    Debian 11 Bullseye Rtos 5.10.0-4-rt-amd64
     
     # Create iso 
-    xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos 5.10.0-5-rt-amd64' \
-    -o Debian-11-Bullseye-Rtos-5.10.0-5-rt-amd64.iso -J -J -joliet-long -cache-inodes \
+    xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos 5.10.0-4' \
+    -o Debian-11-Bullseye-Rtos-5.10.0-4.iso -J -J -joliet-long -cache-inodes \
     -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
     -b isolinux/isolinux.bin \
     -c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
     -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
 
+    #Put the new iso file on your usb device in /remastered/
+    sudo dd bs=4M if=Debian-11-Bullseye-Rtos-5.10.0-4.iso of=/dev/sdb conv=fdatasync status=progress
 
+    # Let's see if the new iso will boot anyway.
+    
     
     
     
