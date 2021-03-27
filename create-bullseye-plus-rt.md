@@ -49,7 +49,7 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
     apt-get update
 
-    apt-get install python2-dev python-gtk2 python-lxml lib32readline-dev libedit-dev libreadline-gplv2-dev --no-install-recommends
+    apt-get install python2-dev python-gtk2 python-lxml lib32readline-dev libedit-dev libreadline-gplv2-dev cairo-perf-utils --no-install-recommends
 
     # Clone linuxcnc and check linuxcnc dependencies.
     
