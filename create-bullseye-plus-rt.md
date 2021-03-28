@@ -135,7 +135,11 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     
     umount /dev /sys /proc 
     exit
-    # reboot pc
+    
+    # Check left over mountpoints
+    mount
+    # if there is a mountpoint left do a force to unmount.
+    umount -l mountpath/dev
     
     # Repack the iso.
     mksquashfs squashfs-root/ filesystem.squashfs -comp xz
