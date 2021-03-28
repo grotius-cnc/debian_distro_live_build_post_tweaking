@@ -124,8 +124,13 @@ apt-get <name> --no-install-recommends, also helps with reducing the total size.
     dpkg -i qt-creator.deb
     
     # Install librecat in /opt/
+    apt-get install librecad-data libmuparser2v5
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.5/librecad.deb
     dpkg -i librecad.deb
+    
+    # Install freecad in /opt/
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.4/freecad.deb
+    dpkg -i freecad.deb
     
     # Remove sources in /home/software
     rm -rfv /home/software
