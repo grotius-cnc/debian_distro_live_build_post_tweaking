@@ -25,8 +25,11 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     apt-get install linux-image-$(uname -r)
     apt-get install linux-headers-$(uname -r)
     apt-get install sudo # important
-    apt-get install deepin-terminal 
+    apt-get install task-xfce-desktop # desktop environment
+    
     apt install gobject-introspection python3-gi python3-cairo-dev python3-gi-cairo # github issue 820 linuxcnc fix rene-dev
+    apt-get install locales
+    dpkg-reconfigure locales
     
     apt-get install task-xfce-desktop geany wget git build-essential libusb-1.0-0-dev psmisc --no-install-recommends
     # + 300Mb +241Mb +433Mb
@@ -98,6 +101,15 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
         @reboot /etc/init.d/ethercat start
         @reboot /etc/init.d/ethercat stop
         @reboot /etc/init.d/ethercat restart
+        
+        # Set screen power-saving, hibernate, etc. to off.
+        @reboot xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/dpms-on-ac-off -s 0
+        @reboot xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/blank-on-ac -s 0
+        @reboot xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/dpms-on-ac-sleep -s 0
+        @reboot xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/inactivity-sleep-mode-on-ac -s 0
+    
+    
+    
     
     
     # Install linuxcnc-ethercat in /opt/
@@ -156,8 +168,7 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     # Runtest
     # Iso boots oke.
     
-    # Todo :
-    Set deepin-terminal as default in terminal desktop.launcher
+ 
     
     
     
