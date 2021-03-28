@@ -5,7 +5,10 @@ There is almost no space left to pre-install additional software.
 We downloaded the debian bullseye alpha-3 dvd, and unpack it, see other tutorials.
 We now focus on the squashfs-root dir to keep it under 4.0Gb.
 
-apt-get <name> --no-install-recommends, helps also with reducing the total size.
+In fact we replace the original squashfs.filesystem with a new one, build with
+the help of debootstrap.
+
+apt-get <name> --no-install-recommends, also helps with reducing the total size.
     
     mdir dvd
     cd dvd
