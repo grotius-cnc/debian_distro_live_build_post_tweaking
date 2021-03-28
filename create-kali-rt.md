@@ -13,17 +13,20 @@ As root :
     unsquashfs filesystem.squashfs # This will produce the folder /squashfs-root
 
     mount --bind /dev squashfs-root/dev
-    mount --bind /dev/pts squashfs-root/dev/pts
     mount --bind /sys squashfs-root/sys
     mount --bind /proc squashfs-root/proc
     chroot squashfs-root
     export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     export LC_ALL=C
-    dhclient
+    
+dhclient
 
-![chroot-login](https://user-images.githubusercontent.com/44880102/112771304-31333400-8ff9-11eb-93aa-355c770ae935.png)
+    ![chroot-login](https://user-images.githubusercontent.com/44880102/112771304-31333400-8ff9-11eb-93aa-355c770ae935.png)
 
-Okey now we are inside. It looks quite serious now. 
+Okey now we are inside. It looks quite serious now. Lets see what resources they use.
+
+    cat /etc/apt/sources.list
+    ![sources-list](https://user-images.githubusercontent.com/44880102/112771631-c4209e00-8ffa-11eb-9e80-74c35131af2f.png)
     
     
     
