@@ -23,4 +23,16 @@ As root :
 
 ![chroot-login](https://user-images.githubusercontent.com/44880102/112771304-31333400-8ff9-11eb-93aa-355c770ae935.png)
 
-Okey now we are inside. It looks quite serious now.
+Okey now we are inside. It looks quite serious now. 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
