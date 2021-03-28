@@ -153,8 +153,7 @@ apt-get <name> --no-install-recommends, also helps with reducing the total size.
     # Repack the iso.
     mksquashfs squashfs-root/ filesystem.squashfs -comp xz
     
-    # Output squashed filesize :
-    3.1Gb wich is nice.
+    # Output iso : 4.1Gb, 700Mib free OEM space.
     
     cp /dvd/filesystem.squashfs to your unpacked debian iso /live dir and replace existing filesystem.squashfs with the new one.
     
