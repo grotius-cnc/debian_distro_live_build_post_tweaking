@@ -143,15 +143,15 @@ apt-get <name> --no-install-recommends, helps also with reducing the total size.
     Debian 11 Bullseye Rtos 5.10.0-4-rt-amd64
     
     # Create iso 
-    xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos 5.10.0-4' \
-    -o Debian-11-Bullseye-Rtos-5.10.0-4.iso -J -J -joliet-long -cache-inodes \
+    xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos 5.10.0-5' \
+    -o Debian-11-Bullseye-Rtos-5.10.0-5.iso -J -J -joliet-long -cache-inodes \
     -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
     -b isolinux/isolinux.bin \
     -c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
     -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
 
     #Put the new iso file on your usb device in /remastered/
-    sudo dd bs=4M if=Debian-11-Bullseye-Rtos-5.10.0-4.iso of=/dev/sdb conv=fdatasync status=progress
+    sudo dd bs=4M if=Debian-11-Bullseye-Rtos-5.10.0-5.iso of=/dev/sdb conv=fdatasync status=progress
 
     # Runtest
     # Iso boots oke.
