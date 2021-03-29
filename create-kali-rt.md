@@ -72,8 +72,21 @@ The package will install qt-creator in the /opt/ dir and make a system menu laun
     rm -rfv /home/software/qt-creator.deb # Erase source.
 
 ![qt](https://user-images.githubusercontent.com/44880102/112773035-4b254480-9002-11eb-8b07-1c24a9fa425e.png)
-`
-test
+
+Oke lets start the program ct-creator in chroot. But we need to set a display.
+
+    xhost +local:
+    echo $DISPLAY
+    export DISPLAY=:0
+    
+Start normal terminal on host pc :
+
+    xhost +local:
+
+And wholla, we are inside a gui now in the chroot environment, wow :
+
+![chroot_qt](https://user-images.githubusercontent.com/44880102/112773564-7dd03c80-9004-11eb-8f02-219542bd1cc9.png)
+
     
     
     
