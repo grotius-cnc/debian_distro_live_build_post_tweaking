@@ -8,6 +8,8 @@ Copy iso to usb :
     
 Copy the iso files (include hidden file ./disk) to /kali/original/ and to /kali/rebranded/.  
 
+We could do a debootstrap. But first let's explore the original Kali iso.
+
 #### As root :
 
     cd kali/rebranded/live/
@@ -60,14 +62,16 @@ Let's see what crontab -e has inside.
     # The script "set-random-mac" will be a c++ program that chooses a random mac for you at boot time.
     The base command to set a mac adres is : ifconfig eth0 hw ether 00:00:00:00:00:00
      
-Ok we need qt-creator to write our c++ app. The package will install qt-creator in the /opt/ dir and make a system menu launcner for us.
+Ok we need qt-creator to write our c++ code wich will set our mac adres to a random value at boot time. 
+This is a compiled script, the source code is not visible.
+The package will install qt-creator in the /opt/ dir and make a system menu launcner for us.
 
     mkdir /home/software && cd /home/software/
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
     dpkg -i qt-creator.deb
     rm -rfv /home/software/qt-creator.deb # Erase source.
 
-
+![qt](https://user-images.githubusercontent.com/44880102/112773035-4b254480-9002-11eb-8b07-1c24a9fa425e.png)
 `
 
     
