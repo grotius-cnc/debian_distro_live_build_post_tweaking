@@ -1,3 +1,5 @@
+[![Download Linux Mint 19 StormHold  Rtos ](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/linux-mint-rtos/files/latest/download)
+
 This document is about modifying an existing standard linux mint distro.
 
 download a linux mint disto in iso format.
@@ -229,4 +231,4 @@ Mint related actions :
 
 #### Runtest, ok.
 
-[![Download Linux mint Rtos StormHold ](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/linux-mint-rtos/files/latest/download)
+[![Download Linux Mint 19 StormHold  Rtos ](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/linux-mint-rtos/files/latest/download)
