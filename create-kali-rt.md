@@ -109,12 +109,12 @@ And select Finish. Now we can code. Isn't this a beauty :
 
 Ok lets copy our brand new code to the /etc/init.d/ dir.
 
-cd home/software/build-set-random-mac-Desktop-Debug
-    cp home/software/build-set-random-mac-Desktop-Debug/set-random-mac /etc/init.d/
+    cd home/software/build-set-random-mac-Desktop-Debug
+    cp set-random-mac /etc/init.d/
     
 ![init-d-ok](https://user-images.githubusercontent.com/44880102/112776175-fb984600-900c-11eb-8750-492dc470b1c2.png)
 
-Ok for now lets leave the chroot environment, don't forget to remove your sources :
+Ok for now lets leave the chroot environment :
 
     umount /sys /proc /dev 
     exit
@@ -143,6 +143,8 @@ Delete /rebranded/live/filesystem.squashfs
 Resquash in /rebranded/live/
 
         mksquashfs squashfs-root/ filesystem.squashfs -comp xz
+        
+        
 
 
     
