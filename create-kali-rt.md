@@ -57,7 +57,7 @@ Let's see what crontab -e has inside.
 
 Add this line :
 
-    @reboot  /etc/init.d/set-random-mac  
+    @reboot  /etc/init.d/./set-random-mac  
     
     # The script "set-random-mac" will be a c++ program that chooses a random mac for you at boot time.
     The base command to set a mac adres is : ifconfig eth0 hw ether 00:00:00:00:00:00
@@ -164,8 +164,56 @@ Put iso on usb storage device :
         sudo dd bs=4M if=Debian-Kali-5.10.0-5-rt-amd64.iso of=/dev/sdb conv=fdatasync status=progress
 
 Runtest :
-
+    Modified the ./set-random-mac code a little bit to improve a random mac adres value :
     
+        #include <QCoreApplication>
+        #include <iostream>
+        #include <string>
+        #include <random>
+        #include <chrono>
+        //The base command to set a mac adres is : ifconfig eth0 hw ether 00:00:00:00:00:00
+        // $ ./set-random-mac
+        std::string OneDigit();
+
+        int main(int argc, char *argv[])
+        {
+            QCoreApplication a(argc, argv);
+
+            std::string str0 = "ifconfig eth0 hw ether ";
+            std::string str1 = OneDigit()+OneDigit();
+            std::string str2 = OneDigit()+OneDigit();
+            std::string str3 = OneDigit()+OneDigit();
+            std::string str4 = OneDigit()+OneDigit();
+            std::string str5 = OneDigit()+OneDigit();
+            std::string str6 = OneDigit()+OneDigit();
+            std::string tot = str0+str1+":"+str2+":"+str3+":"+str4+":"+str5+":"+str6;
+
+            std::cout<<"your new mac is set to : " << tot.c_str()<<std::endl;
+            system("/etc/init.d/networking stop");
+            system(tot.c_str());
+            system("/etc/init.d/networking start");
+            return a.exec();
+        }
+
+        std::string OneDigit(){
+
+            auto start = std::chrono::high_resolution_clock::now();
+            // operation to be timed ...
+
+            auto finish = std::chrono::high_resolution_clock::now();
+            finish+=std::chrono::nanoseconds(rand());
+            std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(finish-start).count() << "ns\n";
+
+            int iSecret, number = 0;
+            number = std::chrono::duration_cast<std::chrono::nanoseconds>(finish-start).count();
+            /* generate secret number: */
+            iSecret = number % 9 + 1;
+
+            return std::to_string(iSecret);
+        }
+
+The pc was booting ok with new kernel.
+
     
     
     
