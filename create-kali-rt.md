@@ -104,8 +104,15 @@ Now select Desktop and Next.
 ![desktop-next](https://user-images.githubusercontent.com/44880102/112774156-bc66f680-9006-11eb-8ff8-9b3055eb3064.png)
 
 And select Finish. Now we can code. Isn't this a beauty :
+
 ![set-mac-for-my-kali](https://user-images.githubusercontent.com/44880102/112775578-4dd86780-900b-11eb-81e4-d5fc25f52a9c.png)
 
+Ok lets copy our brand new code to the /etc/init.d/ dir.
+
+cd home/software/build-set-random-mac-Desktop-Debug
+    cp home/software/build-set-random-mac-Desktop-Debug/set-random-mac /etc/init.d/
+    
+![init-d-ok](https://user-images.githubusercontent.com/44880102/112776175-fb984600-900c-11eb-8750-492dc470b1c2.png)
 
     
     
