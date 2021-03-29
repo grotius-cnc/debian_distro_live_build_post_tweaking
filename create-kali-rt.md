@@ -73,7 +73,7 @@ The package will install qt-creator in the /opt/ dir and make a system menu laun
 
 ![qt](https://user-images.githubusercontent.com/44880102/112773035-4b254480-9002-11eb-8b07-1c24a9fa425e.png)
 `
-
+test
     
     
     
