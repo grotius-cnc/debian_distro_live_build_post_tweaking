@@ -63,7 +63,7 @@ Add this line :
     The base command to set a mac adres is : ifconfig eth0 hw ether 00:00:00:00:00:00
      
 Ok we need qt-creator to write our c++ code wich will set our mac adres to a random value at boot time. 
-This is a compiled script, the source code is not visible.
+This is a compiled script, the source code is not visible if you don't forget to delete it !!
 The package will install qt-creator in the /opt/ dir and make a system menu launcner for us.
 The great part is. We will write this code inside the chroot environment.
 
