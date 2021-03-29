@@ -146,6 +146,8 @@ Resquash in /rebranded/live/
 
         mksquashfs squashfs-root/ filesystem.squashfs -comp xz
         
+Move the rebranded/live/squashfs-root dir outside the iso environment beforen we pack the new iso.        
+        
 Create new iso in top level dir /rebranded/ :
 
         xorriso -as mkisofs -V 'Debian-Kali-5.10.0-5-rt-amd64' \
