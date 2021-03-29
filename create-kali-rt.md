@@ -83,7 +83,12 @@ Start normal terminal on host pc :
 
     xhost +local:
 
-And wholla, we are inside a gui now in the chroot environment, wow :
+Go on in chroot terminal and start the qt-creator program by :
+
+    cd /opt/qt-creator/Tools/QtCreator/bin/
+    ./qtcreator.sh
+
+And wholla, we are inside the qt gui now in a chroot environment, wow :
 
 ![chroot_qt](https://user-images.githubusercontent.com/44880102/112773564-7dd03c80-9004-11eb-8f02-219542bd1cc9.png)
 
