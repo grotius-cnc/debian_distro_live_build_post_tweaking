@@ -114,7 +114,18 @@ cd home/software/build-set-random-mac-Desktop-Debug
     
 ![init-d-ok](https://user-images.githubusercontent.com/44880102/112776175-fb984600-900c-11eb-8750-492dc470b1c2.png)
 
+Ok for now lets leave the chroot environment :
+
+    umount /sys /proc /dev 
+    exit
+    # extra control steps to umount :
+    mount
+    # i had to to this one just to be sure :
+    umount -l /home/user/kali/rebranded/live/squashfs-root/dev
     
+ ![umount](https://user-images.githubusercontent.com/44880102/112776457-bcb6c000-900d-11eb-9a94-df396e10ab1e.png)
+
+ 
     
     
     
