@@ -65,7 +65,9 @@ Add this line :
 Ok we need qt-creator to write our c++ code wich will set our mac adres to a random value at boot time. 
 This is a compiled script, the source code is not visible if you don't forget to delete it !!
 The package will install qt-creator in the /opt/ dir and make a system menu launcner for us.
-The great part is. We will write this code inside the chroot environment.
+
+#### The great part is. We will write this code inside the chroot environment.
+#### Imagine, we start a gui application within a chroot environment.
 
     mkdir /home/software && cd /home/software/
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
