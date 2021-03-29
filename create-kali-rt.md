@@ -164,7 +164,7 @@ Put iso on usb storage device :
         sudo dd bs=4M if=Debian-Kali-5.10.0-5-rt-amd64.iso of=/dev/sdb conv=fdatasync status=progress
 
 Runtest :
-    Modified the ./set-random-mac code a little bit to improve a random mac adres value :
+    Modified the ./set-random-mac main.cpp code a little bit to improve a random mac adres value :
     
         #include <QCoreApplication>
         #include <iostream>
