@@ -1,4 +1,5 @@
 [![Download Linux Mint 19 StormHold  Rtos ](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/linux-mint-rtos/files/latest/download)
+[![Download Linux Mint 19 StormHold  Rtos ](https://img.shields.io/sourceforge/dt/linux-mint-rtos.svg)](https://sourceforge.net/projects/linux-mint-rtos/files/latest/download)
 
 This document is about modifying an existing standard linux mint distro.
 
