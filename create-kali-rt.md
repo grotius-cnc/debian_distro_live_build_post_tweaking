@@ -1,3 +1,5 @@
+[![Download Linux Kali 2020.1 Rolling Rtos ](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/linux-kali-rolling-rtos/files/latest/download)
+
 This is a tiny tryout to get Kali rolling a realtime kernel and more..
 
 Downloaded : http://cdimage.kali.org/kali-images/kali-2021.1/kali-linux-2021.1-live-amd64.iso
@@ -213,9 +215,12 @@ Runtest :
         }
 
 The pc was booting ok with new kernel.
+I really like the kali desktop environment and the text predicion in the terminal.
 
+At last i came to the conclusion there is already a "macchange" program installed in Kali.
+But above example is still usefull.
     
-    
+[![Download Linux Kali 2020.1 Rolling Rtos ](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/linux-kali-rolling-rtos/files/latest/download)
     
     
     
