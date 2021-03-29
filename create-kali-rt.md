@@ -60,7 +60,12 @@ Let's see what crontab -e has inside.
     # The script "set-random-mac" will be a c++ program that chooses a random mac for you at boot time.
     The base command to set a mac adres is : ifconfig eth0 hw ether 00:00:00:00:00:00
      
-     
+Ok we need qt-creator to write our c++ app. The package will install qt-creator in the /opt/ dir and make a system menu launcner for us.
+
+    mkdir /home/software && cd /home/software/
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
+    dpkg -i qt-creator.deb
+    rm -rfv /home/software/qt-creator.deb # Erase source.
 
 
 `
