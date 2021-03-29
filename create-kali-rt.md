@@ -114,7 +114,7 @@ cd home/software/build-set-random-mac-Desktop-Debug
     
 ![init-d-ok](https://user-images.githubusercontent.com/44880102/112776175-fb984600-900c-11eb-8750-492dc470b1c2.png)
 
-Ok for now lets leave the chroot environment :
+Ok for now lets leave the chroot environment, don't forget to remove your sources :
 
     umount /sys /proc /dev 
     exit
@@ -125,7 +125,35 @@ Ok for now lets leave the chroot environment :
     
  ![umount](https://user-images.githubusercontent.com/44880102/112776457-bcb6c000-900d-11eb-9a94-df396e10ab1e.png)
 
+Rename iso, edit /rebranded/.disk/info file
  
+        Debian-Kali-5.10.0-5-rt-amd64
+        
+Copy these files from /live/squashfs-root/boot to /live. Copy the files higher in hierarchy.
+
+        config-5.10.0-5-rt-amd64
+        initrd.img-5.10.0-5-rt-amd64
+        System.map-5.10.0-5-rt-amd64
+        vmlinuz-5.10.0-5-rt-amd64
+    
+Delete /rebranded/live/filesystem.squashfs
+
+        rm /rebranded/live/filesystem.squashfs
+        
+Resquash in /rebranded/live/
+
+        mksquashfs squashfs-root/ filesystem.squashfs -comp xz
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
