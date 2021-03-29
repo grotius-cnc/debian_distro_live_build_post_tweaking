@@ -92,7 +92,18 @@ And wholla, we are inside the qt gui now in a chroot environment, wow :
 
 ![chroot_qt](https://user-images.githubusercontent.com/44880102/112773564-7dd03c80-9004-11eb-8f02-219542bd1cc9.png)
 
-    
+Ok now create a new project, qt console application. I named it : "set-random-mac", I set the filepath to /home/software/
+
+I see we need to set the version path. Like this is oke. You have to search in your chroot path.
+
+![qt-version](https://user-images.githubusercontent.com/44880102/112774116-95a8c000-9006-11eb-9b1a-6a5c2d217fd0.png)
+
+Now select Desktop and Next.
+
+![desktop-next](https://user-images.githubusercontent.com/44880102/112774156-bc66f680-9006-11eb-8ff8-9b3055eb3064.png)
+
+And select Finish. Now we can code. 
+
     
     
     
