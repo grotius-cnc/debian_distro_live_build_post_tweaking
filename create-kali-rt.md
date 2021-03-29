@@ -35,12 +35,35 @@ Lets add the sid list.
     
 ![repository](https://user-images.githubusercontent.com/44880102/112771911-1b733e00-8ffc-11eb-980f-a49ac67dfe17.png)
 
-Lets try to install a realtime kernel-image, with the image-headers we can install a ethercat bus.
+Lets try to install a realtime kernel-image and the kernel headers.
     
      apt-get install linux-image-5.10.0-5-rt-amd64 # https://packages.debian.org/sid/amd64/linux-image-5.10.0-5-rt-amd64/download
      apt-get install linux-kbuild-5.10 # to solve a problem
      apt-get install linux-headers-5.10.0-5-rt-amd64
+     
+     apt-get remove linux-image-amd64
+     apt-get remove linux-image-5.10.0-kali3-amd64
+     update-initramfs -u 
+
+For our kali undercover c++ program we need Tor.
+
+     apt-get install tor # To my surprise Tor isn't on Kali by default.
+     
+Let's see what crontab -e has inside.
+
+    crontab -e # Is empty by default. Wtf.
     
+    @reboot  /etc/init.d/networking stop
+    @reboot  /etc/init.d/set-random-mac  
+    @reboot  /etc/init.d/networking start
+    
+    # The script "set-random-mac" will be a c++ program that chooses a random mac for you at boot time.
+    The base command to set a mac adres is : ifconfig eth0 hw ether 00:00:00:00:00:00
+     
+     
+
+
+`
 
     
     
