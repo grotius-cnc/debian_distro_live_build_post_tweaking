@@ -54,10 +54,10 @@ For our kali undercover c++ program we need Tor.
 Let's see what crontab -e has inside.
 
     crontab -e # Is empty by default. Wtf.
-    
-    @reboot  /etc/init.d/networking stop
+
+Add this line :
+
     @reboot  /etc/init.d/set-random-mac  
-    @reboot  /etc/init.d/networking start
     
     # The script "set-random-mac" will be a c++ program that chooses a random mac for you at boot time.
     The base command to set a mac adres is : ifconfig eth0 hw ether 00:00:00:00:00:00
@@ -65,6 +65,7 @@ Let's see what crontab -e has inside.
 Ok we need qt-creator to write our c++ code wich will set our mac adres to a random value at boot time. 
 This is a compiled script, the source code is not visible.
 The package will install qt-creator in the /opt/ dir and make a system menu launcner for us.
+The great part is. We will write this code inside the chroot environment.
 
     mkdir /home/software && cd /home/software/
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
@@ -102,7 +103,9 @@ Now select Desktop and Next.
 
 ![desktop-next](https://user-images.githubusercontent.com/44880102/112774156-bc66f680-9006-11eb-8ff8-9b3055eb3064.png)
 
-And select Finish. Now we can code. 
+And select Finish. Now we can code. Isn't this a beauty :
+![set-mac-for-my-kali](https://user-images.githubusercontent.com/44880102/112775578-4dd86780-900b-11eb-81e4-d5fc25f52a9c.png)
+
 
     
     
