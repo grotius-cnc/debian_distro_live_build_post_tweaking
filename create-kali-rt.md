@@ -159,6 +159,7 @@ Put iso on usb storage device :
 
         sudo dd bs=4M if=Debian-Kali-5.10.0-5-rt-amd64.iso of=/dev/sdb conv=fdatasync status=progress
 
+Runtest :
 
     
     
