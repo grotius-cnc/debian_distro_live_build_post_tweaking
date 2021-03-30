@@ -30,7 +30,8 @@ The steps :
         export DISPLAY=:0
 
  Host terminal :
- xhost +local:
+ 
+        xhost +
  
  
         
