@@ -12,8 +12,9 @@ The steps :
 
 
 
-Host terminal at /live/:
-        
+Host terminal
+
+        cd yourpath/live/
         sudo su
         
         # Add sources to the host pc. We need dbus-x11
