@@ -10,6 +10,14 @@ The steps :
 
 Host terminal :
 
+        echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+        echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+        echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+        echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+        apt-get update
+        
+        
+
         sudo su
         cd kali/rebranded/live/
         unsquashfs filesystem.squashfs # This will produce the folder /squashfs-root
