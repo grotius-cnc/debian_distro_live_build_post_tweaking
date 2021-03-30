@@ -48,15 +48,27 @@ Host terminal :
 
 Chroot terminal :
 
+        # We need to add sources to get dbus-x11 installed in our chroot environment.
+        echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+        echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+        echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+        echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+        apt-get update
+        apt-get install dbus-x11
+
+        
         export DISPLAY=:1
         echo $DISLPAY # check if ok.
-        xclock # to check if display 1 show's the clock. Goto display 1 with CNRL+ALT+F8.
+        xclock # to check if display 1 show's the clock. Goto display 1 with CNRL+ALT+F8, CNTR+ALT+F7 to go back.
+       
         # CNRTL+Z to break command.
         # clock works.
         
-        xfce4-session # did not work.
+        xfce4-session # works!! Goto display 1 with CNRL+ALT+F8, CNTR+ALT+F7 to go back.
         
-        export DISPLAY=:2
+        
+        
+       
         
         
         
