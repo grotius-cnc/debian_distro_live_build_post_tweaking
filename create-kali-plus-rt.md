@@ -29,9 +29,6 @@ Host switches to chroot terminal.
         export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
         export LC_ALL=C
         dhclient
-        
-        echo $DISPLAY
-        export DISPLAY=:0
 
 Host terminal :
  
@@ -39,12 +36,13 @@ Host terminal :
         startx -- :1 vt8 # CNTR+ALT+F8 to show tty8, CNTR+ALT+F7 to go back.
         
         # It looks like the second display works.
-        # Mabye export our chroot environment to :1   
+        # Mabye export our chroot environment to display nr 1. 
 
 Chroot terminal :
 
         export DISPLAY=:1
         echo $DISLPAY # check if ok.
+        xclock # to check if display 1 show's the clock. Goto display 1 with CNRL+ALT+F8.
         
         
         
