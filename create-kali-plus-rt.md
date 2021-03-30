@@ -38,13 +38,14 @@ Host switches to chroot terminal.
         export LC_ALL=C
         dhclient
 
-Host terminal :
+Start new host terminal :
  
+        sudo su
         xhost + # access control disabled, clients can connect from any host
         startx -- :1 vt8 # CNTR+ALT+F8 to show tty8, CNTR+ALT+F7 to go back.
         
-        # It looks like the second display works.
-        # Mabye export our chroot environment to display nr 1. 
+        # :1 = display nr, display nr 0 is your host display nr.
+        # vt8 = tty8 window.
 
 Chroot terminal :
 
@@ -56,16 +57,14 @@ Chroot terminal :
         apt-get update
         apt-get install dbus-x11
 
-        
+        # Export our chroot environment to tty8 window with previous vt8 command.
         export DISPLAY=:1
-        echo $DISLPAY # check if ok.
-        xclock # to check if display 1 show's the clock. Goto display 1 with CNRL+ALT+F8, CNTR+ALT+F7 to go back.
-       
-        # CNRTL+Z to break command.
-        # clock works.
-        
+        echo $DISLPAY # check if ok.!
+
         xfce4-session # works!! Goto display 1 with CNRL+ALT+F8, CNTR+ALT+F7 to go back.
         
+        Preview of the chroot desktop environment.
+        [Screenshot_2021-03-30_23_18_45](https://user-images.githubusercontent.com/44880102/113069306-0af2cd00-918e-11eb-84da-b9f220e9dd21.png)
         
         
        
