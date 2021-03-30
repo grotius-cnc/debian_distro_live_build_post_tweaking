@@ -43,6 +43,8 @@ Chroot terminal :
         export DISPLAY=:1
         echo $DISLPAY # check if ok.
         xclock # to check if display 1 show's the clock. Goto display 1 with CNRL+ALT+F8.
+        # CNRTL+Z to break command.
+        
         
         
         
