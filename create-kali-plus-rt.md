@@ -31,7 +31,9 @@ The steps :
 
  Host terminal :
  
-        xhost +
+        xhost + # access control disabled, clients can connect from any host
+        startx -- :1 vt8
+        
  
  
         
