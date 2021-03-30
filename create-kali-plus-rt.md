@@ -32,7 +32,7 @@ The steps :
  Host terminal :
  
         xhost + # access control disabled, clients can connect from any host
-        startx -- :1 vt8
+        startx -- :1 vt8 # CNTR+ALT+F8 to show tty8, CNTR+ALT+F7 to go back.
         
  
  
