@@ -64,7 +64,8 @@ Chroot terminal :
         xfce4-session # works!! Goto display 1 with CNRL+ALT+F8, CNTR+ALT+F7 to go back.
         
         Preview of the chroot desktop environment.
-        [Screenshot_2021-03-30_23_18_45](https://user-images.githubusercontent.com/44880102/113069306-0af2cd00-918e-11eb-84da-b9f220e9dd21.png)
+      ![Screenshot_2021-03-30_23_18_45](https://user-images.githubusercontent.com/44880102/113069402-4392a680-918e-11eb-9316-fcf69e1768be.png)
+
         
         
        
