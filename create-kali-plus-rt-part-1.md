@@ -3,14 +3,27 @@ Normally we modify the files trough the terminal.
 
 But if we want to check gui colors, background colors, etc. We need a desktop visualisation.
 
-The steps :
+This document can be used as background info to acces a linux server and create a external desktop enterily
+from the host os. 
+
+During the development of this document i had a few severe os problems. Commands like $ startx -- :1 vt8 
+can be very destructive when used wrong. But yeah, it's solved.
+
+One problem was when i rebooted my pc. I could not login as my normal user. When i logged in, the login
+screen came back. The login srceen was ended up in a endless loop state.
+My solution was to login as root. and do a command : $ chown $USER /home/$USER/ where $USER is your username.
+Then it was solved. If your home dir is big. It can take a while, no worry.
+
+When you cannot log in as root the solution is to do a CNTR+ALT+F2 to go into the tty2 screen.
+Then do a $ sudo su, and a $ reboot. Then you can login as root and set the above chown commands to reset
+your user.
+                
+The steps of this document :
 
 1. Download iso, copy the iso on usb, copy the files to pc include hidden file, unsquash. ( see previous documents )
 2. Log into the "squasfs-root" dir and start up a chroot desktop environment.
 
-
-
-
+#### Here we go :
 
 Host terminal
 
