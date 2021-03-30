@@ -9,9 +9,6 @@ The steps :
 2. Log into the "squasfs-root" dir and start up a chroot desktop environment.
   
   
-        # Set up new display
-        startx -- :3 vt8 # vt8 is tty8, CNTR+ALT+F8 to go to tty8, CNTR+ALT+F7 to go back.
-
         cd kali/rebranded/live/
         unsquashfs filesystem.squashfs # This will produce the folder /squashfs-root
 
@@ -25,9 +22,13 @@ The steps :
         export LC_ALL=C
         dhclient
         
-        # Start desktop session, Kali has a xfce4 desktop environment.
-        DISPLAY=":3" xfce4-session
-        # CNTR+ALT+F8 to go to kali's desktop.
+        echo $DISPLAY
+        export DISPLAY=:0
+
+ Host terminal :
+ xhost +local:
+        
+
         
 
 
