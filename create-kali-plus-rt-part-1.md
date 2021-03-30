@@ -39,7 +39,7 @@ Host terminal
         apt-get install dbus-x11
         
         cd /live/
-        unsquashfs filesystem.squashfs # This will produce the folder live/squashfs-root/ 
+        unsquashfs filesystem.squashfs # This will produce the folder /live/squashfs-root/ 
 
         mount --bind /dev squashfs-root/dev
         mount --bind /sys squashfs-root/sys
