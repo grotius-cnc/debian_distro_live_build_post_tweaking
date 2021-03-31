@@ -46,6 +46,8 @@ Host terminal
         mount --bind /sys squashfs-root/proc
         
         mount --bind /run squashfs-root/run
+        mount --bind /run/udev squashfs-root/run/udev
+    
         mount --bind /tmp squashfs-root/tmp
         
         chroot squashfs-root
@@ -86,14 +88,7 @@ Chroot terminal :
         # CNRL+ALT+F8 to goto display 1 with chroot desktop. It takes a while for it's fully loaded.
         # CNTR+ALT+F7 to go back to your host desktop environment.
         
-Preview of the chroot desktop environment !
-   ![chroot-desktop](https://user-images.githubusercontent.com/44880102/113069570-9ff5c600-918e-11eb-991e-f2ee806bdab7.png)
 
-
-        
-        
-       
-        
         
         
         
