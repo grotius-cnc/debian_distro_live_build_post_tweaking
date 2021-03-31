@@ -80,9 +80,9 @@ Chroot terminal :
 
         # Export our chroot environment to tty8 window with previous vt8 command.
         export DISPLAY=:1
-        echo $DISLPAY # check if it's ok.
-        xfce4-session # works!! 
-        
+        # echo $DISLPAY 
+        startxfce4 
+  
         # CNRL+ALT+F8 to goto display 1 with chroot desktop. It takes a while for it's fully loaded.
         # CNTR+ALT+F7 to go back to your host desktop environment.
         
