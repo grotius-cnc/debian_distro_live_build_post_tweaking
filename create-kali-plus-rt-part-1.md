@@ -21,9 +21,7 @@ Copy iso to usb :
     cd /rebranded/live/
     unsquashfs filesystem.squashfs # This will produce the folder /squashfs-root
 
-#### for sure install on host and on chroot.
-
-    apt-get install xserver-xephyr ssh ufw dbus-x11 xterm
+    apt-get install xserver-xephyr ssh ufw dbus-x11 xterm # possible deps.
     Xephyr -ac -screen 1024x768 -br -reset -terminate 2> /dev/null :1 & 
 
     mount --bind /dev squashfs-root/dev
@@ -37,6 +35,7 @@ Copy iso to usb :
 
 ##### now switches to chroot terminal:
     
+    apt-get install xserver-xephyr ssh ufw dbus-x11 xterm # possible deps
     export DISPLAY=:1
     xclock
     startxfce4 &
