@@ -30,9 +30,9 @@ apt-get install xserver-xephyr ssh ufw dbus-x11 xterm
 ##### chroot terminal:
     export DISPLAY=:1
     xclock
-    startxfce4 &  
-    
-    ![chrooted-desktop-environment](https://user-images.githubusercontent.com/44880102/113175620-9feed800-9219-11eb-95be-f5d019f09afe.png)
+    startxfce4 &
+
+![chrooted-desktop-environment](https://user-images.githubusercontent.com/44880102/113175620-9feed800-9219-11eb-95be-f5d019f09afe.png)
 
 
         
