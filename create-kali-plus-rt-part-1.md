@@ -1,6 +1,5 @@
 In this document we dive into rebranding a Linux Distro in a more special way.
 Normally we modify the files trough the terminal. 
-
 But if we want to check gui colors, background colors, etc. We need a desktop visualisation.
                 
 The steps of this document :
@@ -8,12 +7,25 @@ The steps of this document :
 1. Download iso, copy the iso on usb, copy the files to pc include hidden file, unsquash. ( see previous documents )
 2. Log into the "squasfs-root" dir and start up a chroot desktop environment.
 
+Download : http://cdimage.kali.org/kali-images/kali-2021.1/kali-linux-2021.1-live-amd64.iso
 
-#### For sure install on host and on chroot.
-apt-get install xserver-xephyr ssh ufw dbus-x11 xterm
+Copy iso to usb :
+
+    sudo dd bs=4M if=kali-linux-2021.1-live-amd64.iso of=/dev/sdb conv=fdatasync status=progress
+
+    Copy the iso files from usb (include hidden file ./disk) to your pc in a folder named /rebranded/
 
 #### host terminal:
+
     sudo su
+    cd /rebranded/live/
+    unsquashfs filesystem.squashfs # This will produce the folder /squashfs-root
+
+#### for sure install on host and on chroot.
+
+    apt-get install xserver-xephyr ssh ufw dbus-x11 xterm
+    Xephyr -ac -screen 1024x768 -br -reset -terminate 2> /dev/null :1 & 
+
     mount --bind /dev squashfs-root/dev
     mount --bind /dev/pts squashfs-root/dev/pts
     mount --bind /sys squashfs-root/sys
@@ -23,11 +35,8 @@ apt-get install xserver-xephyr ssh ufw dbus-x11 xterm
     mount --bind /tmp squashfs-root/tmp
     chroot squashfs-root
 
-##### host terminal:
-    sudo su
-    Xephyr -ac -screen 1024x768 -br -reset -terminate 2> /dev/null :1 & 
-
-##### chroot terminal:
+##### now switches to chroot terminal:
+    
     export DISPLAY=:1
     xclock
     startxfce4 &
