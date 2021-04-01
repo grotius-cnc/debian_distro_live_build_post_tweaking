@@ -52,11 +52,86 @@ Copy iso to usb :
     apt-get remove magicrescue pwnat clang 
     apt-autoremove
     
-  
- 
-        
+    # Remove desktop launchers in /etc/applications/kali*
+    # Change desktop panel menu icon.
+    # If desktop panel is accidentaly removed, restart, $ xfce4-panel 
+    
+#### apt sources list:
+    echo "deb http://deb.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list
+    echo "deb-src http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list
+    echo "deb http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list
+    echo "deb-src http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list
+    echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+    echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list
+    echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list
+    echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list 
+    echo "deb http://ftp.de.debian.org/debian sid main" >> /etc/apt/sources.list 
+    apt-get update
+    
+#### install deps:
+    apt-get install geany debhelper libudev-dev tcl8.6-dev tk8.6-dev tclx8.4 libtk-img bwidget wget git build-essential \
+    libusb-1.0-0-dev psmisc asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape \
+    source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended \
+    texlive-lang-cyrillic texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish \
+    texlive-latex-recommended python-tk libxmu-dev libglu1-mesa-dev libgl1-mesa-dev \
+    libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev yapps2 python-yapps \
+    python3-tk python-is-python2 python-dev-is-python2 gobject-introspection python3-gi python3-cairo-dev python3-gi-cairo \
+    python2-dev python-gtk2 python-lxml lib32readline-dev libedit-dev libreadline-gplv2-dev cairo-perf-utils --no-install-recommends
 
-        
+# Clone linuxcnc and check linuxcnc dependencies.
+git clone https://github.com/LinuxCNC/linuxcnc.git /home/linuxcnc
+cd /home/linuxcnc/debian
+./configure uspace
+cd ..
+
+cd scr
+./autogen.sh
+# Keep on trying the next line until it's satisfied.
+./configure --with-python=python3 --with-boost-python=boost_python39 
+make
+
+# Install programs, then remove sources :
+    mkdir software && cd software
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/linuxcnc.deb
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.3/linuxcnc-ethercat.deb
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.5/librecad.deb
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.4/freecad.deb
+    dpkg -i *.deb
+    cd .. && rm -rfv software
+
+    # For sure we set linuxcnc startup permissions:
+    chmod 777 /opt/linuxcnc/bin/rtapi_app
+    chmod 777 /opt/linuxcnc/bin/linuxcnc_module_helper
+
+# Edit startup Apps:
+    crontab -e
+    
+    # Add lines :
+    @reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" DEVICE_MODULES=generic > /etc/sysconfig/ethercat 
+    # Slow down the process so above line is done before the restart. 
+    @reboot /etc/init.d/ethercat start
+    @reboot /etc/init.d/ethercat stop
+    @reboot /etc/init.d/ethercat restart
+    
+# Edit the info file in /remastered/.disk/info
+Linux Pro Rtos 5.10.0-5-rt-amd64
+
+# Create iso 
+xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos 5.10.0-5' \
+-o Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso -J -J -joliet-long -cache-inodes \
+-isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
+-b isolinux/isolinux.bin \
+-c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
+-e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
+
+#Put the new iso file on your usb device in /remastered/
+sudo dd bs=4M if=Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso of=/dev/sdb conv=fdatasync status=progress
+
+# Todo
+edit distro name.
+
+# Runtest
 
 
 
