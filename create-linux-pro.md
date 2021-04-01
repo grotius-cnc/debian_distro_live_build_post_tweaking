@@ -187,6 +187,12 @@ Copy iso to usb :
     Linux Pro Rtos 5.10.0-5-rt-amd64
 
 #### Create iso in top level dir 
+
+    # Example for iso's bigger then 4gb :
+    xorrisofs -iso-level 3 -v -J -r -V MY_DISK_LABEL -o /home/user/kali-iso/original/file.iso /home/user/kali-iso/original
+
+
+    # Iso up to 4gb :
     xorriso -as mkisofs -V 'Linux Pro Rtos 5.10.0-5-rt-amd64' \
     -o Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso -J -J -joliet-long -cache-inodes \
     -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
