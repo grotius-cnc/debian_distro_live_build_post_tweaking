@@ -15,7 +15,7 @@ Copy iso to usb :
 
     Copy the iso files from usb (include hidden file ./disk) to your pc in a folder named /rebranded/
 
-#### host terminal:
+#### host terminal
 
     sudo su
     cd /rebranded/live/
@@ -33,7 +33,7 @@ Copy iso to usb :
     mount --bind /tmp squashfs-root/tmp
     chroot squashfs-root
 
-##### now switches to chroot terminal:
+##### now switches to chroot terminal
     
     apt-get install xserver-xephyr ssh ufw dbus-x11 xterm # possible deps
     export DISPLAY=:1
@@ -42,7 +42,7 @@ Copy iso to usb :
 
 ![chrooted-desktop-environment](https://user-images.githubusercontent.com/44880102/113175620-9feed800-9219-11eb-95be-f5d019f09afe.png)
 
-#### cleanup:
+#### cleanup
     apt-get remove nmap maltego sqlmap aircrack-ng autopsy binwalk hydra hasdeep hashcat cadaver burpsuite cherrytree
     apt-get remove wireshark whatweb wfuzz weevely nikto ncrack ophcrack netmask gparter iodine john istat wireshark sqlitebrowser
     apt-get remove wafw00f voiphopper wpscan masscan mimikatz miredo mitmproxy pipal pixiewps proxytunnel proxychains4 patator onesixtyone
@@ -56,7 +56,7 @@ Copy iso to usb :
     # Change desktop panel menu icon.
     # If desktop panel is accidentaly removed, restart, $ xfce4-panel 
     
-#### apt sources list:
+#### apt sources list
     echo "deb http://deb.debian.org/debian buster main contrib non-free" > /etc/apt/sources.list
     echo "deb-src http://deb.debian.org/debian buster main contrib non-free" >> /etc/apt/sources.list
     echo "deb http://security.debian.org/debian-security buster/updates main contrib" >> /etc/apt/sources.list
@@ -68,7 +68,7 @@ Copy iso to usb :
     echo "deb http://ftp.de.debian.org/debian sid main" >> /etc/apt/sources.list 
     apt-get update
     
-#### install deps:
+#### install deps
     apt-get install geany debhelper libudev-dev tcl8.6-dev tk8.6-dev tclx8.4 libtk-img bwidget wget git build-essential \
     libusb-1.0-0-dev psmisc asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape \
     source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended \
@@ -81,7 +81,7 @@ Copy iso to usb :
     
     # kernel headers. linux-headers-$(uname -r)
 
-#### Clone linuxcnc and check linuxcnc dependencies.
+#### Clone linuxcnc and check linuxcnc dependencies
     git clone https://github.com/LinuxCNC/linuxcnc.git /home/linuxcnc
     cd /home/linuxcnc/debian
     ./configure uspace
@@ -93,7 +93,7 @@ Copy iso to usb :
     ./configure --with-python=python3 --with-boost-python=boost_python39 
     make
 
-#### Install programs, then remove sources :
+#### Install programs, then remove sources 
     mkdir software && cd software
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.0/ethercat-deb-package.zip
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/linuxcnc.deb
@@ -106,13 +106,12 @@ Copy iso to usb :
     
     # For sure we set ethercat-master startup permissons:
     chmod 777 /opt/ethercat/script/init.d/ethercat
-    # Clean mac addres.
 
     # For sure we set linuxcnc startup permissions:
     chmod 777 /opt/linuxcnc/bin/rtapi_app
     chmod 777 /opt/linuxcnc/bin/linuxcnc_module_helper
 
-#### Edit startup Apps:
+#### Edit startup Apps
     crontab -e
     
     # Add lines :
@@ -168,11 +167,21 @@ Copy iso to usb :
     
 #### Edit /boot/grub/grub.cfg 
     Edit kernel names.
+    
+    
+#### Umount chroot environment
+    umount /dev /dev/pts /sys /proc /run /run/udev /tmp
+    exit
+    
+    # check:
+    mount
+    # force umount:
+    umount -l ......
 
 #### Edit the info file in /remastered/.disk/info
     Linux Pro Rtos 5.10.0-5-rt-amd64
 
-#### Create iso 
+#### Create iso in top level dir 
     xorriso -as mkisofs -V 'Linux Pro Rtos 5.10.0-5-rt-amd64' \
     -o Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso -J -J -joliet-long -cache-inodes \
     -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
