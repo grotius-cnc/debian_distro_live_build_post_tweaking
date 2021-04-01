@@ -78,6 +78,8 @@ Copy iso to usb :
     python3-tk python-is-python2 python-dev-is-python2 gobject-introspection python3-gi python3-cairo-dev python3-gi-cairo \
     python2-dev python-gtk2 python-lxml lib32readline-dev libedit-dev libreadline-gplv2-dev cairo-perf-utils \
     libmuparser2v5 librecad-data --no-install-recommends
+    
+    # kernel headers. linux-headers-$(uname -r)
 
 #### Clone linuxcnc and check linuxcnc dependencies.
     git clone https://github.com/LinuxCNC/linuxcnc.git /home/linuxcnc
@@ -101,6 +103,10 @@ Copy iso to usb :
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.4/freecad.deb
     dpkg -i *.deb
     cd .. && rm -rfv software
+    
+    # For sure we set ethercat-master startup permissons:
+    chmod 777 /opt/ethercat/script/init.d/ethercat
+    # Clean mac addres.
 
     # For sure we set linuxcnc startup permissions:
     chmod 777 /opt/linuxcnc/bin/rtapi_app
@@ -178,7 +184,7 @@ Copy iso to usb :
     sudo dd bs=4M if=Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso of=/dev/sdb conv=fdatasync status=progress
 
 #### Todo
-    edit distro name.
+    dpkg set distro name into the remove menu
 
 #### Runtest
 
