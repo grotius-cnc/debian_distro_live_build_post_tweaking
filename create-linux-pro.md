@@ -180,6 +180,7 @@ Copy iso to usb :
 
 #### Repack the filesystem
     sudo su
+    apt-get install squashfs-tools xorriso isolinux
     squashfs squashfs-root
 
 #### Edit the info file in /remastered/.disk/info
