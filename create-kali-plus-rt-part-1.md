@@ -78,19 +78,19 @@ Copy iso to usb :
     python3-tk python-is-python2 python-dev-is-python2 gobject-introspection python3-gi python3-cairo-dev python3-gi-cairo \
     python2-dev python-gtk2 python-lxml lib32readline-dev libedit-dev libreadline-gplv2-dev cairo-perf-utils --no-install-recommends
 
-# Clone linuxcnc and check linuxcnc dependencies.
-git clone https://github.com/LinuxCNC/linuxcnc.git /home/linuxcnc
-cd /home/linuxcnc/debian
-./configure uspace
-cd ..
+#### Clone linuxcnc and check linuxcnc dependencies.
+    git clone https://github.com/LinuxCNC/linuxcnc.git /home/linuxcnc
+    cd /home/linuxcnc/debian
+    ./configure uspace
+    cd ..
 
-cd scr
-./autogen.sh
-# Keep on trying the next line until it's satisfied.
-./configure --with-python=python3 --with-boost-python=boost_python39 
-make
+    cd scr
+    ./autogen.sh
+    # Keep on trying the next line until it's satisfied.
+    ./configure --with-python=python3 --with-boost-python=boost_python39 
+    make
 
-# Install programs, then remove sources :
+#### Install programs, then remove sources :
     mkdir software && cd software
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/linuxcnc.deb
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.3/linuxcnc-ethercat.deb
@@ -104,7 +104,7 @@ make
     chmod 777 /opt/linuxcnc/bin/rtapi_app
     chmod 777 /opt/linuxcnc/bin/linuxcnc_module_helper
 
-# Edit startup Apps:
+#### Edit startup Apps:
     crontab -e
     
     # Add lines :
@@ -114,10 +114,23 @@ make
     @reboot /etc/init.d/ethercat stop
     @reboot /etc/init.d/ethercat restart
     
-# Edit the info file in /remastered/.disk/info
+#### Edit /usr/lib/os-release 
+    PRETTY_NAME="Linux Pro Rtos 5.10.0-5-rt-amd64"
+    NAME="Linux Pro"
+    ID=sid
+    VERSION="2021.4"
+    VERSION_ID="2021.4"
+    VERSION_CODENAME="linux-pro"
+    ID_LIKE=debian
+    ANSI_COLOR="1;31"
+    HOME_URL="https://github.com/grotius-cnc/"
+    SUPPORT_URL="https://github.com/grotius-cnc/"
+    BUG_REPORT_URL="https://github.com/grotius-cnc/"
+
+#### Edit the info file in /remastered/.disk/info
 Linux Pro Rtos 5.10.0-5-rt-amd64
 
-# Create iso 
+#### Create iso 
 xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos 5.10.0-5' \
 -o Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso -J -J -joliet-long -cache-inodes \
 -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
@@ -128,10 +141,10 @@ xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos 5.10.0-5' \
 #Put the new iso file on your usb device in /remastered/
 sudo dd bs=4M if=Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso of=/dev/sdb conv=fdatasync status=progress
 
-# Todo
+#### Todo
 edit distro name.
 
-# Runtest
+#### Runtest
 
 
 
