@@ -126,23 +126,39 @@ Copy iso to usb :
     HOME_URL="https://github.com/grotius-cnc/"
     SUPPORT_URL="https://github.com/grotius-cnc/"
     BUG_REPORT_URL="https://github.com/grotius-cnc/"
+    
+#### Edit /etc/issue
+    Linux Pro \n \l
+    
+#### Edit /etc/motd
+    The programs included with the Linux Pro system are free software;
+    the exact distribution terms for each program are described in the
+    individual files in /usr/share/doc/*/copyright.
+
+    Linus Pro comes with ABSOLUTELY NO WARRANTY, to the extent
+    permitted by applicable law.
+    
+#### Edit /etc/issue.net
+    Linux Pro
+
+
 
 #### Edit the info file in /remastered/.disk/info
-Linux Pro Rtos 5.10.0-5-rt-amd64
+    Linux Pro Rtos 5.10.0-5-rt-amd64
 
 #### Create iso 
-xorriso -as mkisofs -V 'Debian 11 Bullseye Rtos 5.10.0-5' \
--o Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso -J -J -joliet-long -cache-inodes \
--isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
--b isolinux/isolinux.bin \
--c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
--e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
+    xorriso -as mkisofs -V 'Linux Pro Rtos 5.10.0-5-rt-amd64' \
+    -o Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso -J -J -joliet-long -cache-inodes \
+    -isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
+    -b isolinux/isolinux.bin \
+    -c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
+    -e boot/grub/efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
 
-#Put the new iso file on your usb device in /remastered/
-sudo dd bs=4M if=Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso of=/dev/sdb conv=fdatasync status=progress
+    #Put the new iso file on your usb device in /remastered/
+    sudo dd bs=4M if=Linux-Pro-Rtos-5.10.0-5-rt-amd64.iso of=/dev/sdb conv=fdatasync status=progress
 
 #### Todo
-edit distro name.
+    edit distro name.
 
 #### Runtest
 
