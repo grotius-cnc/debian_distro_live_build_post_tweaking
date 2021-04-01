@@ -37,16 +37,22 @@ Copy iso to usb :
     
     apt-get install xserver-xephyr ssh ufw dbus-x11 xterm # possible deps
     export DISPLAY=:1
-    xclock
+    xclock # without this step it won't work.
     startxfce4 &
 
 ![chrooted-desktop-environment](https://user-images.githubusercontent.com/44880102/113175620-9feed800-9219-11eb-95be-f5d019f09afe.png)
 
-
-        
-        
-        
- 
+#### cleanup:
+    apt-get remove nmap maltego sqlmap aircrack-ng autopsy binwalk hydra hasdeep hashcat cadaver burpsuite cherrytree
+    apt-get remove wireshark whatweb wfuzz weevely nikto ncrack ophcrack netmask gparter iodine john istat wireshark sqlitebrowser
+    apt-get remove wafw00f voiphopper wpscan masscan mimikatz miredo mitmproxy pipal pixiewps proxytunnel proxychains4 patator onesixtyone
+    apt-get remove arping cewl chntpw dirbuster fierce enum4linux lbd laudanum kismet masscan nbtscan netdiscover ophcrack-cli 
+    apt-get remove crunch cutycapt davtest wireshark unix-privesc-check udptunnel dmitry dirb dnschef dnsenum dnsrecon
+    apt-get remove catfish skipfish recon-ng exploitdb spiderfoot zenity webshells zaproxy radare2 sakis3g strongswan blueman
+    apt-get remove magicrescue pwnat clang 
+    apt-autoremove
+    
+  
  
         
 
