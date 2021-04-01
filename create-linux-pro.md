@@ -178,6 +178,10 @@ Copy iso to usb :
     # force umount:
     umount -l ......
 
+#### Repack the filesystem
+    sudo su
+    squashfs squashfs-root
+
 #### Edit the info file in /remastered/.disk/info
     Linux Pro Rtos 5.10.0-5-rt-amd64
 
