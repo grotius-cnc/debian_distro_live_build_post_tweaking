@@ -49,7 +49,7 @@ Copy iso to usb :
     apt-get remove arping cewl chntpw dirbuster fierce enum4linux lbd laudanum kismet masscan nbtscan netdiscover ophcrack-cli 
     apt-get remove crunch cutycapt davtest wireshark unix-privesc-check udptunnel dmitry dirb dnschef dnsenum dnsrecon
     apt-get remove catfish skipfish recon-ng exploitdb spiderfoot zenity webshells zaproxy radare2 sakis3g strongswan blueman
-    apt-get remove magicrescue pwnat clang 
+    apt-get remove magicrescue pwnat clang chromium
     apt-autoremove
     
     # Remove desktop launchers in /etc/applications/kali*
@@ -76,7 +76,8 @@ Copy iso to usb :
     texlive-latex-recommended python-tk libxmu-dev libglu1-mesa-dev libgl1-mesa-dev \
     libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev yapps2 python-yapps \
     python3-tk python-is-python2 python-dev-is-python2 gobject-introspection python3-gi python3-cairo-dev python3-gi-cairo \
-    python2-dev python-gtk2 python-lxml lib32readline-dev libedit-dev libreadline-gplv2-dev cairo-perf-utils --no-install-recommends
+    python2-dev python-gtk2 python-lxml lib32readline-dev libedit-dev libreadline-gplv2-dev cairo-perf-utils \
+    libmuparser2v5 librecad-data --no-install-recommends
 
 #### Clone linuxcnc and check linuxcnc dependencies.
     git clone https://github.com/LinuxCNC/linuxcnc.git /home/linuxcnc
@@ -92,6 +93,7 @@ Copy iso to usb :
 
 #### Install programs, then remove sources :
     mkdir software && cd software
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.0/ethercat-deb-package.zip
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/linuxcnc.deb
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.3/linuxcnc-ethercat.deb
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
@@ -141,7 +143,25 @@ Copy iso to usb :
 #### Edit /etc/issue.net
     Linux Pro
 
+#### Edit /boot/themes/grub.d
+    Edit backgrounds.
+       
+#### Edit /etc/default/grub.d/pro-themes.cfg
+    # Try to force a 16x9 mode first, then 16x10, then default
+    GRUB_GFXMODE="1280x720,1280x800,auto"
+    GRUB_THEME="/boot/grub/themes/pro/theme.txt"
+    # Add splash option to enable plymouth
+    if ! echo "$GRUB_CMDLINE_LINUX_DEFAULT" | grep -q splash; then
+        GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT splash"
+    fi
 
+#### Edit /boot/grub/live-theme/theme.txt
+    line 28
+    
+#### Edit /boot/grub/x86_64-efi/splash.png
+    
+#### Edit /boot/grub/grub.cfg 
+    Edit kernel names.
 
 #### Edit the info file in /remastered/.disk/info
     Linux Pro Rtos 5.10.0-5-rt-amd64
