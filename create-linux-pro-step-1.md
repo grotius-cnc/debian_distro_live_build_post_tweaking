@@ -1,4 +1,5 @@
 
+
 #### Update software list host pc:
 
     sudo su
@@ -139,33 +140,33 @@
 	Terminal=false
 	Hidden=false
 
-# Create the file /usr/local/bin/change-theme with the content:
+#### Create the file /usr/local/bin/change-theme with the content:
 
 	#!/bin/bash
 	xfconf-query -c xsettings -p /Net/ThemeName -s  "Kali-Dark"
 	
-# Set the login screen theme (Kali-Dark) & background (color #23252e) in /etc/lightdm/lightdm-gtk-greeter.conf
+#### Set the login screen theme (Kali-Dark) & background (color #23252e) in /etc/lightdm/lightdm-gtk-greeter.conf
 
-# Test command to change theme:
+#### Test command to change theme:
 		xfconf-query -c xsettings -p /Net/ThemeName -s  "Xfce"
 		
-# Desktop settings, copy /root/.config/xfce4/*   to /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/
+#### Desktop settings, copy /root/.config/xfce4/*   to /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/
 	   
-# Replace boot background in /isolinux/splash.png (isolinux is used as starter)
-# Replace boot background in /boot/grub/splash.png 	
-# Edit colors in /isolinux/stdmenu.cfg
+#### Replace boot background in /isolinux/splash.png (isolinux is used as starter)
+#### Replace boot background in /boot/grub/splash.png 	
+#### Edit colors in /isolinux/stdmenu.cfg
 
-# Close chroot environment, a reboot can be faster :
+#### Close chroot environment, a reboot can be faster :
 	exit
 	mount
 	umount -l /yourpath/dev
 
-# Repack filesystem:
+#### Repack filesystem:
 	mksquashfs squashfs-root/ filesystem.squashfs -comp xz
 
-# Edit the ./disk/info file
+#### Edit the ./disk/info file
 
-# Create iso:
+#### Create iso:
 	xorriso -as mkisofs -iso-level 3 -V 'Linux Pro' \
 	-o Linux-Pro.iso -J -J -joliet-long -cache-inodes \
 	-isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
@@ -173,7 +174,7 @@
 	-c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
 	-e efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
 
-# Copy the remastered iso to usb:
+#### Copy the remastered iso to usb:
 	sudo dd bs=4M if=Linux-Pro.iso of=/dev/sdb conv=fdatasync status=progress
 
 
