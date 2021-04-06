@@ -2,8 +2,9 @@
 
     sudo su
     apt-get install linux-image-5.10.0-5-rt-amd64
-    apt-get install linux-headers-$(uname -r)
+    apt-get install linux-headers-5.10.0-5-rt-amd64
     update-initramfs -u
+    reboot
 
     apt install gobject-introspection python3-gi python3-cairo-dev python3-gi-cairo # github issue 820 linuxcnc fix rene-dev
     apt-get install locales
@@ -18,6 +19,8 @@
     libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev yapps2 python-yapps \
     python3-tk python-is-python2 python-dev-is-python2 \
     python2-dev python-gtk2 python-lxml lib32readline-dev libedit-dev libreadline-gplv2-dev cairo-perf-utils --no-install-recommends
+    
+    apt-get upgrade
 
     cd /home
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.0/ethercat-master.deb
@@ -26,8 +29,6 @@
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.5/librecad.deb
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.4/freecad.deb
-
-    apt-get install linux-headers-5.10.0-5-rt-amd64 
 
     dpkg -i linuxcnc.deb 
     chmod 777 /opt/linuxcnc/bin/rtapi_app 
@@ -96,7 +97,7 @@
 	Path=/opt/tor-browser/
 	EOF
 
-	# Remove a backdoor:
+	# Remove
 	apt-get remove ssh
 
 	
