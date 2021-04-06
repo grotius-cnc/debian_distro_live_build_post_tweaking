@@ -69,13 +69,18 @@
 	mount --bind /run squashfs-root/run
 	mount --bind /run/udev squashfs-root/run/udev
 	mount --bind /tmp squashfs-root/tmp
+	mount --bind /var/lib squashfs-root/var/lib 
+	mount --bind /etc squashfs-root/etc
 	chroot squashfs-root /usr/bin/bash
+
+	#### Or if xephyr display is given error, after mount's do a :
+	chroot squashfs-root
 
 #### In chroot now:
 
-	export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+	export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
 	export LC_ALL=C
-	#dhclient
+	dhclient
 
 #### Update sources list in chroot environment:
 
@@ -101,6 +106,7 @@
 	apt-get update
 	
 #### Install software:
+        apt-get dist-upgrade
 	apt-get install xserver-xephyr dbus-x11 isolinux
 	apt-get install inkscape live-build debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools 
 
@@ -110,10 +116,8 @@
 #### Back to chroot terminal, start the xfce4 desktop environment:
 	export DISPLAY=:1
 	xclock
-	# CNTRL+X
+	# CNTRL+Z
 	startxfce4 &  
-	
-![root-environment](https://user-images.githubusercontent.com/44880102/113708243-fbecad00-96ae-11eb-99da-1c6622bcb8d7.png)
 	
 #### Set gui colors, theme, https://www.xfce-look.org/browse/cat/
 #### Copy your favority theme to /usr/share/themes or borrow one from kali's theme's dir.
@@ -134,41 +138,42 @@
 	Terminal=false
 	Hidden=false
 
-#### Create the file /usr/local/bin/change-theme with the content:
+# Create the file /usr/local/bin/change-theme with the content:
+
 	#!/bin/bash
 	xfconf-query -c xsettings -p /Net/ThemeName -s  "Kali-Dark"
-		
-#### Set the login screen theme (Kali-Dark) & background (color #23252e) in /etc/lightdm/lightdm-gtk-greeter.conf
+	
+# Set the login screen theme (Kali-Dark) & background (color #23252e) in /etc/lightdm/lightdm-gtk-greeter.conf
 
-#### Test command to change theme:
-	xfconf-query -c xsettings -p /Net/ThemeName -s  "Xfce"
+# Test command to change theme:
+		xfconf-query -c xsettings -p /Net/ThemeName -s  "Xfce"
 		
-#### Desktop settings, copy /root/.config/xfce4/*   to /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/
+# Desktop settings, copy /root/.config/xfce4/*   to /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/
 	   
-#### Replace boot background in /isolinux/splash.png (isolinux is used as starter)
-#### Replace boot background in /boot/grub/splash.png 	
-#### Edit colors in /isolinux/stdmenu.cfg
+# Replace boot background in /isolinux/splash.png (isolinux is used as starter)
+# Replace boot background in /boot/grub/splash.png 	
+# Edit colors in /isolinux/stdmenu.cfg
 
-#### Close chroot environment, a reboot can be faster :
+# Close chroot environment, a reboot can be faster :
 	exit
 	mount
 	umount -l /yourpath/dev
 
-#### Repack filesystem:
+# Repack filesystem:
 	mksquashfs squashfs-root/ filesystem.squashfs -comp xz
 
-#### Edit the ./disk/info file
+# Edit the ./disk/info file
 
-#### Create iso:
-	xorriso -as mkisofs -iso-level 3 -V 'Linux Test' \
-	-o Linux-Test.iso -J -J -joliet-long -cache-inodes \
+# Create iso:
+	xorriso -as mkisofs -iso-level 3 -V 'Linux Pro' \
+	-o Linux-Pro.iso -J -J -joliet-long -cache-inodes \
 	-isohybrid-mbr /usr/lib/ISOLINUX/isohdpfx.bin \
 	-b isolinux/isolinux.bin \
 	-c isolinux/boot.cat -boot-load-size 4 -boot-info-table -no-emul-boot -eltorito-alt-boot \
 	-e efi.img -no-emul-boot -isohybrid-gpt-basdat -isohybrid-apm-hfsplus .
 
-#### Copy the remastered iso to usb:
-	sudo dd bs=4M if=Linux-Test.iso of=/dev/sdb conv=fdatasync status=progress
+# Copy the remastered iso to usb:
+	sudo dd bs=4M if=Linux-Pro.iso of=/dev/sdb conv=fdatasync status=progress
 
 
 
