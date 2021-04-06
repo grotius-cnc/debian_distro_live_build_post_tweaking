@@ -106,7 +106,7 @@
 	apt-get update
 	
 #### Install software:
-        apt-get dist-upgrade
+	apt-get dist-upgrade
 	apt-get install xserver-xephyr dbus-x11 isolinux
 	apt-get install inkscape live-build debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools 
 
@@ -118,6 +118,7 @@
 	xclock
 	# CNTRL+Z
 	startxfce4 &  
+	# If Xephyr is not starting look at the create-linux-pro-step-2.md file.
 	
 #### Set gui colors, theme, https://www.xfce-look.org/browse/cat/
 #### Copy your favority theme to /usr/share/themes or borrow one from kali's theme's dir.
