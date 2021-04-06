@@ -121,6 +121,8 @@
 	startxfce4 &  
 	# If Xephyr is not starting look at the create-linux-pro-step-2.md file.
 	
+![root-environment](https://user-images.githubusercontent.com/44880102/113708243-fbecad00-96ae-11eb-99da-1c6622bcb8d7.png)
+	
 #### Set gui colors, theme, https://www.xfce-look.org/browse/cat/
 #### Copy your favority theme to /usr/share/themes or borrow one from kali's theme's dir.
 #### Open Settings > Appearance > Style to select the default theme.
