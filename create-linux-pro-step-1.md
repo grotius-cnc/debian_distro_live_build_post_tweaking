@@ -113,6 +113,7 @@
 	# CNTRL+X
 	startxfce4 &  
 	
+	![root-environment](https://user-images.githubusercontent.com/44880102/113708243-fbecad00-96ae-11eb-99da-1c6622bcb8d7.png)
 
 #### Set gui colors, theme, https://www.xfce-look.org/browse/cat/
 #### Copy your favority theme to /usr/share/themes or borrow one from kali's theme's dir.
@@ -134,17 +135,13 @@
 	Hidden=false
 
 #### Create the file /usr/local/bin/change-theme with the content:
-
 	#!/bin/bash
 	xfconf-query -c xsettings -p /Net/ThemeName -s  "Kali-Dark"
 		
-	
 #### Set the login screen theme (Kali-Dark) & background (color #23252e) in /etc/lightdm/lightdm-gtk-greeter.conf
 
-	
 #### Test command to change theme:
-		xfconf-query -c xsettings -p /Net/ThemeName -s  "Xfce"
-		
+	xfconf-query -c xsettings -p /Net/ThemeName -s  "Xfce"
 		
 #### Desktop settings, copy /root/.config/xfce4/*   to /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/
 	   
