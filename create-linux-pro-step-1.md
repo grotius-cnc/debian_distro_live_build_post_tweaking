@@ -66,7 +66,7 @@
 	mount --bind /dev squashfs-root/dev
 	mount --bind /dev/pts squashfs-root/dev/pts
 	mount --bind /sys squashfs-root/sys
-	mount --bind /sys squashfs-root/proc
+	mount --bind /proc squashfs-root/proc
 	mount --bind /run squashfs-root/run
 	mount --bind /run/udev squashfs-root/run/udev
 	mount --bind /tmp squashfs-root/tmp
