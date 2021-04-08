@@ -244,27 +244,6 @@ The chroot desktop environment will look like :
 
     # Remove source archive :
     rm -rf /opt/opencascade/V7_5_0beta.tar.gz
-    
-#### Web browser
-    mkdir /opt/tor
-    cd /opt/tor
-    wget https://www.torproject.org/dist/torbrowser/10.0.15/tor-browser-linux64-10.0.15_en-US.tar.xz
-    tar -xf tor-browser-linux64-10.0.15_en-US.tar.xz
-    rm -rf /opt/tor/tor-browser-linux64-10.0.15_en-US.tar.xz
-    
-    # Create desktop launcher.
-    cat <<EOF > /usr/share/applications/tor-browser.desktop
-    [Desktop Entry]
-    Type=Application
-    Name=Tor Browser 
-    GenericName=Web Browser
-    Comment=Tor Browser is +1 for privacy and −1 for mass surveillance
-    Categories=Network;WebBrowser;Security;
-    Exec=./start-tor-browser
-    Icon=/opt/tor/tor-browser_en-US/Browser/browser/chrome/icons/default/default48.png
-    StartupWMClass=Tor Browser
-    Path=/opt/tor/tor-browser_en-US/Browser/
-    EOF
 
 #### Install sientific calculator :
     apt-get install qalculate
@@ -281,6 +260,30 @@ The chroot desktop environment will look like :
     Categories=GTK;Application;Utility;Calculator;Science;Math;
     EOF
     
+#### Web browser, not finished
+    mkdir /opt/tor
+    cd /opt/tor
+    wget https://www.torproject.org/dist/torbrowser/10.0.15/tor-browser-linux64-10.0.15_en-US.tar.xz
+    tar -xf /opt/tor/tor-browser-linux64-10.0.15_en-US.tar.xz
+    rm -rf /opt/tor/tor-browser-linux64-10.0.15_en-US.tar.xz
+
+    # Create desktop launcher.
+    cat <<EOF > /usr/share/applications/tor-browser.desktop
+    [Desktop Entry]
+    Type=Application
+    Name=Tor Browser 
+    GenericName=Web Browser
+    Comment=Tor Browser is +1 for privacy and −1 for mass surveillance
+    Categories=Network;WebBrowser;Security;
+    Exec=./start-tor-browser
+    Icon=web-browser
+    StartupWMClass=Tor Browser
+    Path=/opt/tor/tor-browser_en-US/Browser/
+    EOF
+    
+    chmod 777 /opt/tor/*
+    chmod 777 /usr/share/applications/tor-browser.desktop
+
 #### Todo:
     Look at glade 2 and the linuxcnc widgets.    
     Pyvcp deps.    
