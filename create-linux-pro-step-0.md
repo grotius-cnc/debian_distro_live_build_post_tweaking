@@ -58,3 +58,15 @@
 
 #### Runtest : Install ok.
 
+#### Chroot again :
+
+    apt-get autoremove
+    apt-get install wget
+    cd /home
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.6/kali-dark-theme.deb
+    dpkg -i kali-dark-theme.deb
+
+
+
+
+
