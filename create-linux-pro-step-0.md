@@ -117,6 +117,26 @@ The chroot desktop environment will look like :
 
 #### Install software
 
+Ethercat-master:
+    
+    apt-get install linux-headers-5.10.0-5-rt-amd64
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.0/ethercat-master.deb
+    dpkg -i ethercat-master.deb
+    
+    # Set up autoconfigure Mac at boot time.
+    
+    cat <<EOF > crontab -e
+    @reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" DEVICE_MODULES=generic > /etc/sysconfig/ethercat 
+    # Slow down the process so above line is done before the restart. 
+    @reboot /etc/init.d/ethercat start
+    @reboot /etc/init.d/ethercat stop
+    @reboot /etc/init.d/ethercat restart
+    EOF
+    
+    # We test later the interaction with macchanger.
+    
+Linuxcnc:
+
     apt-get install autoconf
     git clone https://github.com/LinuxCNC/linuxcnc.git
 
@@ -134,17 +154,24 @@ The chroot desktop environment will look like :
     texlive-latex-recommended python-is-python2 python-dev-is-python2 python-tk libxmu-dev libglu1-mesa-dev libgl1-mesa-dev \
     libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev libusb-1.0-0-dev yapps2
 
+    # Download old package : libreadline-gplv2-dev 
+    apt-get install libncurses-dev libtinfo-dev
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/libreadline-gplv2-dev_5.2+dfsg-3+b13_amd64.deb
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/libreadline5_5.2+dfsg-3+b13_amd64.deb
+    dpkg -i libreadline5_5.2+dfsg-3+b13_amd64.deb
+    dpkg -i libreadline-gplv2-dev_5.2+dfsg-3+b13_amd64.deb
+    
+    # This is the result, but no problem, error: Unmet build dependencies: dh-python python-lxml
 
-    libreadline-gplv2-dev python-lxml dh-python
-    
-    
-    
     cd src
     ./autogen.sh
-    ./configure --with-python=python3 --with-boost-python=boost_python39
+    ./configure --with-python=python3 --with-boost-python=boost_python39 --with-tclConfig=/lib/tclx8.4 --with-tkConfig=/lib/tk8.6
+    make -j2
     
-
+    # If succes, install the linuxcnc.deb package.
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/linuxcnc.deb
+    dpkg -i linuxcnc.deb
     
-
+Linuxcnc-ethercat
 
 
