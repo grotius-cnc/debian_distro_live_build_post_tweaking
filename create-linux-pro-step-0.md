@@ -115,6 +115,14 @@ Back to chroot terminal, start the xfce4 desktop environment:
 The chroot desktop environment will look like :
 ![root-environment](https://user-images.githubusercontent.com/44880102/113708243-fbecad00-96ae-11eb-99da-1c6622bcb8d7.png)
 
+    # Log out chroot:
+    umount /dev /dev/pts /sys /proc /run /run/udev /tmp /var/lib /etc
+    exit
+    mount # Check
+    umount -l yourpath/dev # For example to force umount.
+
+    # Suggestion : A reboot can be faster.
+
 #### Install software
 
 #### Install ethercat-master in /opt/  
