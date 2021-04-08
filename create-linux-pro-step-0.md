@@ -115,7 +115,36 @@ Back to chroot terminal, start the xfce4 desktop environment:
 The chroot desktop environment will look like :
 ![root-environment](https://user-images.githubusercontent.com/44880102/113708243-fbecad00-96ae-11eb-99da-1c6622bcb8d7.png)
 
+#### Install software
 
+    apt-get install autoconf
+    git clone https://github.com/LinuxCNC/linuxcnc.git
+
+    cd linuxcnc/debian
+    ./configure uspace
+    cd ..
+    
+    dpgk-checkbuilldeps
+    
+    # solved with bullseye repository :
+    apt-get install debhelper libudev-dev tcl8.6-dev tk8.6-dev libtk-img bwidget tclx8.4 \
+    asciidoc dblatex docbook-xsl dvipng ghostscript graphviz groff imagemagick inkscape  \
+    source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended \
+    texlive-lang-cyrillic texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish \
+    texlive-latex-recommended python-is-python2 python-dev-is-python2 python-tk libxmu-dev libglu1-mesa-dev libgl1-mesa-dev \
+    libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev libusb-1.0-0-dev yapps2
+
+
+    libreadline-gplv2-dev python-lxml dh-python
+    
+    
+    
+    cd src
+    ./autogen.sh
+    ./configure --with-python=python3 --with-boost-python=boost_python39
+    
+
+    
 
 
 
