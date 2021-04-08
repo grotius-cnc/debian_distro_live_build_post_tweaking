@@ -66,8 +66,6 @@
     cd /home
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.6/kali-dark-theme.deb
     dpkg -i kali-dark-theme.deb
-    
-    apt-get install qalculate
 
     # Set sources :
     echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" > /etc/apt/sources.list 
@@ -224,7 +222,7 @@ The chroot desktop environment will look like :
     mkdir build
     cd build
     cmake ..
-    make 
+    make -j2
     make install
     
     # Remove source archive :
@@ -246,6 +244,46 @@ The chroot desktop environment will look like :
 
     # Remove source archive :
     rm -rf /opt/opencascade/V7_5_0beta.tar.gz
+    
+#### Web browser
+    mkdir /opt/tor
+    cd /opt/tor
+    wget https://www.torproject.org/dist/torbrowser/10.0.15/tor-browser-linux64-10.0.15_en-US.tar.xz
+    tar -xf tor-browser-linux64-10.0.15_en-US.tar.xz
+    rm -rf /opt/tor/tor-browser-linux64-10.0.15_en-US.tar.xz
+    
+    # Create desktop launcher.
+    cat <<EOF > /usr/share/applications/tor-browser.desktop
+    [Desktop Entry]
+    Type=Application
+    Name=Tor Browser 
+    GenericName=Web Browser
+    Comment=Tor Browser is +1 for privacy and −1 for mass surveillance
+    Categories=Network;WebBrowser;Security;
+    Exec=./start-tor-browser
+    Icon=/opt/tor/tor-browser_en-US/Browser/browser/chrome/icons/default/default48.png
+    StartupWMClass=Tor Browser
+    Path=/opt/tor/tor-browser_en-US/Browser/
+    EOF
+
+#### Install sientific calculator :
+    apt-get install qalculate
+    # Replace the disquisting desktop icon:
+    cat <<EOF > /usr/share/applications/qalculate-gtk.desktop
+    [Desktop Entry]
+    Name=Calculator
+    Comment=Powerful and easy to use calculator
+    Exec=qalculate-gtk
+    Icon=accessories-calculator
+    Terminal=false
+    Type=Application
+    StartupNotify=true
+    Categories=GTK;Application;Utility;Calculator;Science;Math;
+    EOF
+    
+#### Todo:
+    Look at glade 2 and the linuxcnc widgets.    
+    Pyvcp deps.    
     
 #### Repack iso:    
 
