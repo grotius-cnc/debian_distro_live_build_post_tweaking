@@ -1,9 +1,8 @@
 
 #### This document solves a chroot dist-upgrade bug related to grub.
 
-    wget https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.9.0-amd64-xfce.iso
-
     sudo su
+    wget https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.9.0-amd64-xfce.iso
 
     mkdir iso && cd iso
     cp -rf /media/iso/* .
@@ -24,6 +23,7 @@
     apt-get install linux-image-5.10.0-5-rt-amd64
 
     umount /dev /proc /sys
+    exit
     mount
     umount -l yourpath/dev etc.
 
@@ -60,11 +60,60 @@
 
 #### Chroot again :
 
+    sudo su
     apt-get autoremove
     apt-get install wget
     cd /home
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.6/kali-dark-theme.deb
     dpkg -i kali-dark-theme.deb
+    
+    apt-get install qalculate
+
+    # Set sources :
+    echo "deb http://ftp.de.debian.org/debian bullseye main contrib non-free" > /etc/apt/sources.list 
+    echo "deb-src http://ftp.de.debian.org/debian bullseye main contrib non-free" >> /etc/apt/sources.list 
+    echo "deb http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list 
+    echo "deb-src http://security.debian.org/debian-security/ bullseye-security main" >> /etc/apt/sources.list 
+    apt-get update
+    
+    apt-get install xserver-xephyr dbus-x11 isolinux live-build debootstrap squashfs-tools xorriso
+    
+    # Logout as chroot.
+    
+#### Chroot with target desktop environment :
+
+    sudo su
+    mount --bind /dev squashfs-root/dev
+    mount --bind /dev/pts squashfs-root/dev/pts
+    mount --bind /sys squashfs-root/sys
+    mount --bind /proc squashfs-root/proc
+    mount --bind /run squashfs-root/run
+    mount --bind /run/udev squashfs-root/run/udev
+    mount --bind /tmp squashfs-root/tmp
+    mount --bind /var/lib squashfs-root/var/lib 
+    mount --bind /etc squashfs-root/etc
+    chroot squashfs-root 
+
+    # In chroot now:
+
+    export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+    export LC_ALL=C
+    dhclient
+
+Set up display, open up new terminal on host pc :
+
+    Xephyr -ac -screen 1600x900 -br -reset -terminate 2> /dev/null :1 & 
+
+Back to chroot terminal, start the xfce4 desktop environment:
+
+    export DISPLAY=:1
+    xclock
+    # CNTRL+Z
+    startxfce4 &  
+    # If Xephyr is not starting look at the create-linux-pro-step-2.md file.
+
+The chroot desktop environment will look like :
+![root-environment](https://user-images.githubusercontent.com/44880102/113708243-fbecad00-96ae-11eb-99da-1c6622bcb8d7.png)
 
 
 
