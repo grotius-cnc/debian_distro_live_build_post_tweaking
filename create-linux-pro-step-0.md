@@ -226,6 +226,9 @@ The chroot desktop environment will look like :
     cmake ..
     make 
     make install
+    
+    # Remove source archive :
+    rm -rf /opt/kdl-kinematics/1.3.2.tar.gz
 
 #### Install opencascade cad:
     apt-get install doxygen
@@ -241,6 +244,9 @@ The chroot desktop environment will look like :
     make -j2
     make install 
 
+    # Remove source archive :
+    rm -rf /opt/opencascade/V7_5_0beta.tar.gz
+    
 #### Repack iso:    
 
 
