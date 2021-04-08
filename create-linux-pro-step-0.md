@@ -117,7 +117,7 @@ The chroot desktop environment will look like :
 
 #### Install software
 
-Ethercat-master:
+#### Install ethercat-master in /opt/  
     
     apt-get install linux-headers-5.10.0-5-rt-amd64
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.0/ethercat-master.deb
@@ -125,17 +125,17 @@ Ethercat-master:
     
     # Set up autoconfigure Mac at boot time.
     
-    cat <<EOF > crontab -e
+    crontab -e
+    # Add lines:
     @reboot echo MASTER0_DEVICE="$(cat /sys/class/net/enp0s25/address)" DEVICE_MODULES=generic > /etc/sysconfig/ethercat 
     # Slow down the process so above line is done before the restart. 
     @reboot /etc/init.d/ethercat start
     @reboot /etc/init.d/ethercat stop
     @reboot /etc/init.d/ethercat restart
-    EOF
     
-    # We test later the interaction with macchanger.
+    # Todo, test the interaction with macchanger.
     
-Linuxcnc:
+#### Install a temponairy linuxcnc. Goal is to check if it compiles ok.
 
     apt-get install autoconf
     git clone https://github.com/LinuxCNC/linuxcnc.git
@@ -152,7 +152,7 @@ Linuxcnc:
     source-highlight w3c-linkchecker xsltproc texlive-extra-utils texlive-font-utils texlive-fonts-recommended \
     texlive-lang-cyrillic texlive-lang-french texlive-lang-german texlive-lang-polish texlive-lang-spanish \
     texlive-latex-recommended python-is-python2 python-dev-is-python2 python-tk libxmu-dev libglu1-mesa-dev libgl1-mesa-dev \
-    libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev libusb-1.0-0-dev yapps2
+    libgtk2.0-dev gettext intltool libboost-python-dev netcat libmodbus-dev libusb-1.0-0-dev yapps2 python3-tk
 
     # Download old package : libreadline-gplv2-dev 
     apt-get install libncurses-dev libtinfo-dev
@@ -161,17 +161,40 @@ Linuxcnc:
     dpkg -i libreadline5_5.2+dfsg-3+b13_amd64.deb
     dpkg -i libreadline-gplv2-dev_5.2+dfsg-3+b13_amd64.deb
     
+    apt install gobject-introspection python3-gi python3-cairo-dev python3-gi-cairo # github issue 820 linuxcnc fix rene-dev
+    apt-get upgrade
+    
     # This is the result, but no problem, error: Unmet build dependencies: dh-python python-lxml
 
     cd src
     ./autogen.sh
-    ./configure --with-python=python3 --with-boost-python=boost_python39 --with-tclConfig=/lib/tclx8.4 --with-tkConfig=/lib/tk8.6
+    ./configure --with-python=python3 --with-boost-python=boost_python39 
     make -j2
     
-    # If succes, install the linuxcnc.deb package.
+    # If succes, install the linuxcnc.deb package and remove this source.
+    
+#### Install linuxcnc in /opt/    
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.1/linuxcnc.deb
     dpkg -i linuxcnc.deb
     
-Linuxcnc-ethercat
+    chmod 777 /opt/linuxcnc/bin/rtapi_app
+    chmod 777 /opt/linuxcnc/bin/linuxcnc_module_helper
+    
+#### Install linuxcnc-ethercat in /opt/
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.3/linuxcnc-ethercat.deb
+    dpkg -i linuxcnc-ethercat.deb
+
+#### Install qt-creator in /opt/
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.2/qt-creator.deb
+    dpkg -i qt-creator.deb
+
+#### Install librecat in /opt/
+    apt-get install librecad-data libmuparser2v5
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.5/librecad.deb
+    dpkg -i librecad.deb
+
+#### Install freecad in /opt/
+    wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.4/freecad.deb
+    dpkg -i freecad.deb
 
 
