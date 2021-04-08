@@ -124,6 +124,8 @@ The chroot desktop environment will look like :
     # Suggestion : A reboot can be faster.
 
 #### Install software
+    mkdir /home/software
+    cd /home/software/
 
 #### Install ethercat-master in /opt/  
     
@@ -204,5 +206,17 @@ The chroot desktop environment will look like :
 #### Install freecad in /opt/
     wget https://github.com/grotius-cnc/debian_distro_live_build_post_tweaking/releases/download/1.0.4/freecad.deb
     dpkg -i freecad.deb
+    
+#### Remove sources:
+    rm -rf /home/software/*.deb
+    
+    # The squashfs-root dir size is now : 15.8GiB
+    
+#### Repack iso:    
+
+
+
+
+
 
 
