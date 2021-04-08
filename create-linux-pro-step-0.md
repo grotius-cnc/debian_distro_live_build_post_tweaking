@@ -212,6 +212,35 @@ The chroot desktop environment will look like :
     
     # The squashfs-root dir size is now : 15.8GiB
     
+#### Install orocos kinematics:
+    apt-get install cmake libeigen3-dev 
+    mkdir /opt/kdl-kinematics
+    cd /opt/kdl-kinematics
+    wget https://github.com/grotius-cnc/orocos_kinematics_dynamics/archive/refs/tags/1.3.2.tar.gz
+    tar -xf 1.3.2.tar.gz
+    
+    cd orocos_kinematics_dynamics-1.3.2
+    cd orocos_kdl
+    mkdir build
+    cd build
+    cmake ..
+    make 
+    make install
+
+#### Install opencascade cad:
+    apt-get install doxygen
+    mkdir /opt/opencascade
+    cd /opt/opencascade
+    wget https://github.com/grotius-cnc/oce/archive/refs/tags/upstream/V7_5_0beta.tar.gz
+    tar -xf V7_5_0beta.tar.gz
+    
+    cd oce-upstream-V7_5_0beta
+    mkdir build
+    cd build
+    cmake ..
+    make -j2
+    make install 
+
 #### Repack iso:    
 
 
