@@ -98,7 +98,7 @@
 
 #### For example add Kali's repository:
 #### Download kali's keyring : 
-	http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb
+	wget http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2020.2_all.deb
 #### Install kali's keyring : 
 	dpkg -i kali-archive-keyring_2020.2_all.deb
 #### Add kali's repository:
