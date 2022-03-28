@@ -20,8 +20,9 @@ Program to investegate :
 
 Log :
 
-    Create a qt application project and compile.
+    To understand the Gidhra program we test a standard qt application.
 
+    - Create a qt application "untitled" and compile.
     - Start project in Ghidra
     - Import file : ~/build-untitled-Desktop-Debug/untitled
         1. Load as raw binary
@@ -32,3 +33,9 @@ Log :
     - Change file properties "untitled1" to executable and read-write for all.
     - Run 
         `./untitled1.bin`
+    - Conclusion
+        New executable run's ok.
+        
+        
+        
+        
