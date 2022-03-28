@@ -40,7 +40,7 @@ Step 1, try to change some text.
     
     - Create a qt application that display's a text : "Hacked by : Nothing at all."
     
-      ![screen01](https://user-images.githubusercontent.com/44880102/160398969-2b45c115-732a-42a1-8f1f-c843b5b966c4.jpg)
+![screen01](https://user-images.githubusercontent.com/44880102/160398969-2b45c115-732a-42a1-8f1f-c843b5b966c4.jpg)
 
 Open new Ghidra project as by above "Step 0", Find text "hacked" and get the hex format of the full string :
         ![screen](https://user-images.githubusercontent.com/44880102/160398739-3f79871a-3fa5-473a-a32a-a998f95377cd.jpg)
