@@ -30,7 +30,7 @@ Log :
         3. Analize : yes
     - Save project
     - Export project as "untitled1"
-    - Change file properties "untitled1" to executable and read-write for all.
+    - Change file properties "untitled1.bin" to executable and read-write for all.
     - Run 
         `./untitled1.bin`
     - Conclusion
