@@ -20,7 +20,7 @@ Program to investegate :
 
 Log :
 
-Step 0, to understand the Gidhra program we test a standard qt application.
+# Step 0, to understand the Gidhra program we test a standard qt application.
 
     - Create a qt application "untitled" and compile.
     - Start project in Ghidra
@@ -36,7 +36,7 @@ Step 0, to understand the Gidhra program we test a standard qt application.
         New executable run's ok.
         
         
-Step 1, try to change some text.
+# Step 1, try to change some text.
     
     - Create a qt application that display's a text : "Hacked by : Nothing at all."
     
@@ -56,4 +56,15 @@ Save project, save program, set file permissions, and run :
 ![screen03](https://user-images.githubusercontent.com/44880102/160404609-a9429656-0890-4cbc-b057-9e5e4039eb3b.jpg)
 
 Conclustion Step.2, this looks okey to me. 
+
+
+# Step.2, Try to trigger a function at startup that bypasses a btn press.
+
+    - This is actually helpfull to avoid any startup scripts blocking the app.
+
+    
+    
+    
+
+
 
