@@ -20,7 +20,7 @@ Program to investegate :
 
 Log :
 
-    To understand the Gidhra program we test a standard qt application.
+Step 0, to understand the Gidhra program we test a standard qt application.
 
     - Create a qt application "untitled" and compile.
     - Start project in Ghidra
@@ -32,10 +32,28 @@ Log :
     - Export project as "untitled1"
     - Change file properties "untitled1.bin" to executable and read-write for all.
     - Run 
-        `./untitled1.bin`
     - Conclusion
         New executable run's ok.
         
         
+Step 1, try to change some text.
+    
+    - Create a qt application that display's a text : "Hacked by : Nothing at all."
+    
+      ![screen01](https://user-images.githubusercontent.com/44880102/160398969-2b45c115-732a-42a1-8f1f-c843b5b966c4.jpg)
+
+Open new Ghidra project as by above "Step 0", Find text "hacked" and get the hex format of the full string :
+        ![screen](https://user-images.githubusercontent.com/44880102/160398739-3f79871a-3fa5-473a-a32a-a998f95377cd.jpg)
         
-        
+        Then use for example https://codebeautify.org/string-hex-converter to get a new string to hex.
+      
+Edited bytes by hand:
+
+![screen02](https://user-images.githubusercontent.com/44880102/160404023-4cc2fd67-ee03-4bcf-ac91-29de56740411.jpg)
+
+Save project, save program, set file permissions, and run :
+
+![screen03](https://user-images.githubusercontent.com/44880102/160404609-a9429656-0890-4cbc-b057-9e5e4039eb3b.jpg)
+
+Conclustion Step.2, this looks okey to me. 
+
