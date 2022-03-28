@@ -13,3 +13,22 @@ Add repository to /etc/apt/sources.list : deb http://http.kali.org/kali kali-rol
 Run:
     
     $ ghidra
+    
+Program to investegate :
+
+    https://github.com/grotius-cnc/dump/releases/download/1.2/draftSight.deb
+
+Log :
+
+    Create a qt application project and compile.
+
+    - Start project in Ghidra
+    - Import file : ~/build-untitled-Desktop-Debug/untitled
+        1. Load as raw binary
+        2. Language : X86 gcc
+        3. Analize : yes
+    - Save project
+    - Export project as "untitled1"
+    - Change file properties "untitled1" to executable and read-write for all.
+    - Run 
+        `./untitled1.bin`
