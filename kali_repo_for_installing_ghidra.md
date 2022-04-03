@@ -9,10 +9,20 @@ Add repository to /etc/apt/sources.list : deb http://http.kali.org/kali kali-rol
     $ gpg -a --export ED444FF07D8D0BF6 | sudo apt-key add -
     $ sudo apt-get update
     $ sudo apt-get install ghidra
+    
+Install a linux debugger `gdb` wich works alongside Ghidra.
 
-Run:
+    $ sudo apt-get install gdb
+    
+Run Ghidra:
     
     $ ghidra
+    
+
+Run the debugger inside Ghidra, you can choose option:
+
+    Debug in Gdb locally via GADP
+    
     
 Program to investegate :
 
